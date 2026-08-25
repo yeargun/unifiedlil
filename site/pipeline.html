@@ -3,46 +3,70 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Claude-style markdown pipeline compiled in LilScript: unified + remark-parse + GFM + breaks + math + rehype + KaTeX." />
-    <title>@itslil/unified — markdown pipeline lab</title>
+    <meta name="theme-color" content="#c9a227" />
+    <title>itslil/unified — markdown pipeline through LilScript</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" />
     <link rel="stylesheet" href="./styles.css" />
     <script type="module" src="./pipeline.js"></script>
   </head>
   <body>
+    <div class="progress" aria-hidden="true"></div>
     <header class="nav shell">
       <a class="wordmark" href="./">
         <span class="mark">un</span>
-        <span>@itslil/unified</span>
+        <span>itslil/unified</span>
       </a>
       <nav>
         <a href="./">lab</a>
         <a href="./pipeline.html">pipeline</a>
-        <a href="https://github.com/yeargun/unifiedlil">GitHub</a>
+        <a href="https://github.com/yeargun/unifiedlil">GitHub ↗</a>
       </nav>
     </header>
     <main id="top">
       <section class="hero shell">
-        <p class="eyebrow">the compiled markdown stack</p>
-        <h1>Parse once.<br />Plugin the rest.</h1>
-        <p class="lede">
-          Same shape as the Claude.ai transcript pipeline, all LilScript:
-          <code>unified</code> → <code>remark-parse</code> → <code>remark-gfm</code> →
-          <code>remark-breaks</code> → <code>remark-math</code> → <code>remark-rehype</code> →
-          <code>rehype-katex</code> → <code>rehype-stringify</code>.
-        </p>
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="live-dot"></span> the compiled markdown stack</p>
+          <h1>Parse once.<br /><em>Plugin the rest.</em></h1>
+          <p class="lede">
+            Same shape as the Claude.ai transcript pipeline, all LilScript:
+            <code>unified</code> → <code>remark-parse</code> → <code>remark-gfm</code> →
+            <code>remark-breaks</code> → <code>remark-math</code> → <code>remark-rehype</code> →
+            <code>rehype-katex</code> → <code>rehype-stringify</code>.
+          </p>
+        </div>
+        <div class="scoreboard">
+          <div class="score-main">
+            <span class="score-label">The live stack on this page</span>
+            <strong>8<span>packages</span></strong>
+            <p>Zero runtime npm deps. Each plugin is a sibling @itslil package.</p>
+          </div>
+          <div class="score-grid">
+            <div><strong>GFM</strong><span>tables · tasks · strike</span></div>
+            <div><strong>breaks</strong><span>soft newlines to br</span></div>
+            <div><strong>math</strong><span>$ and $$ to nodes</span></div>
+            <div><strong>KaTeX</strong><span>compiled subset HTML</span></div>
+          </div>
+          <p class="score-note">This page vendors sibling ESM so GitHub Pages can run the whole pipeline without npm.</p>
+        </div>
       </section>
+      <section class="ticker"><div>unified <span>✦</span> remark-parse <span>✦</span> remark-gfm <span>✦</span> remark-breaks <span>✦</span> remark-math <span>✦</span> remark-rehype <span>✦</span> rehype-katex <span>✦</span> rehype-stringify</div></section>
       <section class="lab shell" id="lab">
-        <h2>Full stack</h2>
-        <p class="section-lead">Each plugin is a sibling <code>@itslil/*</code> package. This page vendors their ESM so the lab runs on GitHub Pages.</p>
-        <div class="samples" id="samples"></div>
-        <div class="play-grid">
-          <textarea id="input" spellcheck="false" aria-label="Markdown"></textarea>
+        <div class="section-heading">
           <div>
+            <p class="eyebrow">The compiled stack, in the browser</p>
+            <h2>Full<br />pipeline.</h2>
+          </div>
+          <p>Left is markdown. Right is HTML after every plugin. KaTeX CSS is from jsDelivr; the renderer is @itslil/katex.</p>
+        </div>
+        <div class="playground">
+          <div class="play-toolbar"><span>@itslil markdown stack</span></div>
+          <div class="samples" id="samples"></div>
+          <div class="play-grid">
+            <textarea id="input" spellcheck="false"></textarea>
             <iframe id="frame" title="Rendered markdown" sandbox="allow-same-origin"></iframe>
-            <pre id="output"></pre>
           </div>
         </div>
+        <pre id="output" hidden></pre>
       </section>
     </main>
     <footer class="shell">
