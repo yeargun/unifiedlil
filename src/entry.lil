@@ -1,0 +1,191 @@
+export extern class ProcessorApi {
+  JsValue use;
+  JsValue parse;
+  JsValue run;
+  JsValue runSync;
+  JsValue stringify;
+  JsValue process;
+  JsValue processSync;
+  JsValue data;
+  JsValue parser;
+  JsValue compiler;
+  JsValue Parser;
+  JsValue Compiler;
+}
+
+extern JsValue Error;
+
+JsValue emptyFile(string value) {
+  return JS.object("value", value, "messages", JS.array(), "data", JS.object());
+}
+
+JsValue asFile(JsValue input) {
+  if (input is string) {
+    return emptyFile(input);
+  }
+  if (JS.isUndefined(input) || JS.isNullish(input)) {
+    return emptyFile("");
+  }
+  return input;
+}
+
+string fileDoc(JsValue file) {
+  JsValue raw = JS.get(file, "value");
+  if (raw is string) {
+    return raw;
+  }
+  if (JS.isUndefined(raw) || JS.isNullish(raw)) {
+    return "";
+  }
+  return JS.string(raw);
+}
+
+bool missingFn(JsValue value) {
+  return JS.isUndefined(value) || JS.isNullish(value) || JS.typeOf(value) != "function";
+}
+
+JsValue pickParser(JsValue self) {
+  ProcessorApi api = JS.assume(self);
+  JsValue parser = api.parser;
+  if (missingFn(parser)) {
+    parser = api.Parser;
+  }
+  if (missingFn(parser)) {
+    throw JS.construct(Error, "Cannot `parse` without `parser`");
+  }
+  return parser;
+}
+
+JsValue pickCompiler(JsValue self) {
+  ProcessorApi api = JS.assume(self);
+  JsValue compiler = api.compiler;
+  if (missingFn(compiler)) {
+    compiler = api.Compiler;
+  }
+  if (missingFn(compiler)) {
+    throw JS.construct(Error, "Cannot `stringify` without `compiler`");
+  }
+  return compiler;
+}
+
+JsValue parseImpl(JsValue self, JsValue input) {
+  JsValue file = asFile(input);
+  return JS.call(pickParser(self), JS.undefined(), fileDoc(file), file);
+}
+
+JsValue runSyncImpl(JsValue self, JsValue tree, JsValue file) {
+  file = asFile(file);
+  JsValue transformers = JS.get(self, "#t");
+  int n = transformers.length.toInt();
+  int i = 0;
+  JsValue current = tree;
+  while (i < n) {
+    JsValue next = JS.call(transformers[i], JS.undefined(), current, file);
+    if (!(JS.isUndefined(next) || JS.isNullish(next))) {
+      current = next;
+    }
+    i = i + 1;
+  }
+  return current;
+}
+
+JsValue stringifyImpl(JsValue self, JsValue tree, JsValue file) {
+  file = asFile(file);
+  return JS.call(pickCompiler(self), JS.undefined(), tree, file);
+}
+
+JsValue processSyncImpl(JsValue self, JsValue input) {
+  JsValue file = asFile(input);
+  JsValue tree = runSyncImpl(self, parseImpl(self, file), file);
+  JsValue output = stringifyImpl(self, tree, file);
+  JS.set(file, "value", output);
+  JS.set(file, "result", output);
+  return file;
+}
+
+JsValue useCall(JsValue self, JsValue plugin, JsValue options) {
+  if (JS.typeOf(plugin) != "function") {
+    throw JS.construct(Error, "Expected plugin to be a function");
+  }
+  JsValue transformer = JS.undefined();
+  if (JS.isUndefined(options) || JS.isNullish(options)) {
+    transformer = JS.call(plugin, self);
+  } else {
+    transformer = JS.call(plugin, self, options);
+  }
+  if (JS.typeOf(transformer) == "function") {
+    JS.push(JS.get(self, "#t"), transformer);
+  }
+  return self;
+}
+
+JsValue parseCall(JsValue self, JsValue input) {
+  return parseImpl(self, input);
+}
+
+JsValue runSyncCall(JsValue self, JsValue tree, JsValue file) {
+  return runSyncImpl(self, tree, file);
+}
+
+JsValue runCall(JsValue self, JsValue tree, JsValue file) {
+  Task<JsValue> done = Task.resolve(runSyncImpl(self, tree, file));
+  return done;
+}
+
+JsValue stringifyCall(JsValue self, JsValue tree, JsValue file) {
+  return stringifyImpl(self, tree, file);
+}
+
+JsValue processSyncCall(JsValue self, JsValue input) {
+  return processSyncImpl(self, input);
+}
+
+JsValue processCall(JsValue self, JsValue input) {
+  Task<JsValue> done = Task.resolve(processSyncImpl(self, input));
+  return done;
+}
+
+JsValue dataCall(JsValue self, JsValue args) {
+  JsValue bag = JS.get(self, "#d");
+  int n = args.length.toInt();
+  if (n == 0) {
+    return bag;
+  }
+  string key = JS.string(args[0]);
+  if (n == 1) {
+    return JS.get(bag, key);
+  }
+  JS.set(bag, key, args[1]);
+  return self;
+}
+
+JsValue useMethod = JS.method2(useCall);
+JsValue parseMethod = JS.method1(parseCall);
+JsValue runMethod = JS.method2(runCall);
+JsValue runSyncMethod = JS.method2(runSyncCall);
+JsValue stringifyMethod = JS.method2(stringifyCall);
+JsValue processMethod = JS.method1(processCall);
+JsValue processSyncMethod = JS.method1(processSyncCall);
+JsValue dataMethod = JS.methodRest(dataCall);
+
+JsValue createProcessor() {
+  JsValue proc = JS.object();
+  JS.set(proc, "#t", JS.array());
+  JS.set(proc, "#d", JS.object());
+  ProcessorApi api = JS.assume(proc);
+  api.use = useMethod;
+  api.parse = parseMethod;
+  api.run = runMethod;
+  api.runSync = runSyncMethod;
+  api.stringify = stringifyMethod;
+  api.process = processMethod;
+  api.processSync = processSyncMethod;
+  api.data = dataMethod;
+  return proc;
+}
+
+export JsValue unified() {
+  return createProcessor();
+}
+
+export JsValue default = unified;

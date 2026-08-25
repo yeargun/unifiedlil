@@ -1,0 +1,67 @@
+{
+  "name": "@itslil/unified",
+  "version": "11.0.5",
+  "description": "unified processor reimplemented in LilScript",
+  "keywords": [
+    "unified",
+    "processor",
+    "plugin",
+    "ast",
+    "lilscript",
+    "itslil"
+  ],
+  "homepage": "https://yeargun.github.io/unifiedlil/",
+  "bugs": "https://github.com/yeargun/unifiedlil/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yeargun/unifiedlil.git"
+  },
+  "license": "MIT",
+  "author": "yeargun",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "main": "./dist/unified.cjs",
+  "module": "./dist/unified.esm.js",
+  "types": "./dist/unified.d.ts",
+  "unpkg": "./dist/unified.umd.js",
+  "jsdelivr": "./dist/unified.umd.js",
+  "exports": {
+    ".": {
+      "types": "./dist/unified.d.ts",
+      "import": "./dist/unified.esm.js",
+      "require": "./dist/unified.cjs",
+      "default": "./dist/unified.esm.js"
+    },
+    "./closed": "./dist/unified.closed.js",
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "dist/unified.esm.js",
+    "dist/unified.cjs",
+    "dist/unified.umd.js",
+    "dist/unified.closed.js",
+    "dist/unified.d.ts",
+    "LICENSE",
+    "NOTICE.md",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs --compile",
+    "build:site": "node scripts/build-site.mjs",
+    "test": "node --test test/*.test.mjs",
+    "check:site": "npm run build:site && node --test test/site.test.mjs",
+    "check:pack": "node scripts/check-pack.mjs",
+    "prepublishOnly": "npm test && npm run check:pack && npm run check:site"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.1"
+  }
+}

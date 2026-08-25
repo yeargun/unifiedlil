@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Claude-style markdown pipeline compiled in LilScript: unified + remark-parse + GFM + breaks + math + rehype + KaTeX." />
+    <title>@itslil/unified — markdown pipeline lab</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./pipeline.js"></script>
+  </head>
+  <body>
+    <header class="nav shell">
+      <a class="wordmark" href="./">
+        <span class="mark">un</span>
+        <span>@itslil/unified</span>
+      </a>
+      <nav>
+        <a href="./">lab</a>
+        <a href="./pipeline.html">pipeline</a>
+        <a href="https://github.com/yeargun/unifiedlil">GitHub</a>
+      </nav>
+    </header>
+    <main id="top">
+      <section class="hero shell">
+        <p class="eyebrow">the compiled markdown stack</p>
+        <h1>Parse once.<br />Plugin the rest.</h1>
+        <p class="lede">
+          Same shape as the Claude.ai transcript pipeline, all LilScript:
+          <code>unified</code> → <code>remark-parse</code> → <code>remark-gfm</code> →
+          <code>remark-breaks</code> → <code>remark-math</code> → <code>remark-rehype</code> →
+          <code>rehype-katex</code> → <code>rehype-stringify</code>.
+        </p>
+      </section>
+      <section class="lab shell" id="lab">
+        <h2>Full stack</h2>
+        <p class="section-lead">Each plugin is a sibling <code>@itslil/*</code> package. This page vendors their ESM so the lab runs on GitHub Pages.</p>
+        <div class="samples" id="samples"></div>
+        <div class="play-grid">
+          <textarea id="input" spellcheck="false" aria-label="Markdown"></textarea>
+          <div>
+            <iframe id="frame" title="Rendered markdown" sandbox="allow-same-origin"></iframe>
+            <pre id="output"></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="shell">
+      <span>@itslil markdown stack · MIT</span>
+      <a href="https://yeargun.github.io/unifiedlil/pipeline.html">pipeline lab</a>
+    </footer>
+  </body>
+</html>
