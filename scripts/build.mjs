@@ -16,7 +16,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..")
 const lilscriptRoot = process.env.LILSCRIPT_ROOT ?? resolve(root, "..", "lilscript")
 const dist = resolve(root, "dist")
 const file = "unified"
-const banner = "/*! @itslil/unified 11.0.5 | LilScript reimplementation of unified | MIT */\n"
+const banner = "/*! @itslil/unified 11.0.6 | LilScript reimplementation of unified | MIT */\n"
 
 function compilerPath() {
   const candidates = [

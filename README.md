@@ -1,6 +1,6 @@
 # @itslil/unified
 
-unified processor reimplemented in LilScript. This is **not** the official [`unified`](https://github.com/unifiedjs/unified) package.
+Official [`unified@11.0.5`](https://github.com/unifiedjs/unified) algorithms rewritten in LilScript. Official test suite 206/206. Not affiliated with upstream.
 
 **Site:** [yeargun.github.io/unifiedlil/](https://yeargun.github.io/unifiedlil/) · **Pipeline lab:** [yeargun.github.io/unifiedlil/pipeline.html](https://yeargun.github.io/unifiedlil/pipeline.html)
 

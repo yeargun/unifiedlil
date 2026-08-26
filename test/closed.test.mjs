@@ -21,7 +21,7 @@ describe("@itslil/unified closed LilScript lane", () => {
     assert.equal(typeof closed.unified, "function")
     assert.equal(closed.default, closed.unified)
     const processor = closed.unified()
-    assert.equal(typeof processor, "object")
+    assert.equal(typeof processor, "function")
     assert.ok(processor)
   })
 })

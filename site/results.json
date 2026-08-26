@@ -10,9 +10,9 @@
   "warmupDiscard": 3,
   "comparison": "Official rows are an esbuild bundle of unified@11.0.5 plus its runtime graph, then Terser or esbuild. LilScript is the compiled npm file. Closed is extern_fields=false.",
   "spec": {
-    "total": 11,
-    "pass": 11,
-    "label": "package tests"
+    "total": 206,
+    "pass": 206,
+    "label": "official suite"
   },
   "play": {
     "kind": "unified",
@@ -62,18 +62,18 @@
     {
       "id": "itslil",
       "name": "@itslil/unified · library",
-      "raw": 1828,
-      "gzip9": 815,
-      "brotli11": 705,
+      "raw": 9555,
+      "gzip9": 3676,
+      "brotli11": 3303,
       "note": "LilScript js-module, extern_fields true. The npm ESM.",
       "primary": true
     },
     {
       "id": "itslil-closed",
       "name": "@itslil/unified · closed",
-      "raw": 1751,
-      "gzip9": 754,
-      "brotli11": 661,
+      "raw": 9478,
+      "gzip9": 3620,
+      "brotli11": 3254,
       "note": "Same source, extern_fields false"
     }
   ],

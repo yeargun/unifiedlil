@@ -22,7 +22,7 @@ const docs = [
 
 | pkg | role |
 | --- | --- |
-| remark-gfm | settings.gfm |
+| remark-gfm | tables · tasks · strike |
 | remark-breaks | soft newlines |
 
 Autolink: https://yeargun.github.io/unifiedlil/

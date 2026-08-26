@@ -17,6 +17,8 @@ const pinned = [
   "process",
   "processSync",
   "data",
+  "freeze",
+  "attachers",
   "parser",
   "compiler",
   "Parser",
@@ -70,7 +72,7 @@ describe("@itslil/unified JS library API", () => {
   it("processSync parses, transforms, and stringifies", () => {
     const file = esm.unified().use(echoPlugin).processSync("# hi")
     assert.equal(file.value, "# hi")
-    assert.equal(file.result, "# hi")
+    assert.equal(file.result, undefined)
     assert.deepEqual(file.messages, [])
     assert.equal(typeof file.data, "object")
   })
@@ -110,7 +112,7 @@ describe("@itslil/unified JS library API", () => {
   it("process and run return promises", async () => {
     const processor = esm.unified().use(echoPlugin)
     const file = await processor.process("# hi")
-    assert.equal(file.result, "# hi")
+    assert.equal(file.value, "# hi")
     const tree = await processor.run({ type: "root", value: "z" })
     assert.equal(tree.value, "z")
   })
@@ -119,6 +121,6 @@ describe("@itslil/unified JS library API", () => {
     assert.throws(() => esm.unified().parse("# hi"), /parser/)
     assert.throws(() => esm.unified().stringify({ type: "root" }), /compiler/)
     assert.throws(() => esm.unified().processSync("# hi"), /parser/)
-    assert.throws(() => esm.unified().use(null), /plugin/)
+    assert.throws(() => esm.unified().use(false), /usable value/)
   })
 })
