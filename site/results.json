@@ -62,18 +62,18 @@
     {
       "id": "itslil",
       "name": "@itslil/unified · library",
-      "raw": 9555,
-      "gzip9": 3676,
-      "brotli11": 3303,
+      "raw": 7781,
+      "gzip9": 3092,
+      "brotli11": 2776,
       "note": "LilScript js-module, extern_fields true. The npm ESM.",
       "primary": true
     },
     {
       "id": "itslil-closed",
       "name": "@itslil/unified · closed",
-      "raw": 9478,
-      "gzip9": 3620,
-      "brotli11": 3254,
+      "raw": 7704,
+      "gzip9": 3032,
+      "brotli11": 2723,
       "note": "Same source, extern_fields false"
     }
   ],
