@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import {unified} from '../../dist/unified.esm.js'
-import {VFile} from 'vfile'
 
 test('`parse`', async function (t) {
   const givenNode = {type: 'alpha'}
@@ -17,7 +16,7 @@ test('`parse`', async function (t) {
 
     processor.parser = function (document, file) {
       assert.equal(typeof document, 'string')
-      assert.ok(file instanceof VFile)
+      assert.equal(file.constructor.name, 'VFile')
       assert.equal(arguments.length, 2)
       return givenNode
     }
@@ -31,7 +30,7 @@ test('`parse`', async function (t) {
     // Note: arrow function intended (which doesn’t have a prototype).
     processor.parser = (document, file) => {
       assert.equal(typeof document, 'string')
-      assert.ok(file instanceof VFile)
+      assert.equal(file.constructor.name, 'VFile')
       return givenNode
     }
 

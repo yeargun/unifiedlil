@@ -1,4 +1,4 @@
-import { Object, Symbol, protoOf } from "./host.lil";
+import { HAS_OWN, Object, Symbol, TO_STRING, protoOf } from "./host.lil";
 
 export bool isPlainObj(JsValue value) {
   if (JS.typeOf(value) != "object" || JS.isNullish(value)) {
@@ -25,17 +25,17 @@ export bool isPlainObjectExtend(JsValue obj) {
   if (!obj.truthy()) {
     return false;
   }
-  JsValue tag = JS.call(JS.get(JS.get(Object, "prototype"), "toString"), obj);
+  JsValue tag = JS.call(TO_STRING, obj);
   if (JS.string(tag) != "[object Object]") {
     return false;
   }
-  bool hasOwnConstructor = JS.call(JS.get(JS.get(Object, "prototype"), "hasOwnProperty"), obj, "constructor").truthy();
+  bool hasOwnConstructor = JS.call(HAS_OWN, obj, "constructor").truthy();
   JsValue ctor = JS.get(obj, "constructor");
   bool hasIsPrototypeOf = false;
   if (ctor.truthy()) {
-    JsValue ctorProto = JS.get(ctor, "prototype");
-    if (ctorProto.truthy()) {
-      hasIsPrototypeOf = JS.call(JS.get(JS.get(Object, "prototype"), "hasOwnProperty"), ctorProto, "isPrototypeOf").truthy();
+    JsValue constructorPrototype = JS.get(ctor, "prototype");
+    if (constructorPrototype.truthy()) {
+      hasIsPrototypeOf = JS.call(HAS_OWN, JS.get(ctor, "prototype"), "isPrototypeOf").truthy();
     }
   }
   if (ctor.truthy() && !hasOwnConstructor && !hasIsPrototypeOf) {
@@ -50,5 +50,5 @@ export bool isPlainObjectExtend(JsValue obj) {
   if (!saw) {
     return true;
   }
-  return JS.call(JS.get(JS.get(Object, "prototype"), "hasOwnProperty"), obj, last).truthy();
+  return JS.call(HAS_OWN, obj, last).truthy();
 }

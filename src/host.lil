@@ -3,12 +3,21 @@ export extern JsValue Error;
 export extern JsValue TypeError;
 export extern JsValue Number;
 export extern JsValue Symbol;
-export extern JsValue JSON;
+export extern JsValue String;
+export extern class JSONApi {
+  JsValue parse;
+  JsValue stringify;
+}
+export extern JSONApi JSON;
 export extern JsValue Promise;
+export extern JsValue Array;
+export extern JsValue TextDecoder;
+export extern JsValue globalThis;
 
 export JsValue NULL = JS.invoke(JSON, "parse", "null");
 export JsValue HAS_OWN = JS.get(JS.get(Object, "prototype"), "hasOwnProperty");
 export JsValue TO_STRING = JS.get(JS.get(Object, "prototype"), "toString");
+export JsValue ARRAY_SLICE = JS.get(JS.get(Array, "prototype"), "slice");
 
 export JsValue undef() {
   return JS.undefined();
@@ -38,43 +47,16 @@ export int len(JsValue value) {
   return value.length.toInt();
 }
 
-export JsValue copyArray(JsValue list) {
-  JsValue out = JS.array();
-  int n = list.length.toInt();
-  int i = 0;
-  while (i < n) {
-    JS.push(out, list[i]);
-    i = i + 1;
-  }
-  return out;
+export JsValue[] copyArray(JsValue list) {
+  return JS.assume(JS.call(ARRAY_SLICE, list));
 }
 
-export JsValue sliceArgs(JsValue list, int start) {
-  JsValue out = JS.array();
-  int n = list.length.toInt();
-  int i = start;
-  while (i < n) {
-    JS.push(out, list[i]);
-    i = i + 1;
-  }
-  return out;
+export JsValue[] sliceArgs(JsValue list, int start) {
+  return JS.assume(JS.call(ARRAY_SLICE, list, start));
 }
 
 export bool objectHasOwn(JsValue obj, string key) {
   return JS.call(HAS_OWN, obj, key).truthy();
-}
-
-export void setIndex(JsValue arr, int index, JsValue value) {
-  int n = arr.length.toInt();
-  if (index >= n) {
-    while (n < index) {
-      JS.push(arr, JS.undefined());
-      n = n + 1;
-    }
-    JS.push(arr, value);
-    return;
-  }
-  JS.splice(arr, index * 1.0, 1.0, value);
 }
 
 export bool isErrorInstance(JsValue value) {
@@ -116,12 +98,6 @@ export void throwType(string message) {
 export void bail(JsValue error) {
   if (error.truthy()) {
     throw error;
-  }
-}
-
-export void assertOk(JsValue value, string message) {
-  if (!value.truthy()) {
-    throw JS.construct(Error, message);
   }
 }
 

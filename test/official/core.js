@@ -5,7 +5,6 @@ import {unified} from '../../dist/unified.esm.js'
 test('core', async function (t) {
   await t.test('should expose the public api', async function () {
     assert.deepEqual(Object.keys(await import('../../dist/unified.esm.js')).sort(), [
-      'default',
       'unified'
     ])
   })

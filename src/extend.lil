@@ -26,7 +26,7 @@ JsValue getProperty(JsValue obj, string name) {
   return JS.get(obj, name);
 }
 
-export JsValue extendWith(bool deep, JsValue target, JsValue source) {
+export JsValue extendWith(JsValue target, JsValue source) {
   if (JS.isNullish(target) || (JS.typeOf(target) != "object" && JS.typeOf(target) != "function")) {
     target = JS.object();
   }
@@ -37,7 +37,7 @@ export JsValue extendWith(bool deep, JsValue target, JsValue source) {
     JsValue src = getProperty(target, name);
     JsValue copy = getProperty(source, name);
     if (!JS.strictEqual(target, copy)) {
-      if (deep && copy.truthy() && (isPlainObjectExtend(copy) || copy.isArray())) {
+      if (copy.truthy() && (isPlainObjectExtend(copy) || copy.isArray())) {
         JsValue clone = JS.undefined();
         if (copy.isArray()) {
           if (src.truthy() && src.isArray()) {
@@ -52,7 +52,7 @@ export JsValue extendWith(bool deep, JsValue target, JsValue source) {
             clone = JS.object();
           }
         }
-        setProperty(target, name, extendWith(true, clone, copy));
+        setProperty(target, name, extendWith(clone, copy));
       } else if (JS.typeOf(copy) != "undefined") {
         setProperty(target, name, copy);
       }
@@ -62,5 +62,5 @@ export JsValue extendWith(bool deep, JsValue target, JsValue source) {
 }
 
 export JsValue cloneNamespace(JsValue namespace) {
-  return extendWith(true, JS.object(), namespace);
+  return extendWith(JS.object(), namespace);
 }

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import {unified} from '../../dist/unified.esm.js'
-import {VFile} from 'vfile'
+import {VFile} from '@itslil/unified/vfile'
 
 test('`run`', async function (t) {
   const givenFile = new VFile('alpha')
@@ -25,7 +25,7 @@ test('`run`', async function (t) {
     await new Promise(function (resolve) {
       unified().run(givenNode, function (error, _, file) {
         assert.equal(error, undefined)
-        assert.ok(file instanceof VFile)
+        assert.equal(file.constructor.name, 'VFile')
         resolve(undefined)
       })
     })
@@ -35,7 +35,7 @@ test('`run`', async function (t) {
     await new Promise(function (resolve) {
       unified().run(givenNode, undefined, function (error, _, file) {
         assert.equal(error, undefined)
-        assert.ok(file instanceof VFile)
+        assert.equal(file.constructor.name, 'VFile')
         resolve(undefined)
       })
     })

@@ -1,4 +1,5 @@
 import { execFileSync } from "node:child_process"
+import assert from "node:assert/strict"
 import { readFileSync } from "node:fs"
 
 const json = execFileSync("npm", ["pack", "--dry-run", "--json"], { encoding: "utf8" })
@@ -10,6 +11,9 @@ const required = new Set([
   `dist/${file}.umd.js`,
   `dist/${file}.closed.js`,
   `dist/${file}.d.ts`,
+  "dist/vfile.esm.js",
+  "dist/vfile.cjs",
+  "types/vfile.d.ts",
   "LICENSE",
   "NOTICE.md",
   "README.md",
@@ -20,7 +24,11 @@ for (const path of required) {
 }
 const manifest = JSON.parse(readFileSync("package.json", "utf8"))
 if (manifest.name !== "@itslil/unified") throw new Error("unexpected package name")
-if (manifest.dependencies && Object.keys(manifest.dependencies).length) {
-  throw new Error("package must stay dependency-free")
+for (const format of ["esm.js", "cjs", "umd.js", "closed.js"]) {
+  assert.doesNotMatch(readFileSync(`dist/${file}.${format}`, "utf8"), /(?:from|require\()\s*["']vfile["']/)
+}
+const dependencies = Object.keys(manifest.dependencies ?? {}).sort()
+if (dependencies.join(",") !== "unified,vfile") {
+  throw new Error(`unexpected dependencies: ${dependencies.join(", ")}`)
 }
 console.log(`npm pack: ${result.entryCount} files, ${result.size} bytes packed, ${result.unpackedSize} bytes unpacked`)

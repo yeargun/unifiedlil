@@ -16,10 +16,9 @@ describe("@itslil/unified closed LilScript lane", () => {
     const source = readFileSync(closedPath, "utf8")
     const exports = source.match(/export\{[^}]+\}/)?.[0] ?? ""
     assert.match(exports, / as unified[},]/)
-    assert.match(exports, / as default[},]/)
     const closed = await import(pathToFileURL(closedPath).href)
+    assert.deepEqual(Object.keys(closed), ["unified"])
     assert.equal(typeof closed.unified, "function")
-    assert.equal(closed.default, closed.unified)
     const processor = closed.unified()
     assert.equal(typeof processor, "function")
     assert.ok(processor)

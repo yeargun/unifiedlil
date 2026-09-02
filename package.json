@@ -34,6 +34,12 @@
       "require": "./dist/unified.cjs",
       "default": "./dist/unified.esm.js"
     },
+    "./vfile": {
+      "types": "./types/vfile.d.ts",
+      "import": "./dist/vfile.esm.js",
+      "require": "./dist/vfile.cjs",
+      "default": "./dist/vfile.esm.js"
+    },
     "./closed": "./dist/unified.closed.js",
     "./dist/*": "./dist/*",
     "./package.json": "./package.json"
@@ -45,6 +51,9 @@
     "dist/unified.umd.js",
     "dist/unified.closed.js",
     "dist/unified.d.ts",
+    "dist/vfile.esm.js",
+    "dist/vfile.cjs",
+    "types/vfile.d.ts",
     "LICENSE",
     "NOTICE.md",
     "README.md"
@@ -56,13 +65,21 @@
   "scripts": {
     "build": "node scripts/build.mjs --compile",
     "build:site": "node scripts/build-site.mjs",
-    "test": "node --test test/*.test.mjs test/official/index.js",
+    "test": "npm run check:sources && node --test test/*.test.mjs test/official/index.js && npm run check:types",
+    "check:sources": "node scripts/check-shared-sources.mjs",
+    "check:types": "tsc --noEmit --strict --target ES2022 --module NodeNext --moduleResolution NodeNext test/types.test.ts",
     "check:site": "npm run build:site && node --test test/site.test.mjs",
     "check:pack": "node scripts/check-pack.mjs",
+    "measure:graph": "node scripts/measure-graph.mjs",
     "prepublishOnly": "npm test && npm run check:pack && npm run check:site"
+  },
+  "dependencies": {
+    "unified": "^11.0.0",
+    "vfile": "^6.0.0"
   },
   "devDependencies": {
     "esbuild": "0.28.1",
-    "vfile": "^6.0.3"
+    "terser": "5.51.2",
+    "typescript": "^5.9.2"
   }
 }

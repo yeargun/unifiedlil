@@ -9,5 +9,8 @@ the MIT license. Behavior from official `trough`, `vfile`, `extend`,
 `is-plain-obj`, `bail`, and `devlop` is vendored in LilScript. The original
 license notice is preserved in [LICENSE](./LICENSE).
 
+All builds directly compose the pure LilScript `vfile@6.0.3` algorithms.
+Already-created VFile-compatible objects are passed through unchanged.
+
 The LilScript compiler is developed separately at
 [yeargun/lilscript](https://github.com/yeargun/lilscript).
