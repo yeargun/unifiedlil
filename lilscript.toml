@@ -13,11 +13,10 @@ optimization_level = 13
 cost_model = "brotli"
 assume_pristine_builtins = false
 strip_console = true
-# 8.17 (measured on the compiled module): the naming reserve is -18 Brotli here
-# and is not monotone -- 8:-16, 16:+0, 32:-18, 48:-18, 64:-3, 96:-18 -- so it is
-# tuned, not raised. The arrow spelling is another -13 on top and is *not* taken:
-# it miscompiles src/vfile.lil (059 8.17, an unresolved generated export binding).
-local_name_reserve = 48
+# 8.19 (measured, fleet sweep of five reserves): the naming reserve picks the
+# basin, not the depth, and the curve is not monotone -- 8:-5, 16:+14, 32:+0, 64:+4
+# against the declared 48. Re-measure it after any emitter change.
+local_name_reserve = 8
 candidate_search = "always"
 function_spelling = "function"
 public_aggregate_abi = "named"
