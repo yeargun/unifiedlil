@@ -13,7 +13,11 @@ optimization_level = 13
 cost_model = "brotli"
 assume_pristine_builtins = false
 strip_console = true
-local_name_reserve = 24
+# 8.17 (measured on the compiled module): the naming reserve is -18 Brotli here
+# and is not monotone -- 8:-16, 16:+0, 32:-18, 48:-18, 64:-3, 96:-18 -- so it is
+# tuned, not raised. The arrow spelling is another -13 on top and is *not* taken:
+# it miscompiles src/vfile.lil (059 8.17, an unresolved generated export binding).
+local_name_reserve = 48
 candidate_search = "always"
 function_spelling = "function"
 public_aggregate_abi = "named"
