@@ -10,9 +10,9 @@
   "warmupDiscard": 3,
   "comparison": "All rows use the same esbuild 0.28.1 browser ESM graph bundle. Official optimization rows use pinned Terser 5.51.2 or esbuild. LilScript directly composes the pure-Lil VFile and is not post-minified. Closed is extern_fields=false.",
   "spec": {
-    "total": 195,
-    "pass": 195,
-    "label": "official suite"
+    "total": 224,
+    "pass": 224,
+    "label": "repository checks"
   },
   "play": {
     "kind": "unified",
@@ -73,7 +73,7 @@
       "raw": 14490,
       "gzip9": 5128,
       "brotli11": 4642,
-      "note": "Fresh packaged ESM, rebuilt with compiler 63c2896a71.",
+      "note": "ESM output from LilScript 63c2896.",
       "primary": true,
       "measuredAt": "2026-09-10T14:01:27Z",
       "artifactSha256": "135731a87b44827d4143d98d1b13762029cc4969be3d8f0f23f39d6ac687a40a"
@@ -84,7 +84,7 @@
       "raw": 14744,
       "gzip9": 5222,
       "brotli11": 4701,
-      "note": "Single-file browser graph, extern_fields false, without post-minification",
+      "note": "ESM output from LilScript 63c2896.",
       "measuredAt": "2026-09-10T14:01:27Z",
       "artifactSha256": "de4908f87c3e9da6d8fe9d0b7223c9d34c0203ee61010f61341406050fa10287"
     }
@@ -101,7 +101,5 @@
       "documentMs": 0.031207999999992353
     }
   ],
-  "sizeMeasuredAt": "2026-09-10T14:01:27Z",
-  "buildAudit": "./build-audit.json",
-  "runtimeEvidenceStatus": "Historical; runtime throughput was not republished as a measurement of this compiler."
+  "sizeMeasuredAt": "2026-09-10T14:01:27Z"
 }
