@@ -1,0 +1,83 @@
+{
+  "source": {
+    "repository": "https://github.com/unifiedjs/unified.git",
+    "commit": "242105bd6e18c61ca10f37d99529b89f1be37518",
+    "package": "unified",
+    "version": "11.0.5",
+    "directory": "."
+  },
+  "entry": "index.js",
+  "scope": "unified@11.0.5 public ESM runtime graph; dependency installation excluded; this is a comparison bundle build, not the upstream vendor release pipeline",
+  "external": [],
+  "samples": [
+    {
+      "bundleSeconds": 0.010137183999999997,
+      "wallSeconds": 0.127967616
+    },
+    {
+      "bundleSeconds": 0.0061775480000000015,
+      "wallSeconds": 0.09350545999999997
+    },
+    {
+      "bundleSeconds": 0.005073694999999987,
+      "wallSeconds": 0.06973120799999998
+    }
+  ],
+  "medianSeconds": 0.09350545999999997,
+  "toolchain": {
+    "esbuild": "0.28.1",
+    "terser": "5.51.2"
+  },
+  "artifacts": [
+    {
+      "path": "original.esm.js",
+      "raw": 13378,
+      "gzip9": 4790,
+      "brotli11": 4339,
+      "sha256": "a1f96b9bec8a50d871af7be7ff5671c5e4b9e7a594777533907ba457d90a4e2e"
+    },
+    {
+      "path": "original.unminified.js",
+      "raw": 55557,
+      "gzip9": 11899,
+      "brotli11": 10420,
+      "sha256": "d866422f192cea2437f02ff79256ffe912570c7a6b7a8da8da828dd50e5e41b0"
+    },
+    {
+      "path": "original.terser-nomangle.js",
+      "raw": 20513,
+      "gzip9": 5973,
+      "brotli11": 5434,
+      "sha256": "95531e9be0b90e01de4b49bb078e7659872059ef77c0164b0093426084987ad9"
+    },
+    {
+      "path": "original.esbuild.js",
+      "raw": 13779,
+      "gzip9": 5034,
+      "brotli11": 4612,
+      "sha256": "e3db50a262303535d2c942be4cf590d29cc876941ce60d5ad0dde1c28018c653"
+    }
+  ],
+  "inputs": [
+    "node_modules/bail/index.js",
+    "node_modules/extend/index.js",
+    "node_modules/devlop/lib/default.js",
+    "node_modules/is-plain-obj/index.js",
+    "node_modules/trough/lib/index.js",
+    "node_modules/trough/index.js",
+    "node_modules/unist-util-stringify-position/lib/index.js",
+    "node_modules/unist-util-stringify-position/index.js",
+    "node_modules/vfile-message/lib/index.js",
+    "node_modules/vfile-message/index.js",
+    "node_modules/vfile/lib/minpath.browser.js",
+    "node_modules/vfile/lib/minproc.browser.js",
+    "node_modules/vfile/lib/minurl.shared.js",
+    "node_modules/vfile/lib/minurl.browser.js",
+    "node_modules/vfile/lib/index.js",
+    "node_modules/vfile/index.js",
+    "lib/callable-instance.js",
+    "lib/index.js",
+    "index.js",
+    "public-esm-entry.mjs"
+  ]
+}

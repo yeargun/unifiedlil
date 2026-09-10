@@ -1,0 +1,45 @@
+{
+  "source": {
+    "repository": "https://github.com/unifiedjs/unified.git",
+    "commit": "242105bd6e18c61ca10f37d99529b89f1be37518",
+    "package": "unified",
+    "version": "11.0.5",
+    "directory": "."
+  },
+  "portSource": {
+    "commit": "4d5e4c8e9a42adfa1873d1753b70d1963a77c0de"
+  },
+  "compilerCommit": "4dc4e3337d9ffd758d65e3852682d6e13d9331c1",
+  "install": [
+    "npm",
+    "install",
+    "--ignore-scripts",
+    "--no-audit",
+    "--no-fund"
+  ],
+  "setup": [
+    [
+      "npm",
+      "install",
+      "--save-dev",
+      "--save-exact",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund",
+      "typescript@5.4.5"
+    ]
+  ],
+  "build": [
+    "npm",
+    "run",
+    "build"
+  ],
+  "clean": [],
+  "entry": "index.js",
+  "defaultExport": false,
+  "external": [],
+  "esmScope": "unified@11.0.5 public ESM runtime graph; dependency installation excluded; this is a comparison bundle build, not the upstream vendor release pipeline",
+  "lilscriptBuild": "node scripts/build.mjs --compile --force",
+  "test": "npm run check:sources && node --test test/*.test.mjs test/official/index.js && npm run check:types",
+  "prerequisiteAdjustments": "Use TypeScript 5.4.5, matching the compiler bundled by upstream tsd 0.31.2 and satisfying upstream ^5.0.0."
+}

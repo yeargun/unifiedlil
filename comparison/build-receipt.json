@@ -272,12 +272,38 @@
   "publicationSourceFingerprint": "1086ba61e4d2388bee6f6cb1178775097faf8486f5e76a50f24b1e697851cae4",
   "comparisonArtifacts": [
     {
+      "path": "site/esm-comparison/original.js",
+      "sha256": "a1f96b9bec8a50d871af7be7ff5671c5e4b9e7a594777533907ba457d90a4e2e"
+    },
+    {
       "path": "site/esm-comparison/lilscript.js",
       "sha256": "135731a87b44827d4143d98d1b13762029cc4969be3d8f0f23f39d6ac687a40a"
     },
     {
-      "path": "site/esm-comparison/original.js",
-      "sha256": "a1f96b9bec8a50d871af7be7ff5671c5e4b9e7a594777533907ba457d90a4e2e"
+      "path": "site/source-build.json",
+      "sha256": "cc21c486710e074f3e1ef66700dc8ecb45714a0e28ff40daa980edc7a08e36e6"
+    },
+    {
+      "path": "site/comparison.json",
+      "sha256": "572bb4ccb416cfd9f7ff73f30277699a63a8052161399536a24284c6c43c0a13"
     }
-  ]
+  ],
+  "sourceBuildReceipt": "comparison/source-build/result.json",
+  "currentMeasurement": {
+    "compiler": {
+      "commit": "4dc4e3337d9ffd758d65e3852682d6e13d9331c1",
+      "sha256": "0616048498eb9eb2e4bd75b39e8e6a083733ada647e16108edfee30ad183beeb"
+    },
+    "source": {
+      "commit": "4d5e4c8e9a42adfa1873d1753b70d1963a77c0de"
+    },
+    "upstream": {
+      "repository": "https://github.com/unifiedjs/unified.git",
+      "commit": "242105bd6e18c61ca10f37d99529b89f1be37518",
+      "package": "unified",
+      "version": "11.0.5",
+      "directory": "."
+    },
+    "compatibility": "Runtime checks: 224/224 pass."
+  }
 }
