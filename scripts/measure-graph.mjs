@@ -1,3 +1,4 @@
+import {readFileSync} from "node:fs"
 import {createRequire} from "node:module"
 import {brotliCompressSync, constants as zlibConstants, gzipSync} from "node:zlib"
 import {build} from "esbuild"
@@ -79,12 +80,14 @@ console.log(JSON.stringify({
     esbuildMinify: size(officialEsbuild.outputFiles[0].contents),
     components: components(officialBundle.metafile),
   },
+  // The LilScript files have no imports, so the graph is the shipped file itself, measured as
+  // written (the esbuild bundle is used only for its component map).
   itslil: {
-    graph: size(itslilBundle.outputFiles[0].contents),
+    graph: size(readFileSync("dist/unified.esm.js")),
     components: components(itslilBundle.metafile),
   },
   closed: {
-    graph: size(closedBundle.outputFiles[0].contents),
+    graph: size(readFileSync("dist/unified.closed.js")),
     components: components(closedBundle.metafile),
   },
 }, null, 2))

@@ -21,567 +21,574 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // unified.esm.js
 var unified_esm_exports = {};
 __export(unified_esm_exports, {
-  unified: () => de
+  unified: () => aa
 });
 module.exports = __toCommonJS(unified_esm_exports);
-function te(e2) {
-  return null == e2 ? false : "object" != typeof e2 && "function" != typeof e2 ? false : !!Error.prototype.isPrototypeOf(e2);
-}
-function re(e2) {
-  return "string" == typeof e2 ? true : _(e2);
-}
-function _(e2) {
-  return !e2 ? false : "object" != typeof e2 ? false : "byteLength" in e2 && "byteOffset" in e2;
-}
-function v(e2) {
-  throw new Error(e2);
-}
-function n(e2) {
-  throw new TypeError(e2);
-}
-function k(e2) {
-  if (e2) throw e2;
-}
-function d(e2) {
-  if ("object" != typeof e2 || null == e2) return false;
-  var r2 = Object.getPrototypeOf(e2), t2 = null == r2 || r2 === Object.prototype || null == Object.getPrototypeOf(r2);
-  return !t2 ? false : Symbol.toStringTag in e2 ? false : !(Symbol.iterator in e2);
-}
-function z(e2) {
-  if (!e2) return false;
-  if ("[object Object]" != M.call(e2) + "") return false;
-  var t2 = !!o.call(e2, "constructor"), r2 = e2.constructor, i2 = r2 && r2.prototype && o.call(r2.prototype, "isPrototypeOf");
-  if (r2 && !t2 && !i2) return false;
-  i2 = "", t2 = false;
-  for (r2 in e2) i2 = r2, t2 = true;
-  return !t2 ? true : !!o.call(e2, i2);
-}
-function S(e2, r2, t2) {
-  if ("__proto__" == r2) {
-    Object.defineProperty(e2, "__proto__", { enumerable: true, configurable: true, writable: true, value: t2 });
-    return;
-  }
-  e2[r2] = t2;
-}
-function T(e2, r2) {
-  return "__proto__" == r2 ? !o.call(e2, r2) ? void 0 : Object.getOwnPropertyDescriptor(e2, r2).value : e2[r2];
-}
-function f(e2, r2) {
-  (null == e2 || "object" != typeof e2 && "function" != typeof e2) && (e2 = {});
-  if (null == r2) return e2;
-  for (var n2 in r2) {
-    var i2 = T(e2, n2), t2 = T(r2, n2);
-    e2 === t2 || (t2 && (z(t2) || Array.isArray(t2)) ? (Array.isArray(t2) ? i2 && Array.isArray(i2) || (i2 = []) : i2 && z(i2) || (i2 = {}), S(e2, n2, f(i2, t2))) : "undefined" != typeof t2 && S(e2, n2, t2));
-  }
-  return e2;
-}
-function ne(e2, r2) {
-  var n2 = false;
-  let i2 = function() {
-    if (!n2) n2 = true, r2.apply(void 0, arguments);
-  }, a2 = function(e3) {
-    i2(g, e3);
-  };
-  return function() {
-    var o2 = t.call(arguments), s2 = +e2.length > o2.length;
-    s2 && o2.push(i2);
-    var r3;
-    try {
-      r3 = e2.apply(this, o2);
-    } catch (e3) {
-      if (s2 && n2) throw e3;
-      i2(e3);
-      return;
+var b = (a) => !!a && typeof a == "object" && "byteLength" in a && "byteOffset" in a;
+var c = (a) => typeof a == "string" || b(a);
+var d = (a) => {
+  if (a) throw a;
+};
+var e = (a, b2) => {
+  if (a === void 0) throw new TypeError("Class constructor " + b2 + " cannot be invoked without 'new'");
+};
+var f = (a, b2) => {
+  Object.defineProperty(a, "name", { value: b2 });
+};
+var g = (a, b2) => {
+  for (let c2 in a) {
+    let d2 = a[c2], e2 = d2;
+    if (typeof d2 == "function") {
+      f(d2, c2);
+      e2 = { writable: true, value: d2 };
+    } else {
+      f(d2.get, "get " + c2);
+      f(d2.set, "set " + c2);
     }
-    !s2 && (r3 && r3.then && "function" == typeof r3.then ? r3.then(a2, i2) : te(r3) ? i2(r3) : a2(r3));
-  };
-}
-function R(e2) {
-  return null != e2 && "object" == typeof e2 && "href" in e2 && e2.href && "protocol" in e2 && e2.protocol && e2.auth === void 0;
-}
-function ie() {
-  var e2 = globalThis.process;
-  return e2 && "function" == typeof e2.cwd ? e2.cwd() + "" : "/";
-}
-function L(e2, r2) {
-  var i2, n2, o2, a2, t2 = e2.length;
-  if (0 == r2.length || r2.length > e2.length) {
-    for (r2 = -1, i2 = false; ; ) {
-      if (t2 <= 0) {
-        t2 = 0;
-        break;
-      }
-      t2--;
-      if ("/" == e2.charAt(t2)) {
-        if (i2) {
-          t2++;
-          break;
-        }
-      } else r2 < 0 && (r2 = t2 + 1, i2 = true);
-    }
-    return r2 < 0 ? "" : e2.slice(t2, r2);
-  }
-  if (r2 == e2) return "";
-  for (i2 = -1, o2 = false, a2 = -1, n2 = r2.length - 1; ; ) {
-    if (t2 <= 0) {
-      r2 = 0;
-      break;
-    }
-    t2--;
-    if ("/" == e2.charAt(t2)) {
-      if (o2) {
-        r2 = t2 + 1;
-        break;
-      }
-    } else a2 < 0 && (o2 = true, a2 = t2 + 1), n2 > -1 && (e2.charAt(t2) == r2.charAt(n2) ? (n2--, n2 < 0 && (i2 = t2)) : (i2 = a2, n2 = -1));
-  }
-  r2 == i2 ? i2 = a2 : i2 < 0 && (i2 = e2.length);
-  return e2.slice(r2, i2);
-}
-function oe(e2) {
-  if (0 == e2.length) return ".";
-  for (var r2 = e2.length, t2 = false; ; ) {
-    if (r2 <= 1) {
-      r2 = -1;
-      break;
-    }
-    r2--;
-    if ("/" == e2.charAt(r2)) {
-      if (t2) break;
-    } else t2 = t2 || true;
-  }
-  return r2 < 0 ? "/" == e2.charAt(0) ? "/" : "." : 1 == r2 && "/" == e2.charAt(0) ? "//" : e2.slice(0, r2);
-}
-function ae(e2) {
-  for (var o2, t2 = e2.length, i2 = -1, r2 = -1, n2 = 0, a2 = false; ; ) {
-    if (t2 <= 0) {
-      a2 = 0;
-      break;
-    }
-    t2--, o2 = e2.charAt(t2);
-    if ("/" == o2) {
-      if (a2) {
-        a2 = t2 + 1;
-        break;
-      }
-    } else i2 < 0 && (i2 = t2 + 1, a2 = true), "." == o2 ? r2 < 0 ? r2 = t2 : 1 != n2 && (n2 = 1) : r2 > -1 && (n2 = -1);
-  }
-  return r2 < 0 || i2 < 0 || 0 == n2 || 1 == n2 && r2 == (i2 - 1 | 0) && r2 == (a2 + 1 | 0) ? "" : e2.slice(r2, i2);
-}
-function se(e2, n2) {
-  for (var s2, t2 = "", a2 = 0, r2 = -1, o2 = 0, i2 = 0; i2 <= e2.length; ) {
-    s2 = i2 < e2.length ? e2.charAt(i2) : "/";
-    if ("/" == s2) {
-      if (!(r2 == i2 - 1 || 1 == o2)) if (r2 != i2 - 1 && 2 == o2) {
-        if (t2.length < 2 || 2 != a2 || "." != t2.charAt(t2.length - 1) || "." != t2.charAt(t2.length - 2)) {
-          if (t2.length > 2) {
-            r2 = t2.lastIndexOf("/");
-            if (r2 != t2.length - 1) {
-              r2 < 0 ? (t2 = "", a2 = 0) : (t2 = t2.slice(0, r2), a2 = t2.length - 1 - t2.lastIndexOf("/") | 0), r2 = i2, o2 = 0, i2++;
-              continue;
-            }
-          } else if (t2.length > 0) {
-            t2 = "", a2 = 0, r2 = i2, o2 = 0, i2++;
-            continue;
-          }
-        }
-        n2 && (t2 = t2.length > 0 ? t2 + "/.." : "..", a2 = 2);
-      } else a2 = e2.slice(r2 + 1 | 0, i2), t2 = t2.length > 0 ? t2 + "/" + a2 : a2, a2 = i2 - r2 - 1 | 0;
-      r2 = i2, o2 = 0;
-    } else "." == s2 && o2 > -1 ? o2++ : o2 = -1;
-    i2++;
-  }
-  return t2;
-}
-function ue(e2) {
-  var t2 = "/" == e2.charAt(0), r2 = se(e2, !t2);
-  0 == r2.length && !t2 && (r2 = "."), r2.length > 0 && "/" == e2.charAt(e2.length - 1) && (r2 = r2 + "/");
-  return t2 ? "/" + r2 : r2;
-}
-function C(e2) {
-  if ("string" != typeof e2) {
-    throw new TypeError("Path must be a string. Received " + JSON.stringify(e2));
-  }
-}
-function l(e2, r2) {
-  C(e2), C(r2);
-  var t2 = e2 + "";
-  e2 = r2 + "", t2.length > 0 || (t2 = ""), e2.length > 0 ? t2.length > 0 && (e2 = t2 + "/" + e2) : e2 = t2;
-  return 0 == e2.length ? "." : ue(e2);
-}
-function b(e2, r2) {
-  if (e2 && e2.includes("/")) throw new Error("`" + r2 + "` cannot be a path: did not expect `/`");
-}
-function m(e2, r2) {
-  if (!e2) throw new Error("`" + r2 + "` cannot be empty");
-}
-function i(e2) {
-  var r2 = e2.history;
-  if (0 != r2.length) return r2[r2.length - 1];
-}
-function s(e2, r2) {
-  if (R(r2)) {
-    if ("file:" != r2.protocol + "") {
-      e2 = new TypeError("The URL must be of scheme file"), e2.code = "ERR_INVALID_URL_SCHEME";
-      throw e2;
-    }
-    if ((r2.hostname + "").length > 0) {
-      e2 = new TypeError('File URL host must be "localhost" or empty on darwin'), e2.code = "ERR_INVALID_FILE_URL_HOST";
-      throw e2;
-    }
-    var t2 = r2.pathname + "";
-    for (r2 = 0; r2 < t2.length; r2++) if ("%" == t2.charAt(r2) && "2" == t2.charAt(r2 + 1) && ("F" == t2.charAt(r2 + 2) || "f" == t2.charAt(r2 + 2))) {
-      e2 = new TypeError("File URL path must not include encoded / characters"), e2.code = "ERR_INVALID_FILE_URL_PATH";
-      throw e2;
-    }
-    r2 = globalThis.decodeURIComponent(t2);
-  }
-  m(r2, "path"), i(e2) === r2 || e2.history.push(r2);
-}
-function w(e2) {
-  if (!e2) return "1:1";
-  var r2 = e2.line, t2 = e2.column;
-  e2 = "number" == typeof r2 && r2 ? r2 + "" : "1", r2 = "number" == typeof t2 && t2 ? t2 + "" : "1";
-  return e2 + ":" + r2;
-}
-function ce(e2) {
-  return !e2 ? "1:1" : "start" in e2 || "end" in e2 ? w(e2.start) + "-" + w(e2.end) : w(e2);
-}
-function F(e2, r2, t2) {
-  "string" == typeof r2 && (t2 = r2, r2 = void 0);
-  var i2 = {};
-  r2 && ("line" in r2 && "column" in r2 ? i2.place = r2 : "start" in r2 && "end" in r2 ? i2.place = r2 : "type" in r2 ? (i2.ancestors = [r2], i2.place = r2.position) : i2 = Object.assign(i2, r2));
-  if ("string" == typeof e2) var n2, a2 = e2 + "", o2 = false;
-  else !i2.cause && e2 ? (a2 = e2.message, i2.cause = e2, o2 = true) : (a2 = "", o2 = false);
-  !i2.ruleId && !i2.source && "string" == typeof t2 && (e2 = t2 + "", r2 = e2.indexOf(":"), r2 < 0 ? i2.ruleId = e2 : (i2.source = e2.slice(0, r2), i2.ruleId = e2.slice(r2 + 1 | 0))), n2 = i2.ancestors, !i2.place && n2 && n2.length > 0 && (e2 = n2[n2.length - 1], i2.place = e2.position), r2 = i2.place, t2 = r2 && "start" in r2 ? r2.start : r2, e2 = new Error(), e2.ancestors = void 0, !n2 || (e2.ancestors = n2), e2.cause = void 0, !i2.cause || (e2.cause = i2.cause), e2.column = void 0, !t2 || (e2.column = t2.column), e2.fatal = void 0, e2.file = "", e2.message = a2, e2.line = void 0, !t2 || (e2.line = t2.line), e2.name = ce(r2), e2.place = void 0, !r2 || (e2.place = r2), e2.reason = a2, e2.ruleId = void 0, !i2.ruleId || (e2.ruleId = i2.ruleId), e2.source = void 0, !i2.source || (e2.source = i2.source), e2.actual = void 0, e2.expected = void 0, e2.note = void 0, e2.url = void 0, e2.stack = o2 && "string" == typeof i2.cause.stack ? i2.cause.stack : "";
-  return e2;
-}
-function u(e2, r2) {
-  Object.defineProperty(c, e2, r2);
-  let t2 = r2.get, i2 = r2.set;
-  Object.defineProperty(t2, "name", { configurable: true, value: "get " + e2 }), Object.defineProperty(i2, "name", { configurable: true, value: "set " + e2 });
-}
-function h(e2, r2) {
-  Object.defineProperty(r2, "name", { configurable: true, value: e2 }), Object.defineProperty(c, e2, { configurable: true, writable: true, value: r2 });
-}
-function fe(e2) {
-  return !e2 || "object" != typeof e2 ? false : "message" in e2 && "messages" in e2;
-}
-function p(e2) {
-  return fe(e2) ? e2 : new a(e2);
-}
-function O(e2, r2) {
-  "function" == typeof r2 || n("Cannot `" + e2 + "` without `parser`");
-}
-function j(e2, r2) {
-  "function" == typeof r2 || n("Cannot `" + e2 + "` without `compiler`");
-}
-function A(e2, r2) {
-  !r2 || v("Cannot call `" + e2 + "` on a frozen processor.\nCreate a new processor first, by calling it: use `processor()` instead of `processor`.");
-}
-function V(e2) {
-  (!d(e2) || "string" != typeof e2.type) && n("Expected node, got `" + e2 + "`");
-}
-function N(e2, r2, t2) {
-  t2 || v("`" + e2 + "` finished async. Use `" + r2 + "` instead");
-}
-function P(e2) {
-  return e2.parser || e2.Parser;
-}
-function E(e2) {
-  return e2.compiler || e2.Compiler;
-}
-function I(e2, r2, i2) {
-  for (var o2, s2, n2 = e2.length, a2 = -1; ; ) {
-    if (false) {
-      a2 = -1;
-      break;
-    }
-    a2++;
-    if (a2 >= n2) {
-      a2 = -1;
-      break;
-    }
-    if (e2[a2][0] === r2) break;
-  }
-  if (a2 == -1) {
-    i2 = t.call(i2, 0), i2.unshift(r2), e2.push(i2);
-    return;
-  }
-  if (i2.length > 0) {
-    n2 = i2[0], s2 = t.call(i2, 1), o2 = e2[a2][1], d(o2) && d(n2) && (n2 = f(o2, n2)), i2 = [], i2.push(r2), i2.push(n2);
-    for (n2 = s2.length, r2 = 0; r2 < n2; r2++) i2.push(s2[r2]);
-    Array.prototype.splice.call(e2, a2, 1, i2);
-  }
-}
-function U(e2, r2, t2) {
-  if (null != t2) {
-    Array.isArray(t2) || n("Expected a list of plugins, not `" + t2 + "`");
-    for (var a2 = t2.length, i2 = -1; ++i2 < a2; ) le(e2, r2, t2[i2]);
-  }
-}
-function D(e2, r2, t2) {
-  !("plugins" in t2) && !("settings" in t2) && v("Expected usable value but received an empty preset, which is probably a mistake: presets typically come with `plugins` and sometimes with `settings`, but this has neither"), U(e2, r2, t2.plugins), e2 = t2.settings, !e2 || (r2.settings = f(r2.settings, e2));
-}
-function le(e2, r2, i2) {
-  if ("function" == typeof i2) {
-    I(e2, i2, []);
-    return;
-  }
-  if ("object" == typeof i2) {
-    if (Array.isArray(i2)) {
-      r2 = i2[0], I(e2, r2, t.call(i2, 1));
-      return;
-    }
-    D(e2, r2, i2);
-    return;
-  }
-  n("Expected usable value, not `" + i2 + "`");
-}
-function H(e2) {
-  for (var t2 = new r(), n2 = e2.attachers, a2 = n2.length, i2 = -1; ++i2 < a2; ) t2.use.apply(t2, n2[i2]);
-  i2 = t2.data, t2.data(f({}, e2.namespace));
-  return t2;
-}
-function he() {
-  function e2(e3, r2, t2) {
-    Object.defineProperty(r2, "name", { configurable: true, value: e3 }), Object.defineProperty(r2, "length", { configurable: true, value: t2 }), Object.defineProperty(x, e3, { configurable: true, writable: true, value: r2 });
-  }
-  e2("copy", B, 0), e2("data", $, 2), e2("freeze", ee, 0), e2("parse", G, 1), e2("process", X, 2), e2("processSync", Z, 1), e2("run", K, 3), e2("runSync", Q, 2), e2("stringify", W, 2), e2("use", Y, 1), Object.defineProperty(r, "prototype", { writable: false });
-}
-function pe() {
-  var e2 = (0, function() {
-    return H(e2);
-  });
-  Object.setPrototypeOf(e2, x), e2.Compiler = void 0, e2.Parser = void 0, e2.attachers = [], e2.compiler = void 0, e2.freezeIndex = -1, e2.frozen = void 0, e2.namespace = {}, e2.parser = void 0;
-  var r2 = {};
-  r2.fns = [], r2.run = q, r2.use = J, e2.transformers = r2;
-  return e2;
-}
-var g = JSON.parse("null");
-var o = Object.prototype.hasOwnProperty;
-var M = Object.prototype.toString;
-var t = Array.prototype.slice;
-var q = (0, function() {
-  var e2 = t.call(arguments), r2 = e2.pop();
-  "function" == typeof r2 || n("Expected function as last argument, not " + r2);
-  var i2, a2 = -1, o2 = this.fns;
-  i2 = function() {
-    a2++;
-    var c2;
-    a2 < o2.length && (c2 = o2[a2]);
-    var b2, s3 = [];
-    arguments.length > 0 && (b2 = arguments[0], s3 = t.call(arguments, 1));
-    if (b2) {
-      r2(b2);
-      return;
-    }
-    for (var O2 = e2.length, n2 = -1; ++n2 < O2; ) b2 = void 0, n2 < s3.length && (b2 = s3[n2]), null == b2 && (s3[n2] = e2[n2]);
-    e2 = s3, "function" == typeof c2 ? ne(c2, i2).apply(void 0, s3) : (n2 = t.call(s3), n2.unshift(g), r2.apply(void 0, n2));
-  };
-  var s2 = t.call(e2);
-  s2.unshift(g), i2.apply(void 0, s2);
-});
-var J = (0, function(e2) {
-  return "function" == typeof e2 || n("Expected `middelware` to be a function, not " + e2), this.fns.push(e2), this;
-});
-var y = "history path basename stem extname dirname".split(" ");
-var e = {};
-var be = (0, function(e2, r2, t2) {
-  if (this === void 0) throw new TypeError("Class constructor VFileMessage cannot be invoked without 'new'");
-  return F(e2, r2, t2);
-});
-e = be.prototype, Object.setPrototypeOf(be, Error), Object.setPrototypeOf(e, Error.prototype), Object.defineProperty(be, "name", { configurable: true, value: "VFileMessage" }), e.file = "", e.name = "", e.reason = "", e.message = "", e.stack = "", e.column = void 0, e.line = void 0, e.ancestors = void 0, e.cause = void 0, e.fatal = void 0, e.place = void 0, e.ruleId = void 0, e.source = void 0, Object.defineProperty(be, "prototype", { writable: false });
-var a = class VFile extends Object {
-  constructor(e2) {
-    super(), !e2 ? e2 = {} : R(e2) ? e2 = { path: e2 } : ("string" == typeof e2 || _(e2)) && (e2 = { value: e2 });
-    var r2 = ie();
-    "cwd" in e2 && (r2 = ""), this.cwd = r2, this.data = {}, this.history = [], this.messages = [];
-    for (var t2, i2 = 0; i2 < y.length; i2++) r2 = y[i2] || "", r2 in e2 && null != e2[r2] && e2[r2] !== void 0 && (t2 = e2[r2], "history" == r2 && (t2 = t2.slice()), this[r2] = t2);
-    for (r2 in e2) y.includes(r2) || (this[r2] = e2[r2]);
+    e2.configurable = true;
+    Object.defineProperty(b2, c2, e2);
   }
 };
-var c = a.prototype;
-Object.defineProperty(a, "name", { configurable: true, value: "VFile" });
-var de = (0, function(e2, r2, t2) {
-  e2 = this.message(e2, r2, t2), e2.fatal = true;
+var h = (a, b2) => {
+  f(a, b2);
+  Object.defineProperty(a, "prototype", { writable: false });
+};
+var i = (a) => {
+  if (typeof a != "object" || a == null) return false;
+  let b2 = Object.getPrototypeOf(a);
+  return (b2 == null || b2 === Object.prototype || Object.getPrototypeOf(b2) == null) && !(Symbol.toStringTag in a) && !(Symbol.iterator in a);
+};
+var j = (a) => {
+  if (!a || Object.prototype.toString.call(a) != "[object Object]") return false;
+  let b2 = a.constructor, c2;
+  if (b2 && !k.call(a, "constructor")) {
+    let a2 = b2.prototype;
+    if (!a2 || !k.call(a2, "isPrototypeOf")) return false;
+  }
+  for (let b3 in a) c2 = b3;
+  return c2 === void 0 || !!k.call(a, c2);
+};
+var l = (a, b2) => {
+  if (b2 == "__proto__") {
+    if (!k.call(a, b2)) return;
+    return Object.getOwnPropertyDescriptor(a, b2).value;
+  }
+  return a[b2];
+};
+var m = (a, b2) => {
+  if (a == null || typeof a != "object" && typeof a != "function") a = {};
+  if (b2 != null) for (let c2 in b2) {
+    let d2 = l(a, c2), e2 = l(b2, c2);
+    if (a !== e2) {
+      let b3 = e2;
+      if (e2 && (j(e2) || Array.isArray(e2))) b3 = m(Array.isArray(e2) ? d2 && Array.isArray(d2) ? d2 : [] : d2 && j(d2) ? d2 : {}, e2);
+      else if (e2 === void 0) continue;
+      if (c2 == "__proto__") Object.defineProperty(a, c2, { enumerable: true, configurable: true, value: b3, writable: true });
+      else a[c2] = b3;
+    }
+  }
+  return a;
+};
+function ba(a) {
+  return function() {
+    return a(arguments);
+  };
+}
+var o = (a) => [null].concat(a);
+var p = () => {
+  let a = [], b2;
+  b2 = { run: ba((b3) => {
+    let c2 = Array.from(b3), d2 = -1, e2 = c2.pop(), f2;
+    if (typeof e2 != "function") throw new TypeError("Expected function as last argument, not " + e2);
+    f2 = ba((b4) => {
+      ++d2;
+      let g2 = a[d2], h2 = b4[0];
+      if (h2) return e2(h2);
+      let i2 = Array.from(b4).slice(1);
+      for (let a2 = 0; a2 < c2.length; ++a2) if (i2[a2] == null) i2[a2] = c2[a2];
+      c2 = i2;
+      if (g2) ((a2, b5) => {
+        let c3 = false, d3 = ba((a3) => {
+          if (!c3) {
+            c3 = true;
+            b5.apply(void 0, a3);
+          }
+        }), e3 = (a3) => d3(null, a3);
+        return ba((b6) => {
+          let f3 = Array.from(b6), g3 = a2.length > f3.length, h3;
+          if (g3) f3.push(d3);
+          try {
+            h3 = a2.apply(void 0, f3);
+          } catch (a3) {
+            if (g3 && c3) throw a3;
+            return d3(a3);
+          }
+          if (!g3) if (h3 && h3.then && typeof h3.then == "function") h3.then(e3, d3);
+          else if (Error.prototype.isPrototypeOf(h3)) d3(h3);
+          else e3(h3);
+        });
+      })(g2, f2).apply(void 0, i2);
+      else e2.apply(void 0, o(i2));
+    });
+    f2.apply(void 0, o(c2));
+  }), use: (c2) => {
+    if (typeof c2 != "function") throw new TypeError("Expected `middelware` to be a function, not " + c2);
+    a.push(c2);
+    return b2;
+  } };
+  return b2;
+};
+var q = (a, b2) => a.codePointAt(b2) === 47;
+var r = (a) => {
+  if (typeof a != "string") throw new TypeError("Path must be a string. Received " + JSON.stringify(a));
+};
+var s = (a, b2) => {
+  let c2 = 0, d2 = -1, e2 = a.length, f2 = false;
+  if (b2 === void 0 || b2.length == 0 || b2.length > a.length) {
+    while (e2 > 0) {
+      --e2;
+      if (q(a, e2)) {
+        if (f2) {
+          c2 = e2 + 1;
+          break;
+        }
+      } else if (d2 < 0) {
+        f2 = true;
+        d2 = e2 + 1;
+      }
+    }
+    return d2 < 0 ? "" : a.slice(c2, d2);
+  }
+  if (b2 === a) return "";
+  let g2 = -1, h2 = b2.length - 1;
+  while (e2 > 0) {
+    --e2;
+    if (q(a, e2)) {
+      if (f2) {
+        c2 = e2 + 1;
+        break;
+      }
+    } else {
+      if (g2 < 0) {
+        f2 = true;
+        g2 = e2 + 1;
+      }
+      if (h2 > -1) if (a.codePointAt(e2) === b2.codePointAt(h2)) {
+        --h2;
+        if (h2 < 0) d2 = e2;
+      } else {
+        h2 = -1;
+        d2 = g2;
+      }
+    }
+  }
+  if (c2 == d2) d2 = g2;
+  else if (d2 < 0) d2 = a.length;
+  return a.slice(c2, d2);
+};
+var w = (a, b2) => {
+  r(a);
+  r(b2);
+  let c2 = !a ? b2 : b2 ? a + "/" + b2 : a;
+  if (!c2) return ".";
+  let d2 = q(c2, 0), e2 = ((a2, b3) => {
+    let c3 = "", d3 = 0, e3 = -1, f2 = 0, g2;
+    for (let h2 = 0; h2 <= a2.length; ++h2) {
+      if (h2 < a2.length) g2 = a2.codePointAt(h2);
+      else if (g2 === 47) break;
+      else g2 = 47;
+      if (g2 === 47) {
+        if (e3 != h2 - 1 && f2 != 1) if (f2 == 2) {
+          if (c3.length < 2 || d3 != 2 || c3.codePointAt(c3.length - 1) !== 46 || c3.codePointAt(c3.length - 2) !== 46) {
+            if (c3.length > 2) {
+              let a3 = +c3.lastIndexOf("/");
+              if (a3 != c3.length - 1) {
+                if (a3 < 0) {
+                  c3 = "";
+                  d3 = 0;
+                } else {
+                  c3 = c3.slice(0, a3);
+                  d3 = c3.length - 1 - +c3.lastIndexOf("/");
+                }
+                e3 = h2;
+                f2 = 0;
+                continue;
+              }
+            } else if (c3.length > 0) {
+              c3 = "";
+              d3 = 0;
+              e3 = h2;
+              f2 = 0;
+              continue;
+            }
+          }
+          if (b3) {
+            c3 = c3.length > 0 ? c3 + "/.." : "..";
+            d3 = 2;
+          }
+        } else {
+          let b4 = a2.slice(e3 + 1, h2);
+          c3 = c3.length > 0 ? c3 + "/" + b4 : b4;
+          d3 = h2 - e3 - 1;
+        }
+        e3 = h2;
+        f2 = 0;
+      } else if (g2 === 46 && f2 > -1) ++f2;
+      else f2 = -1;
+    }
+    return c3;
+  })(c2, !d2);
+  if (e2.length == 0 && !d2) e2 = ".";
+  if (e2.length > 0 && q(c2, c2.length - 1)) e2 = e2 + "/";
+  return d2 ? "/" + e2 : e2;
+};
+var x = (a) => !!a && typeof a == "object" && "href" in a && !!a.href && "protocol" in a && !!a.protocol && a.auth === void 0;
+var y = (a, b2) => {
+  throw Object.assign(new TypeError(a), { code: b2 });
+};
+var A = (a) => C(a && a.line) + ":" + C(a && a.column);
+var B = (a) => A(a && a.start) + "-" + A(a && a.end);
+var C = (a) => a && typeof a == "number" ? a : 1;
+var E = (a, b2, c2, d2) => {
+  if (typeof c2 == "string") {
+    d2 = c2;
+    c2 = void 0;
+  }
+  let e2 = "", f2 = false, g2 = !c2 ? {} : "line" in c2 && "column" in c2 || "start" in c2 && "end" in c2 ? { place: c2 } : "type" in c2 ? { ancestors: [c2], place: c2.position } : Object.assign({}, c2);
+  if (typeof b2 == "string") e2 = b2;
+  else if (!g2.cause && b2) {
+    f2 = true;
+    e2 = b2.message;
+    g2.cause = b2;
+  }
+  if (!g2.ruleId && !g2.source && typeof d2 == "string") {
+    let a2 = d2.indexOf(":");
+    if (a2 === -1) g2.ruleId = d2;
+    else {
+      g2.source = d2.slice(0, a2);
+      g2.ruleId = d2.slice(a2 + 1);
+    }
+  }
+  let h2 = g2.ancestors;
+  if (!g2.place && h2) {
+    let a2 = h2[h2.length - 1];
+    if (a2) g2.place = a2.position;
+  }
+  let i2 = g2.place, j2 = i2 && "start" in i2 ? i2.start : i2, l2 = g2.cause;
+  return Object.assign(Object.setPrototypeOf(new Error(), a), { ancestors: h2 || void 0, cause: l2 || void 0, column: j2 ? j2.column : void 0, fatal: void 0, file: "", message: e2, line: j2 ? j2.line : void 0, name: ((a2) => !a2 || typeof a2 != "object" ? "" : "position" in a2 || "type" in a2 ? B(a2.position) : "start" in a2 || "end" in a2 ? B(a2) : "line" in a2 || "column" in a2 ? A(a2) : "")(i2) || "1:1", place: i2 || void 0, reason: e2, ruleId: g2.ruleId || void 0, source: g2.source || void 0, stack: f2 && l2 && typeof l2.stack == "string" ? l2.stack : "", actual: void 0, expected: void 0, note: void 0, url: void 0 });
+};
+var F = (a, b2) => {
+  if (a && a.includes("/")) throw new Error("`" + b2 + "` cannot be a path: did not expect `/`");
+};
+var G = (a, b2) => {
+  if (!a) throw new Error("`" + b2 + "` cannot be empty");
+};
+var H = (a, b2) => {
+  if (!a) throw new Error("Setting `" + b2 + "` requires `path` to be set too");
+};
+var O = (a) => a && typeof a == "object" && "message" in a && "messages" in a ? a : new K(a);
+var P = (a, b2) => {
+  if (typeof b2 != "function") throw new TypeError("Cannot `" + a + "` without `parser`");
+};
+var Q = (a, b2) => {
+  if (typeof b2 != "function") throw new TypeError("Cannot `" + a + "` without `compiler`");
+};
+var R = (a, b2) => {
+  if (b2) throw new Error("Cannot call `" + a + "` on a frozen processor.\nCreate a new processor first, by calling it: use `processor()` instead of `processor`.");
+};
+var S = (a) => {
+  if (!i(a) || typeof a.type != "string") throw new TypeError("Expected node, got `" + a + "`");
+};
+var T = (a, b2, c2) => {
+  if (!c2) throw new Error("`" + a + "` finished async. Use `" + b2 + "` instead");
+};
+var U = (a, b2, c2, d2, e2) => {
+  if (typeof c2 == "function") W(a, c2, d2);
+  else if (typeof c2 == "object") {
+    if (!Array.isArray(c2)) {
+      if (!("plugins" in c2) && !("settings" in c2)) throw new Error("Expected usable value but received an empty preset, which is probably a mistake: presets typically come with `plugins` and sometimes with `settings`, but this has neither");
+      V(a, b2, c2.plugins);
+      if (c2.settings) b2.settings = m(b2.settings, c2.settings);
+    } else if (e2) V(a, b2, c2);
+    else W(a, c2[0], c2.slice(1));
+  } else throw new TypeError("Expected usable value, not `" + c2 + "`");
+};
+var V = (a, b2, c2) => {
+  if (c2 != null) {
+    if (!Array.isArray(c2)) throw new TypeError("Expected a list of plugins, not `" + c2 + "`");
+    for (let d2 = 0; d2 < c2.length; ++d2) U(a, b2, c2[d2], [], false);
+  }
+};
+var W = (a, b2, c2) => {
+  let d2 = -1;
+  for (let c3 = 0; c3 < a.length; ++c3) if (a[c3][0] === b2) {
+    d2 = c3;
+    break;
+  }
+  if (d2 > -1) {
+    if (c2.length == 0) return;
+    let b3 = c2[0], e3 = a[d2][1];
+    if (i(e3) && i(b3)) c2[0] = m(e3, b3);
+  }
+  let e2 = [b2].concat(c2);
+  if (d2 < 0) a.push(e2);
+  else a[d2] = e2;
+};
+var X = (a, b2) => b2 ? a(void 0, b2) : new Promise(a);
+var k = {}.hasOwnProperty;
+var I = ["history", "path", "basename", "stem", "extname", "dirname"];
+function ca(a) {
+  return function(b2, c2, d2) {
+    return a(this, b2, c2, d2);
+  };
+}
+var J = ca((a, b2, c2, d2) => {
+  e(a, "VFileMessage");
+  return E(J.prototype, b2, c2, d2);
+});
+h(J, "VFileMessage");
+Object.setPrototypeOf(J, Error);
+Object.assign(Object.setPrototypeOf(J.prototype, Error.prototype), { file: "", name: "", reason: "", message: "", stack: "", column: void 0, line: void 0, ancestors: void 0, cause: void 0, fatal: void 0, place: void 0, ruleId: void 0, source: void 0 });
+function da(a) {
+  return function(b2) {
+    return a(this, b2);
+  };
+}
+var K = da((a, c2) => {
+  e(a, "VFile");
+  let d2 = !c2 ? {} : x(c2) ? { path: c2 } : typeof c2 == "string" || b(c2) ? { value: c2 } : c2, f2 = globalThis.process;
+  Object.assign(a, { cwd: "cwd" in d2 ? "" : f2 && typeof f2.cwd == "function" ? f2.cwd() : "/", data: {}, history: [], messages: [] });
+  for (let b2 = 0; b2 < I.length; ++b2) {
+    let c3 = I[b2];
+    if (c3 in d2) {
+      let b3 = d2[c3];
+      if (b3 != null) a[c3] = c3 == "history" ? b3.slice() : b3;
+    }
+  }
+  for (let b2 in d2) if (!I.includes(b2)) a[b2] = d2[b2];
+});
+h(K, "VFile");
+function ea(a) {
+  return function() {
+    return a(this);
+  };
+}
+var M = { basename: { get: ea((a) => typeof a.path == "string" ? s(a.path) : void 0), set: da((a, b2) => {
+  G(b2, "basename");
+  F(b2, "basename");
+  a.path = w(a.dirname || "", b2);
+}) }, dirname: { get: ea((a) => typeof a.path == "string" ? ((a2) => {
+  if (a2.length == 0) return ".";
+  let b2 = -1, c2 = a2.length, d2 = false;
+  while (c2 > 1) {
+    --c2;
+    if (q(a2, c2)) {
+      if (d2) {
+        b2 = c2;
+        break;
+      }
+    } else d2 = true;
+  }
+  return b2 < 0 ? q(a2, 0) ? "/" : "." : b2 == 1 && q(a2, 0) ? "//" : a2.slice(0, b2);
+})(a.path) : void 0), set: da((a, b2) => {
+  H(a.basename, "dirname");
+  a.path = w(b2 || "", a.basename);
+}) }, extname: { get: ea((a) => typeof a.path == "string" ? ((a2) => {
+  let b2 = a2.length, c2 = -1, d2 = 0, e2 = -1, f2 = 0, g2 = false;
+  while (b2 > 0) {
+    --b2;
+    let h2 = a2.codePointAt(b2);
+    if (h2 === 47) {
+      if (g2) {
+        d2 = b2 + 1;
+        break;
+      }
+      continue;
+    }
+    if (c2 < 0) {
+      g2 = true;
+      c2 = b2 + 1;
+    }
+    if (h2 === 46) {
+      if (e2 < 0) e2 = b2;
+      else f2 = 1;
+    } else if (e2 > -1) f2 = -1;
+  }
+  return e2 < 0 || c2 < 0 || f2 == 0 || f2 == 1 && e2 == c2 - 1 && e2 == d2 + 1 ? "" : a2.slice(e2, c2);
+})(a.path) : void 0), set: da((a, b2) => {
+  F(b2, "extname");
+  H(a.dirname, "extname");
+  if (b2) {
+    if (b2.codePointAt(0) !== 46) throw new Error("`extname` must start with `.`");
+    if (b2.includes(".", 1)) throw new Error("`extname` cannot contain multiple dots");
+  }
+  a.path = w(a.dirname, a.stem + (b2 || ""));
+}) }, path: { get: ea((a) => a.history[a.history.length - 1]), set: da((a, b2) => {
+  if (x(b2)) b2 = ((a2) => {
+    if (a2.protocol !== "file:") y("The URL must be of scheme file", "ERR_INVALID_URL_SCHEME");
+    if (a2.hostname !== "") y('File URL host must be "localhost" or empty on darwin', "ERR_INVALID_FILE_URL_HOST");
+    let c2 = a2.pathname;
+    for (let a3 = 0; a3 < c2.length; ++a3) if (c2.codePointAt(a3) === 37 && c2.codePointAt(a3 + 1) === 50) {
+      let b3 = c2.codePointAt(a3 + 2);
+      if (b3 === 70 || b3 === 102) y("File URL path must not include encoded / characters", "ERR_INVALID_FILE_URL_PATH");
+    }
+    return globalThis.decodeURIComponent(c2);
+  })(b2);
+  G(b2, "path");
+  if (a.path !== b2) a.history.push(b2);
+}) }, stem: { get: ea((a) => typeof a.path == "string" ? s(a.path, a.extname) : void 0), set: da((a, b2) => {
+  G(b2, "stem");
+  F(b2, "stem");
+  a.path = w(a.dirname || "", b2 + (a.extname || ""));
+}) }, fail: ca((a, b2, c2, d2) => {
+  let e2 = a.message(b2, c2, d2);
+  e2.fatal = true;
   throw e2;
-});
-var me = (0, function(e2, r2, t2) {
-  e2 = this.message(e2, r2, t2), e2.fatal = void 0;
+}), info: ca((a, b2, c2, d2) => {
+  let e2 = a.message(b2, c2, d2);
+  e2.fatal = void 0;
   return e2;
-});
-var we = (0, function(e2, r2, t2) {
-  e2 = F(e2, r2, t2), r2 = i(this), !r2 || (e2.name = r2 + ":" + e2.name, e2.file = r2), e2.fatal = false, this.messages.push(e2);
-  return e2;
-});
-var Oe = (0, function(e2) {
-  var r2 = this.value;
-  if (r2 === void 0) return "";
-  if ("string" == typeof r2) return r2;
-  var t2;
-  !e2 && (e2 = t2), t2 = new TextDecoder(e2);
-  return t2.decode(r2);
-});
-u("basename", { configurable: true, get: function() {
-  var e2 = i(this);
-  if ("string" == typeof e2) return L(e2 + "", "");
-}, set: function(e2) {
-  m(e2, "basename"), b(e2, "basename");
-  var r2 = this.dirname;
-  !r2 && (r2 = ""), s(this, l(r2, e2));
-} }), u("dirname", { configurable: true, get: function() {
-  var e2 = i(this);
-  if ("string" == typeof e2) return oe(e2 + "");
-}, set: function(e2) {
-  var r2 = this.basename;
-  if (!r2) throw new Error("Setting `dirname` requires `path` to be set too");
-  !e2 && (e2 = ""), s(this, l(e2, r2));
-} }), u("extname", { configurable: true, get: function() {
-  var e2 = i(this);
-  if ("string" == typeof e2) return ae(e2 + "");
-}, set: function(e2) {
-  b(e2, "extname");
-  var r2 = this.dirname;
-  if (!r2) throw new Error("Setting `extname` requires `path` to be set too");
-  if (e2) {
-    if (46 != (+e2.codePointAt(0) | 0)) throw new Error("`extname` must start with `.`");
-    if (e2.includes(".", 1)) throw new Error("`extname` cannot contain multiple dots");
+}), message: ca((a, b2, c2, d2) => {
+  let f2 = E(J.prototype, b2, c2, d2);
+  if (a.path) {
+    f2.name = a.path + ":" + f2.name;
+    f2.file = a.path;
   }
-  e2 = e2 ? e2 + "" : "", s(this, l(r2, this.stem + "" + e2));
-} }), u("path", { configurable: true, get: function() {
-  return i(this);
-}, set: function(e2) {
-  s(this, e2);
-} }), u("stem", { configurable: true, get: function() {
-  var e2 = i(this);
-  if ("string" == typeof e2) return e2 += "", L(e2, this.extname + "");
-}, set: function(e2) {
-  m(e2, "stem"), b(e2, "stem");
-  var t2 = e2 + "";
-  e2 = this.dirname, e2 = e2 ? e2 + "" : "";
-  var r2 = this.extname;
-  r2 = r2 ? r2 + "" : "", s(this, l(e2, t2 + r2));
-} }), h("fail", de), h("info", me), h("message", we), h("toString", Oe), Object.defineProperty(a, "prototype", { writable: false });
-var r;
-var Y = (0, function() {
-  A("use", this.frozen);
-  var e2, r2 = this.attachers, i2 = this.namespace;
-  arguments.length > 0 && (e2 = arguments[0]);
-  if (null == e2) return this;
-  if ("function" == typeof e2) return I(r2, e2, t.call(arguments, 1)), this;
-  if ("object" == typeof e2) return Array.isArray(e2) ? U(r2, i2, e2) : D(r2, i2, e2), this;
-  throw new TypeError("Expected usable value, not `" + e2 + "`");
+  f2.fatal = false;
+  a.messages.push(f2);
+  return f2;
+}), toString: da((a, b2) => a.value === void 0 ? "" : typeof a.value == "string" ? a.value : new TextDecoder(b2 || void 0).decode(a.value)) };
+g(M, K.prototype);
+var Y = ea((a) => {
+  e(a, "Processor");
+  let b2 = Y.prototype, c2 = b2.copy, d2;
+  d2 = ba((a2) => c2.apply(d2, a2));
+  return Object.assign(Object.setPrototypeOf(d2, b2), { Compiler: void 0, Parser: void 0, attachers: [], compiler: void 0, freezeIndex: -1, frozen: void 0, namespace: {}, parser: void 0, transformers: p() });
 });
-var B = (0, function() {
-  return H(this);
-});
-var G = (0, function(e2) {
-  this.freeze(), e2 = p(e2);
-  let r2 = P(this);
-  O("parse", r2);
-  return r2(String(e2), e2);
-});
-var K = (0, function(e2, r2, t2) {
-  V(e2);
-  var a2 = this.freeze;
-  this.freeze(), !t2 && "function" == typeof r2 && (t2 = r2, r2 = void 0);
-  var n2 = this.transformers, i2 = function(i3, a3) {
-    let o2 = p(r2);
-    n2.run(e2, o2, function(r3, n3, o3) {
-      var s2 = !n3 ? e2 : n3;
-      if (r3) {
-        a3(r3);
-        return;
-      }
-      if (i3) {
-        i3(s2);
-        return;
-      }
-      t2(void 0, s2, o3);
-    });
+h(Y, "Processor");
+function fa(a) {
+  return function() {
+    return a(this, arguments);
   };
-  if (t2) {
-    i2(void 0, t2);
-    return;
+}
+var Z = fa((a, b2) => {
+  let d2 = b2[0];
+  if (typeof d2 == "string") {
+    if (b2.length == 2) {
+      R("data", a.frozen);
+      a.namespace[d2] = b2[1];
+      return a;
+    }
+    return k.call(a.namespace, d2) && a.namespace[d2] || void 0;
   }
-  return new Promise(i2);
+  if (d2) {
+    R("data", a.frozen);
+    a.namespace = d2;
+    return a;
+  }
+  return a.namespace;
 });
-var Q = (0, function(e2, r2) {
-  var t2, i2 = false;
-  this.run(e2, r2, function(e3, r3, n2) {
-    k(e3), t2 = r3, i2 = true;
-  }), N("runSync", "run", i2);
-  return t2;
+var $ = fa((a, b2) => {
+  let d2 = a.attachers, e2 = a.namespace;
+  R("use", a.frozen);
+  let f2 = b2[0];
+  if (f2 != null) U(d2, e2, f2, Array.from(b2).slice(1), true);
+  return a;
 });
-var W = (0, function(e2, r2) {
-  this.freeze();
-  let t2 = p(r2);
-  r2 = E(this), j("stringify", r2), V(e2);
-  return r2(e2, t2);
-});
-var X = (0, function(e2, r2) {
-  var t2 = this;
-  t2.freeze(), O("process", P(t2)), j("process", E(t2));
-  var i2 = function(i3, n2) {
-    let a2 = p(e2), o2 = t2.parse(a2);
-    t2.run(o2, a2, function(e3, a3, o3) {
-      if (e3 || !a3 || !o3) {
-        n2(e3);
-        return;
-      }
-      var s2 = t2.stringify(a3, o3);
-      re(s2) ? o3.value = s2 : o3.result = s2;
-      if (i3) {
-        i3(o3);
-        return;
-      }
-      r2(void 0, o3);
-    });
+function ga(a) {
+  return function(b2, c2) {
+    return a(this, b2, c2);
   };
-  if (r2) {
-    i2(void 0, r2);
-    return;
+}
+g({ copy: ea((a) => {
+  let c2 = new Y(), d2 = a.attachers;
+  for (let a2 = 0; a2 < d2.length; ++a2) c2.use.apply(c2, d2[a2]);
+  c2.data(m({}, a.namespace));
+  return c2;
+}), data: Z, freeze: ea((a) => {
+  if (a.frozen) return a;
+  while (true) {
+    let b2 = +a.freezeIndex + 1;
+    a.freezeIndex = b2;
+    if (!(b2 < a.attachers.length)) break;
+    let c2 = a.attachers[b2], d2 = c2.slice(1);
+    if (d2[0] === false) continue;
+    if (d2[0] === true) d2[0] = void 0;
+    let e2 = c2[0].apply(a, d2);
+    if (typeof e2 == "function") a.transformers.use(e2);
   }
-  return new Promise(i2);
-});
-var Z = (0, function(e2) {
-  this.freeze(), O("processSync", P(this)), j("processSync", E(this));
-  var r2, t2 = false;
-  this.process(e2, function(e3, i2) {
-    t2 = true, k(e3), r2 = i2;
-  }), N("processSync", "process", t2);
-  return r2;
-});
-var $ = (0, function(e2, r2) {
-  var i2 = this.namespace, n2 = arguments.length, t2;
-  n2 > 0 && (t2 = e2);
-  if ("string" == typeof t2) {
-    if (2 == n2) return A("data", this.frozen), i2[t2] = r2, this;
-    var a2;
-    return o.call(i2, t2) && (a2 = i2[t2]) ? a2 : void 0;
+  a.frozen = true;
+  a.freezeIndex = 1 / 0;
+  return a;
+}), parse: da((a, b2) => {
+  a.freeze();
+  let d2 = O(b2), e2 = a.parser || a.Parser;
+  P("parse", e2);
+  return e2(String(d2), d2);
+}), process: ga((a, b2, d2) => {
+  a.freeze();
+  P("process", a.parser || a.Parser);
+  Q("process", a.compiler || a.Compiler);
+  return X((e2, f2) => {
+    let g2 = O(b2), h2 = a.parse(g2);
+    a.run(h2, g2, (b3, g3, h3) => {
+      if (b3 || !g3 || !h3) f2(b3);
+      else {
+        let f3 = a.stringify(g3, h3);
+        if (c(f3)) h3.value = f3;
+        else h3.result = f3;
+        if (e2) e2(h3);
+        else d2(void 0, h3);
+      }
+    });
+  }, d2);
+}), processSync: da((a, b2) => {
+  let e2 = false, f2;
+  a.freeze();
+  P("processSync", a.parser || a.Parser);
+  Q("processSync", a.compiler || a.Compiler);
+  a.process(b2, (a2, b3) => {
+    e2 = true;
+    d(a2);
+    f2 = b3;
+  });
+  T("processSync", "process", e2);
+  return f2;
+}), run: ca((a, b2, c2, d2) => {
+  S(b2);
+  a.freeze();
+  let f2 = a.transformers;
+  if (!d2 && typeof c2 == "function") {
+    d2 = c2;
+    c2 = void 0;
   }
-  return t2 ? (A("data", this.frozen), this.namespace = t2, this) : i2;
-});
-var ee = (0, function() {
-  if (this.frozen) return this;
-  for (var r2 = this.attachers, n2 = this.transformers; true; ) {
-    var e2 = +this.freezeIndex + 1;
-    this.freezeIndex = e2;
-    if (e2 >= r2.length) break;
-    var i2 = r2[e2], a2 = i2[0];
-    e2 = t.call(i2, 1);
-    if (!(e2.length > 0 && false === e2[0])) e2.length > 0 && true === e2[0] && Array.prototype.splice.call(e2, 0, 1, void 0), e2 = a2.apply(this, e2), "function" == typeof e2 && n2.use(e2);
-  }
-  this.frozen = true, this.freezeIndex = Number.POSITIVE_INFINITY;
-  return this;
-});
-r = (0, function() {
-  if (this === void 0) throw new TypeError("Class constructor Processor cannot be invoked without 'new'");
-  return pe();
-}), Object.defineProperty(r, "name", { configurable: true, value: "Processor" });
-var x = r.prototype;
-he(), de = new r(), de.freeze();
+  return X((a2, e2) => {
+    f2.run(b2, O(c2), (c3, f3, g2) => {
+      let h2 = f3 || b2;
+      if (c3) e2(c3);
+      else if (a2) a2(h2);
+      else d2(void 0, h2, g2);
+    });
+  }, d2);
+}), runSync: ga((a, b2, c2) => {
+  let e2 = false, f2;
+  a.run(b2, c2, (a2, b3) => {
+    d(a2);
+    f2 = b3;
+    e2 = true;
+  });
+  T("runSync", "run", e2);
+  return f2;
+}), stringify: ga((a, b2, c2) => {
+  a.freeze();
+  let e2 = O(c2), f2 = a.compiler || a.Compiler;
+  Q("stringify", f2);
+  S(b2);
+  return f2(b2, e2);
+}), use: $ }, Y.prototype);
+Object.defineProperty(Z, "length", { value: 2 });
+Object.defineProperty($, "length", { value: 1 });
+var aa = new Y().freeze();
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   unified

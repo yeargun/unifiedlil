@@ -1,25 +1,11 @@
 # reusable ESM — host-visible names stay
 [javascript]
-# 8.6 (measured, ten pool ports): the emission's canonical peephole chain,
-# re-opened on the terminal artifact, is a per-port win -- this port -100/-63/-32/-18
-# Brotli -- while jquerylil +245 and katexlil +151 refuse it.
-terminal_cleanup_chain = true
-# 8.4 (measured, ten pool ports): the terminal's idiom-directed naming search
-# is a per-port win -- this port -92/-32/-19/-6 Brotli, rehypelil +209 -- so it is
-# declared here rather than defaulted on.
-idiom_directed_naming = true
 priority = "size-first"
 optimization_level = 13
 cost_model = "brotli"
 assume_pristine_builtins = false
 strip_console = true
-# 8.19 (measured, fleet sweep of five reserves): the naming reserve picks the
-# basin, not the depth, and the curve is not monotone -- 8:-5, 16:+14, 32:+0, 64:+4
-# against the declared 48. Re-measure it after any emitter change.
-local_name_reserve = 8
 candidate_search = "always"
-function_spelling = "function"
-public_aggregate_abi = "named"
 # 8.16 (measured, this artifact): the beam width picks which basin the terminal
 # search lands in, and the curve is not monotone -- 8:-1, 12:-1, 16:-1, 20:-3 against the
 # default. It is tuned, not raised, and it drifts with the compiler, so it is
@@ -30,6 +16,4 @@ candidate_beam_width = 20
 [mangle]
 identifiers = true
 properties = true
-exports = false
-extern_fields = true
 pool_strings = true

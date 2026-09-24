@@ -1,5 +1,6 @@
 import {
   accessSync,
+  appendFileSync,
   constants,
   copyFileSync,
   existsSync,
@@ -10,6 +11,7 @@ import {
 import { dirname, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 import { spawnSync } from "node:child_process"
+import { performance } from "node:perf_hooks"
 import { build as esbuild } from "esbuild"
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..")
@@ -38,7 +40,12 @@ function run(cmd, args) {
   if (result.status !== 0) process.exit(result.status ?? 1)
 }
 
+// Wall time of each compiler invocation. `UNIFIEDLIL_COMPILE_TIMING=<file>` appends one JSON line per
+// build; scripts/record-release.mjs reads it for the compile times the Pages site shows.
+const compileTimings = []
+
 function compileLil(compiler, sourceName, configName, outputName) {
+  const start = performance.now()
   run(compiler, [
     resolve(root, "src", sourceName),
     "--target",
@@ -48,6 +55,9 @@ function compileLil(compiler, sourceName, configName, outputName) {
     "-o",
     resolve(dist, outputName),
   ])
+  const wallMs = performance.now() - start
+  compileTimings.push({ source: `src/${sourceName}`, config: configName, wallMs })
+  console.log(`compiled src/${sourceName} with ${configName} in ${wallMs.toFixed(1)} ms`)
 }
 
 function compileIfRequested() {
@@ -59,52 +69,60 @@ function compileIfRequested() {
     throw new Error("LilScript compiler not found. Set LILSCRIPT_COMPILER or build lilscript.")
   }
   mkdirSync(dist, { recursive: true })
-  compileLil(compiler, "entry.lil", "lilscript.toml", `${file}.raw.js`)
-  compileLil(compiler, "entry.lil", "lilscript.closed.toml", `${file}.closed.js`)
+  // index.lil exports unified's public API only, so the compiler's artifact is the public module;
+  // entry.lil keeps the runtime exports (VFileRuntime, ProcessorRuntime) that other ports link.
+  compileLil(compiler, "index.lil", "lilscript.toml", `${file}.raw.js`)
+  compileLil(compiler, "index.lil", "lilscript.closed.toml", `${file}.closed.raw.js`)
   compileLil(compiler, "vfile.lil", "lilscript.toml", "vfile.raw.js")
+  if (process.env.UNIFIEDLIL_COMPILE_TIMING) {
+    const totalMs = compileTimings.reduce((sum, entry) => sum + entry.wallMs, 0)
+    appendFileSync(
+      process.env.UNIFIEDLIL_COMPILE_TIMING,
+      `${JSON.stringify({ compiler, totalMs, invocations: compileTimings })}\n`,
+    )
+  }
 }
 
 compileIfRequested()
 mkdirSync(dist, { recursive: true })
 
-const rawPath = resolve(dist, `${file}.raw.js`)
-if (!existsSync(rawPath)) {
-  throw new Error(`dist/${file}.raw.js is missing. Run with --compile after building LilScript.`)
-}
-
-function filterExports(source, keep) {
-  return source.replace(/export\s*\{([^}]*)\}/g, (_, body) => {
-    const entries = body.split(",").filter((entry) => {
+// The ESM files ship exactly as the compiler wrote them, plus a license banner: no minifier or
+// reprint runs over them (plan rule 6). index.lil exports only unified's public API and vfile.lil only
+// the vfile API, so the compiler's export list is the published one; this checks it instead of
+// rewriting it.
+function exportedNames(source) {
+  const names = []
+  for (const [, body] of source.matchAll(/export\s*\{([^}]*)\}/g)) {
+    for (const entry of body.split(",")) {
       const parts = entry.trim().split(/\s+as\s+/)
-      return keep.includes(parts[parts.length - 1])
-    })
-    return entries.length ? `export{${entries.join(",")}}` : ""
-  })
+      if (parts[0]) names.push(parts[parts.length - 1])
+    }
+  }
+  return names.sort()
 }
 
-writeFileSync(
-  resolve(dist, `${file}.esm.js`),
-  filterExports(`${banner}${readFileSync(rawPath, "utf8").trimEnd()}\n`, ["unified"]),
-)
-const closedPath = resolve(dist, `${file}.closed.js`)
-writeFileSync(
-  closedPath,
-  filterExports(`${banner}${readFileSync(closedPath, "utf8").trimEnd()}\n`, ["unified"]),
-)
+function publish(rawName, name, publicBanner, keep) {
+  const rawFile = resolve(dist, rawName)
+  if (!existsSync(rawFile)) {
+    throw new Error(`dist/${rawName} is missing. Run with --compile after building LilScript.`)
+  }
+  const source = readFileSync(rawFile, "utf8")
+  const names = exportedNames(source)
+  if (names.join(",") !== [...keep].sort().join(",")) {
+    throw new Error(`dist/${rawName} exports ${names.join(", ")}; expected ${keep.join(", ")}`)
+  }
+  writeFileSync(resolve(dist, name), `${publicBanner}${source.trimEnd()}\n`)
+}
+
+publish(`${file}.raw.js`, `${file}.esm.js`, banner, ["unified"])
+publish(`${file}.closed.raw.js`, `${file}.closed.js`, banner, ["unified"])
 const vfileBanner = "/*! @itslil/unified vfile browser runtime | LilScript reimplementation of vfile@6.0.3 | MIT */\n"
-const vfileRawPath = resolve(dist, "vfile.raw.js")
-if (!existsSync(vfileRawPath)) {
-  throw new Error("dist/vfile.raw.js is missing. Run with --compile after building LilScript.")
-}
-writeFileSync(
-  resolve(dist, "vfile.esm.js"),
-  filterExports(`${vfileBanner}${readFileSync(vfileRawPath, "utf8").trimEnd()}\n`, [
-    "VFile",
-    "VFileMessage",
-    "createVFileMessage",
-  ]),
-)
+publish("vfile.raw.js", "vfile.esm.js", vfileBanner, ["VFile", "VFileMessage", "createVFileMessage"])
 
+// CommonJS and UMD: the compiler has no CommonJS or script-with-exports target yet, so these three
+// files are esbuild format conversions of the compiler's ESM (no minification). They are labelled
+// "post-processed by esbuild, not compiler-written" in site/results.json and on the site; replacing
+// them with compiler-written files is plan task M12.2.
 await esbuild({
   absWorkingDir: dist,
   entryPoints: [resolve(dist, `${file}.esm.js`)],

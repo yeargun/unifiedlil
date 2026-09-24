@@ -143,7 +143,87 @@ function renderPerf() {
     })
     .join("")
   document.querySelector("#perf-note").textContent =
-    `${data.runtime ?? "Node"}. ${data.codec}. Quiet median after discarding the first ${data.warmupDiscard ?? 3} samples.`
+    `${data.runtime ?? "Node"}. ${data.throughputWorkload ? `${data.throughputWorkload}. ` : ""}Quiet median after discarding the first ${data.warmupDiscard ?? 3} samples. Sizes: ${data.codec}.`
+}
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  })[character])
+}
+
+function median(values) {
+  const sorted = [...values].filter(Number.isFinite).sort((left, right) => left - right)
+  return sorted.length ? sorted[Math.floor(sorted.length / 2)] : null
+}
+
+function seconds(value) {
+  return value == null ? "—" : `${(value / 1000).toFixed(2)} s`
+}
+
+function renderCompiler() {
+  const compiler = data.compiler
+  if (!compiler) return
+  const samples = compiler.compileWallMs ?? []
+  const esm = (data.delivered ?? []).find((row) => row.file === `dist/${data.file}.esm.js`)
+  const before = data.previousRelease?.files?.[`dist/${data.file}.esm.js`]
+  const change = esm && before ? smallerThan(esm.brotli11, before.brotli11) : null
+  const cards = [
+    {
+      label: `compile time, median of ${samples.length} builds`,
+      value: seconds(median(samples)),
+      win: true,
+    },
+    {
+      label: "each build, wall time",
+      value: samples.map((value) => (value / 1000).toFixed(2)).join(" · ") + " s",
+    },
+    {
+      label: before ? `ESM Brotli-11 vs previous release (${formatter.format(before.brotli11)} B)` : "ESM Brotli-11",
+      value: change ? change.text : esm ? `${formatter.format(esm.brotli11)} B` : "—",
+    },
+    {
+      label: `compiler revision · ${compiler.date ?? ""}`,
+      value: compiler.revision ?? "—",
+      geo: true,
+    },
+  ]
+  document.querySelector("#compiler-cards").innerHTML = cards
+    .map(
+      (card) =>
+        `<article class="perf-card${card.win ? " win" : ""}${card.geo ? " geo" : ""}"><strong>${escapeHtml(card.value)}</strong><span>${escapeHtml(card.label)}</span></article>`,
+    )
+    .join("")
+  document.querySelector("#compiler-body").innerHTML = (compiler.invocations ?? [])
+    .map(
+      (row) =>
+        `<tr><th scope="row">${escapeHtml(row.source)}</th><td>${escapeHtml(row.config)}</td><td>${row.wallMs.map((value) => `${Math.round(value)} ms`).join(" · ")}</td><td class="verdict"><strong>${Math.round(median(row.wallMs))} ms</strong></td></tr>`,
+    )
+    .join("")
+  document.querySelector("#delivered-body").innerHTML = (data.delivered ?? [])
+    .map((row) => {
+      const previous = data.previousRelease?.files?.[row.file]
+      const verdict = previous ? smallerThan(row.brotli11, previous.brotli11) : null
+      const written = row.compilerWritten
+        ? `<strong>compiler</strong>`
+        : `<span class="post-processed">${escapeHtml(row.writtenBy)}</span>`
+      return `<tr><th scope="row">${escapeHtml(row.file)}<small>${escapeHtml(row.role)}</small></th><td>${formatter.format(row.raw)}</td><td>${formatter.format(row.gzip9)}</td><td>${formatter.format(row.brotli11)}</td><td class="verdict ${verdict ? verdict.state : ""}">${previous ? `${formatter.format(previous.brotli11)} B · <strong>${escapeHtml(verdict.text)}</strong>` : "—"}</td><td class="written">${written}</td></tr>`
+    })
+    .join("")
+  const host = compiler.host
+  document.querySelector("#compiler-note").textContent = [
+    `Compiler ${compiler.revision}, binary SHA-256 ${compiler.binarySha256}.`,
+    `Codec SHA-256 ${compiler.codecSha256}.`,
+    compiler.timingScope ? `${compiler.timingScope[0].toUpperCase()}${compiler.timingScope.slice(1)}.` : "",
+    host ? `Host: ${host.cpus} CPUs, 1-minute load average ${host.loadAverage1m.toFixed(1)} while timing.` : "",
+    data.previousRelease ? `Previous release: ${data.previousRelease.label}.` : "",
+  ]
+    .filter(Boolean)
+    .join(" ")
 }
 
 function bindCopy() {
@@ -392,6 +472,7 @@ function bindPlayground() {
 
 renderHero()
 renderPerf()
+renderCompiler()
 renderSize()
 bindCopy()
 bindProgress()

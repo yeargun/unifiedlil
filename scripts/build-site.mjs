@@ -1,9 +1,8 @@
-import { cp, mkdir, rm, writeFile } from "node:fs/promises"
+import { copyFile, cp, mkdir, rm, writeFile } from "node:fs/promises"
 import { existsSync } from "node:fs"
 import { dirname, join, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 import { spawnSync } from "node:child_process"
-import { build as esbuild } from "esbuild"
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..")
 const output = join(root, "_site")
@@ -20,15 +19,9 @@ if (!existsSync(join(root, "dist", `${file}.esm.js`))) {
 await rm(output, { recursive: true, force: true })
 await mkdir(output, { recursive: true })
 await cp(join(root, "site"), output, { recursive: true })
-await esbuild({
-  entryPoints: [join(root, "dist", `${file}.esm.js`)],
-  outfile: join(output, `${file}.js`),
-  bundle: true,
-  format: "esm",
-  platform: "browser",
-  legalComments: "none",
-  logLevel: "error",
-})
+// The lab runs the shipped ESM itself: it has no imports (test/browser.test.mjs), so it is copied,
+// not re-bundled or reprinted.
+await copyFile(join(root, "dist", `${file}.esm.js`), join(output, `${file}.js`))
 await writeFile(join(output, ".nojekyll"), "")
 console.log(`Built GitHub Pages site at ${output}`)
 
