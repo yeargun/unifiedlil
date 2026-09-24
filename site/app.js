@@ -219,7 +219,9 @@ function renderCompiler() {
     `Compiler ${compiler.revision}, binary SHA-256 ${compiler.binarySha256}.`,
     `Codec SHA-256 ${compiler.codecSha256}.`,
     compiler.timingScope ? `${compiler.timingScope[0].toUpperCase()}${compiler.timingScope.slice(1)}.` : "",
-    host ? `Host: ${host.cpus} CPUs, 1-minute load average ${host.loadAverage1m.toFixed(1)} while timing.` : "",
+    host
+      ? `Host: ${host.instanceClass ? `Azure ${host.instanceClass}, ` : ""}${host.cpus} CPUs, shared with other jobs; 1-minute load average ${host.loadAverage1m.toFixed(1)} when timing began.`
+      : "",
     data.previousRelease ? `Previous release: ${data.previousRelease.label}.` : "",
   ]
     .filter(Boolean)

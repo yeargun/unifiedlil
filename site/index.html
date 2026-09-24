@@ -54,7 +54,7 @@
             <div><strong id="hero-spec">—</strong><span>repository checks</span></div>
           </div>
           <p class="score-note">
-            Official rows are one esbuild bundle of <code>unified@11.0.5</code> plus the packages it needs at runtime, then Terser or esbuild.
+            Official rows are one esbuild bundle of <code>unified@11.0.5</code>, built from its pinned Git source, plus the packages it needs at runtime, then Terser, Oxc or esbuild.
             The LilScript row is <code>dist/unified.esm.js</code> exactly as the compiler wrote it, with no post-minifier.
             Closed LilScript is the same source built with <code>lilscript.closed.toml</code>; the compiler renames no properties, so the two files match. Runtime checks: 224/224 pass.
           </p>
@@ -96,8 +96,8 @@
             <h2>Compile<br />time.</h2>
           </div>
           <p>
-            Wall time of the build's compiler invocations, recorded by <code>scripts/record-release.mjs</code> on every release,
-            with the compiler revision and binary hash. Every delivered file is listed with who wrote it.
+            Wall time of each compiler invocation in three clean builds of the package, with the compiler revision and binary hash
+            (the source-build record below, or <code>npm run record:release</code> locally). Every delivered file is listed with who wrote it.
           </p>
         </div>
         <div class="perf-cards" id="compiler-cards"></div>
@@ -173,7 +173,7 @@
               <h2>Raw, gzip,<br />and Brotli.</h2>
             </div>
             <p>
-              Official unified@11.0.5 bundled with its runtime graph, then Terser (mangle on/off) and esbuild minify.
+              Official unified@11.0.5, built from its pinned Git source and bundled with its runtime graph, then Terser (3 passes, mangle on/off), Oxc and esbuild minify.
               The LilScript rows are the compiler's ESM files as shipped, with no post-minifier. Closed LilScript is the <code>lilscript.closed.toml</code> build.
             </p>
           </div>

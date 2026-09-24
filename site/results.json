@@ -8,7 +8,7 @@
   "codec": "lilscript-codec: zlib 1.3.1 gzip-9 / Google Brotli 1.1.0 quality 11, lgwin 22",
   "runtime": "Node v24.11.1",
   "warmupDiscard": 3,
-  "comparison": "Official rows are one esbuild 0.28.1 browser ESM bundle of unified@11.0.5 and its runtime graph, then pinned Terser 5.51.2 (mangle on/off) or esbuild minify. LilScript directly composes the pure-Lil VFile; the ESM row is dist/unified.esm.js exactly as the compiler wrote it (plus a license banner), with no post-minifier. Closed is the same source built with lilscript.closed.toml; the one compiler renames no properties, so it matches the library file.",
+  "comparison": "Official rows are one esbuild 0.28.1 browser ESM bundle of unified@11.0.5 built from its pinned Git source, with its runtime graph, then pinned Terser 5.51.2 (3 passes, mangle on/off), esbuild minify or Oxc (Vite 8). LilScript directly composes the pure-Lil VFile; the ESM row is dist/unified.esm.js exactly as the compiler wrote it (plus a license banner), with no post-minifier. Closed is the same source built with lilscript.closed.toml; the one compiler renames no properties, so it matches the library file.",
   "spec": {
     "total": 224,
     "pass": 224,
@@ -28,36 +28,54 @@
     {
       "id": "official",
       "name": "Official unified@11.0.5 graph",
-      "raw": 55620,
-      "gzip9": 11900,
-      "brotli11": 10434,
-      "note": "esbuild bundle of the published package plus runtime deps",
-      "diagnostic": false
+      "raw": 55557,
+      "gzip9": 11899,
+      "brotli11": 10420,
+      "note": "esbuild 0.28.1 bundle of unified@11.0.5 built from its pinned Git source, plus runtime deps",
+      "diagnostic": false,
+      "measuredAt": "2026-09-24T05:06:25Z",
+      "artifactSha256": "d866422f192cea2437f02ff79256ffe912570c7a6b7a8da8da828dd50e5e41b0"
     },
     {
       "id": "official-terser-mangle",
       "name": "Official · Terser mangle on",
-      "raw": 13579,
-      "gzip9": 4862,
-      "brotli11": 4425,
-      "note": "Terser 5.51.2 compress of that graph, module: true, mangle: true",
+      "raw": 13378,
+      "gzip9": 4790,
+      "brotli11": 4339,
+      "note": "Terser 5.51.2 of that graph, 3 passes, module: true, mangle: true",
+      "measuredAt": "2026-09-24T05:06:25Z",
+      "artifactSha256": "a1f96b9bec8a50d871af7be7ff5671c5e4b9e7a594777533907ba457d90a4e2e",
       "baseline": true
     },
     {
       "id": "official-terser-nomangle",
       "name": "Official · Terser mangle off",
-      "raw": 20753,
-      "gzip9": 6070,
-      "brotli11": 5507,
-      "note": "Terser 5.51.2 compress of that graph, module: true, mangle: false"
+      "raw": 20513,
+      "gzip9": 5973,
+      "brotli11": 5434,
+      "note": "Terser 5.51.2 of that graph, 3 passes, module: true, mangle: false",
+      "measuredAt": "2026-09-24T05:06:25Z",
+      "artifactSha256": "95531e9be0b90e01de4b49bb078e7659872059ef77c0164b0093426084987ad9"
     },
     {
       "id": "official-esbuild",
       "name": "Official · esbuild minify",
-      "raw": 13653,
-      "gzip9": 4987,
-      "brotli11": 4561,
-      "note": "esbuild minify of that graph"
+      "raw": 13779,
+      "gzip9": 5034,
+      "brotli11": 4612,
+      "note": "esbuild 0.28.1 --minify of that graph",
+      "measuredAt": "2026-09-24T05:06:25Z",
+      "artifactSha256": "e3db50a262303535d2c942be4cf590d29cc876941ce60d5ad0dde1c28018c653"
+    },
+    {
+      "id": "official-oxc",
+      "name": "Official · Oxc minify",
+      "note": "Vite 8 (Oxc) minify of that graph, mangle on",
+      "raw": 13452,
+      "gzip9": 4843,
+      "brotli11": 4411,
+      "measuredAt": "2026-09-24T05:06:25Z",
+      "artifactSha256": "907210b4ab180758c94f68a41fc1355809ed2aa39130d71fa88413500ccc51cc"
     },
     {
       "id": "itslil",
@@ -66,7 +84,9 @@
       "gzip9": 4632,
       "brotli11": 4206,
       "note": "dist/unified.esm.js as shipped: compiler-written, directly composed pure-Lil VFile, no post-minifier",
-      "primary": true
+      "primary": true,
+      "measuredAt": "2026-09-24T05:06:25Z",
+      "artifactSha256": "d472b3cb63b1eadf918dff953293b93ea4c36e81c52d12000b5ae3b1a3fee95b"
     },
     {
       "id": "itslil-closed",
@@ -74,7 +94,9 @@
       "raw": 12250,
       "gzip9": 4632,
       "brotli11": 4206,
-      "note": "dist/unified.closed.js: lilscript.closed.toml; compiler-written, no post-minifier"
+      "note": "dist/unified.closed.js: lilscript.closed.toml; compiler-written, no post-minifier",
+      "measuredAt": "2026-09-24T05:06:25Z",
+      "artifactSha256": "d472b3cb63b1eadf918dff953293b93ea4c36e81c52d12000b5ae3b1a3fee95b"
     }
   ],
   "throughput": [
@@ -195,44 +217,46 @@
     "binarySha256": "13cb49a93fb3e376a5978484835322c84adea692b69ae4720775291377cf18f9",
     "codecSha256": "125776830df72bbaf9704fee3c38bb0bf29bfc6bcceb5bc8707a0507a128d7b9",
     "compileWallMs": [
-      1468.8,
-      1559.7,
-      1249
+      2759.4,
+      2916.1,
+      919.8
     ],
     "invocations": [
       {
         "source": "src/index.lil",
         "config": "lilscript.toml",
         "wallMs": [
-          748.7,
-          579.6,
-          560.7
+          850.1,
+          1188.2,
+          370.2
         ]
       },
       {
         "source": "src/index.lil",
         "config": "lilscript.closed.toml",
         "wallMs": [
-          460.6,
-          620.2,
-          447.8
+          1378.9,
+          1250,
+          330.3
         ]
       },
       {
         "source": "src/vfile.lil",
         "config": "lilscript.toml",
         "wallMs": [
-          259.5,
-          360,
-          240.6
+          530.4,
+          477.9,
+          219.2
         ]
       }
     ],
-    "timingScope": "wall time of the build's 3 compiler invocations, each spawned by scripts/build.mjs; 3 builds",
+    "timingScope": "wall time of the build's 3 compiler invocations in three clean source builds (node scripts/build.mjs --compile), recorded by the page-refresh compiler wrapper; the whole package build took 6.98 / 6.77 / 2.13 s",
     "host": {
+      "instanceClass": "Standard_B8als_v2",
       "cpus": 8,
-      "loadAverage1m": 14.3
+      "loadAverage1m": 22.2
     },
     "date": "2026-09-24"
-  }
+  },
+  "sizeMeasuredAt": "2026-09-24T05:06:25Z"
 }
