@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "name": "unifiedlil",
-  "measuredAt": "2026-09-24T05:06:25Z",
+  "measuredAt": "2026-09-27T15:21:32Z",
   "status": "verified",
   "buildPassed": true,
   "summary": "A clean build of sourceCommit reproduced the published dist/ byte for byte and passed the repository test command.",
-  "sourceCommit": "5ed5ffcb7529a1bbb5c310fa4a4157762bdd7d8a",
-  "previousPublicCommit": "753b5078027ad7aaa8526b2c28f0623a5b4751c8",
+  "sourceCommit": "7cabd089b1b3e66dfd31fc53ea7a37ad3f4a7587",
+  "previousPublicCommit": "7e15633a71a5eaec8ad9f9cf5ef2f5dc8128453b",
   "compiler": {
-    "commit": "aa2052f081ca8184666ca280ee9b91d476e46cfc",
-    "sha256": "13cb49a93fb3e376a5978484835322c84adea692b69ae4720775291377cf18f9",
+    "commit": "249686599dc3bf1b6bf70dc9a030081b755bbb24",
+    "sha256": "47048e41164027e92d3bf1d1840d8d83e04c60532c031ceb3346222e194b3041",
     "profile": "release",
     "dirty": false
   },
@@ -24,16 +24,16 @@
     "node": "v24.11.1",
     "rayonThreads": 8,
     "loadAtStart": [
-      22.21533203125,
-      20.22265625,
-      13.92822265625
+      10.75,
+      24.794921875,
+      19.11767578125
     ],
     "loadAtEnd": [
-      16.0048828125,
-      20.52783203125,
-      16.85595703125
+      11.01025390625,
+      22.80859375,
+      18.7451171875
     ],
-    "concurrencyNote": "One port at a time on this host, which also runs unrelated jobs; timings are contextual wall times, not controlled speedup benchmarks."
+    "concurrencyNote": "Timed builds of the release jobs ran one at a time under a shared lock; the host also runs unrelated jobs, so timings are contextual wall times, not controlled speedup benchmarks."
   },
   "upstream": {
     "name": "unifiedlil",
@@ -45,18 +45,18 @@
   "comparisonScope": "unified@11.0.5 public ESM runtime graph against @itslil/unified's dist/unified.esm.js as shipped. Original ESM assembled from the pinned Git source build.",
   "sizes": {
     "previous": {
-      "path": "dist/unified.esm.js@753b507",
-      "raw": 14490,
-      "gzip9": 5128,
-      "brotli11": 4642,
-      "sha256": "135731a87b44827d4143d98d1b13762029cc4969be3d8f0f23f39d6ac687a40a"
-    },
-    "current": {
-      "path": "dist/unified.esm.js",
+      "path": "dist/unified.esm.js@7e15633",
       "raw": 12250,
       "gzip9": 4632,
       "brotli11": 4206,
       "sha256": "d472b3cb63b1eadf918dff953293b93ea4c36e81c52d12000b5ae3b1a3fee95b"
+    },
+    "current": {
+      "path": "dist/unified.esm.js",
+      "raw": 12073,
+      "gzip9": 4639,
+      "brotli11": 4199,
+      "sha256": "b297935e93810d5527269669fb22f8827e2f809d59e3984d3f05c991e0d9e0b9"
     },
     "upstream": {
       "path": "site/esm-comparison/original.js",
@@ -113,76 +113,76 @@
   "candidateArtifacts": [
     {
       "path": "dist/unified.umd.js",
-      "raw": 20475,
-      "gzip9": 5861,
-      "brotli11": 5194,
-      "sha256": "d65a0181b344983a575102e315a121d4602159314ffef3200f2cab10e30f3b5b"
+      "raw": 19691,
+      "gzip9": 5822,
+      "brotli11": 5162,
+      "sha256": "14e56819f26cd2af08e43ae6c91570b4237078e507165e22c2c35aa350973087"
     },
     {
       "path": "dist/unified.closed.raw.js",
-      "raw": 12173,
-      "gzip9": 4574,
-      "brotli11": 4156,
-      "sha256": "7dfa54a6de280d8cb79b57156440afb00908d8ba24fb401d06628104437f3ec1"
+      "raw": 12154,
+      "gzip9": 4572,
+      "brotli11": 4151,
+      "sha256": "b75ab26137c16f7fd2d1036661d423c2f297d19ae7ff89b3e7622f7d5d53b63e"
     },
     {
       "path": "dist/unified.closed.js",
-      "raw": 12250,
-      "gzip9": 4632,
-      "brotli11": 4206,
-      "sha256": "d472b3cb63b1eadf918dff953293b93ea4c36e81c52d12000b5ae3b1a3fee95b"
+      "raw": 12231,
+      "gzip9": 4629,
+      "brotli11": 4197,
+      "sha256": "99f087edc9a9d8f4bc5ea73d4b5d430d25e49e8297ae9549340725b2280da351"
     },
     {
       "path": "dist/vfile.cjs",
-      "raw": 11103,
-      "gzip9": 3579,
-      "brotli11": 3186,
-      "sha256": "928f73a2d125b01c60a6b671428bc540af5f9fc9cbd03e47fdbcfb3f43ed8713"
+      "raw": 10635,
+      "gzip9": 3539,
+      "brotli11": 3151,
+      "sha256": "63eb51c734aff2733b053358d1e9a63424d9138f65c40e3a0cdfc40337f6fc70"
     },
     {
       "path": "dist/vfile.raw.js",
-      "raw": 6513,
-      "gzip9": 2621,
-      "brotli11": 2365,
-      "sha256": "587ad4812105e47e82845cbf2d5a8a0b808a3d16cd43ad8c25956aa25e38fada"
+      "raw": 6432,
+      "gzip9": 2623,
+      "brotli11": 2359,
+      "sha256": "61612660ccb95d4f1466a7cbd129140ac11510d424adc7f3920026ef0c3d3992"
     },
     {
       "path": "dist/unified.cjs",
-      "raw": 19336,
-      "gzip9": 5835,
-      "brotli11": 5179,
-      "sha256": "1678eed2c7708a6383987eb162396d01c856065803f42ed67be6706ad655b1b5"
+      "raw": 18682,
+      "gzip9": 5794,
+      "brotli11": 5150,
+      "sha256": "713ca67055ba407646f45031d85671932a6405f2edca4a57358f026c527419ae"
     },
     {
       "path": "dist/unified.esm.js",
-      "raw": 12250,
-      "gzip9": 4632,
-      "brotli11": 4206,
-      "sha256": "d472b3cb63b1eadf918dff953293b93ea4c36e81c52d12000b5ae3b1a3fee95b"
+      "raw": 12073,
+      "gzip9": 4639,
+      "brotli11": 4199,
+      "sha256": "b297935e93810d5527269669fb22f8827e2f809d59e3984d3f05c991e0d9e0b9"
     },
     {
       "path": "dist/vfile.esm.js",
-      "raw": 6609,
-      "gzip9": 2694,
-      "brotli11": 2417,
-      "sha256": "14e7434ed510cea6e9939526d267d4fd14822b3836a5d34e46f2ab38514ebffd"
+      "raw": 6528,
+      "gzip9": 2698,
+      "brotli11": 2415,
+      "sha256": "540986960a343490a2cb684db464729f73e3a86363574c6bf815a64e040c9066"
     },
     {
       "path": "dist/unified.raw.js",
-      "raw": 12173,
-      "gzip9": 4574,
-      "brotli11": 4156,
-      "sha256": "7dfa54a6de280d8cb79b57156440afb00908d8ba24fb401d06628104437f3ec1"
+      "raw": 11996,
+      "gzip9": 4583,
+      "brotli11": 4147,
+      "sha256": "a65fccf86a47748c037b75a187679987207572ec64e20c8ec49971296fd1221f"
     }
   ],
   "timing": {
-    "primaryCompilerSeconds": 0.8500988483428955,
+    "primaryCompilerSeconds": 0.3125028610229492,
     "primaryScope": "The src/index.lil lilscript.toml invocation that writes the published ESM, median of three clean builds.",
-    "compilerSeconds": 2.759380340576172,
+    "compilerSeconds": 0.9066832065582275,
     "compilerScope": "Sum of the wall times of the compiler invocations in one package build (src/index.lil with lilscript.toml and lilscript.closed.toml, src/vfile.lil with lilscript.toml), median of three clean builds.",
-    "packageSeconds": 6.770709283002361,
+    "packageSeconds": 1.274375305045396,
     "packageScope": "node scripts/build.mjs --compile; median of three clean builds.",
-    "upstreamSeconds": 95.13405420300114,
+    "upstreamSeconds": 10.933989227982238,
     "upstreamScope": "npm run build in the pinned unified 11.0.5 checkout; median of three clean builds."
   },
   "behavior": {
@@ -190,53 +190,53 @@
     "summary": "Repository test command passed (exit 0). tests 224 · pass 224 · fail 0",
     "after": {
       "exitCode": 0,
-      "tail": "ins: `object` -> `string`, right wins (0.171952ms)\n  ✔ reconfigure (to `string`) (9.2009ms)\n  ▶ reconfigure (to `undefined`)\n    ✔ should reconfigure plugins: nothing -> `undefined`, right wins (0.168135ms)\n    ✔ should reconfigure plugins: `undefined` -> `undefined`, right wins (0.148448ms)\n    ✔ should reconfigure plugins: `null` -> `undefined`, right wins (0.161322ms)\n    ✔ should reconfigure plugins: `false` -> `undefined`, right wins (0.227346ms)\n    ✔ should reconfigure plugins: `true` -> `undefined`, right wins (0.224972ms)\n    ✔ should reconfigure plugins: `string` -> `undefined`, right wins (0.235862ms)\n    ✔ should reconfigure plugins: `array` -> `undefined`, right wins (0.210564ms)\n    ✔ should reconfigure plugins: `object` -> `undefined`, right wins (0.188123ms)\n  ✔ reconfigure (to `undefined`) (9.397058ms)\n  ▶ reconfigure (to `true`, to turn on)\n    ✔ should reconfigure plugins: nothing -> `true`, used (0.211316ms)\n    ✔ should reconfigure plugins: `undefined` -> `true`, used (0.174166ms)\n    ✔ should reconfigure plugins: `null` -> `true`, used (0.172724ms)\n    ✔ should reconfigure plugins: `false` -> `true`, used (0.199574ms)\n    ✔ should reconfigure plugins: `true` -> `true`, used (7.365621ms)\n    ✔ should reconfigure plugins: `string` -> `true`, used (0.240521ms)\n    ✔ should reconfigure plugins: `array` -> `true`, used (0.236714ms)\n    ✔ should reconfigure plugins: `object` -> `true`, used (0.181551ms)\n  ✔ reconfigure (to `true`, to turn on) (9.641636ms)\n  ▶ reconfigure (to `false`, to turn off)\n    ✔ should reconfigure plugins: nothing -> `false`, not used (0.195336ms)\n    ✔ should reconfigure plugins: `undefined` -> `false`, not used (0.183173ms)\n    ✔ should reconfigure plugins: `null` -> `false`, not used (0.146775ms)\n    ✔ should reconfigure plugins: `false` -> `false`, not used (0.143139ms)\n    ✔ should reconfigure plugins: `true` -> `false`, not used (0.140122ms)\n    ✔ should reconfigure plugins: `string` -> `false`, not used (0.176571ms)\n    ✔ should reconfigure plugins: `array` -> `false`, not used (7.264091ms)\n    ✔ should reconfigure plugins: `object` -> `false`, not used (0.194625ms)\n  ✔ reconfigure (to `false`, to turn off) (9.255041ms)\n  ▶ reconfigure (non-first parameters)\n    ✔ should reconfigure plugins (non-first parameters) (0.281578ms)\n    ✔ should keep parameter length (#1) (0.21344ms)\n    ✔ should keep parameter length (#2) (0.200015ms)\n    ✔ should keep parameter length (#3) (0.188042ms)\n  ✔ reconfigure (non-first parameters) (1.75622ms)\n✔ `use` (72.423018ms)\n▶ site\n  ✔ has a markedlil-style lab with receipts (7.177946ms)\n✔ site (8.604781ms)\n✔ pure Lil VFile keeps constructor, value, and path behavior (20.325824ms)\n✔ pure Lil VFile matches upstream construction and diagnostics (8.991307ms)\n✔ pure Lil VFile preserves path validation (0.993151ms)\n✔ CommonJS exposes the pure Lil VFile subpath (9.53158ms)\n✔ pure Lil constructors and prototypes match upstream (0.787575ms)\n✔ pure Lil VFile matches official ordered path options (0.841036ms)\n✔ pure Lil VFile supports URLs, encodings, and custom fields (8.40587ms)\n✔ pure Lil VFile diagnostics match official messages (1.117314ms)\n✔ pure Lil VFile rejects invalid path parts at the same evaluation point (9.712448ms)\nℹ tests 224\nℹ suites 3\nℹ pass 224\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 4603.90689\n\n> @itslil/unified@11.0.6 check:types\n> tsc --noEmit --strict --target ES2022 --module NodeNext --moduleResolution NodeNext test/types.test.ts\n\n"
+      "tail": "ins: `object` -> `string`, right wins (0.130996ms)\n  ✔ reconfigure (to `string`) (1.829488ms)\n  ▶ reconfigure (to `undefined`)\n    ✔ should reconfigure plugins: nothing -> `undefined`, right wins (0.135333ms)\n    ✔ should reconfigure plugins: `undefined` -> `undefined`, right wins (0.163687ms)\n    ✔ should reconfigure plugins: `null` -> `undefined`, right wins (0.137597ms)\n    ✔ should reconfigure plugins: `false` -> `undefined`, right wins (0.127409ms)\n    ✔ should reconfigure plugins: `true` -> `undefined`, right wins (0.145112ms)\n    ✔ should reconfigure plugins: `string` -> `undefined`, right wins (0.138289ms)\n    ✔ should reconfigure plugins: `array` -> `undefined`, right wins (0.28281ms)\n    ✔ should reconfigure plugins: `object` -> `undefined`, right wins (0.172834ms)\n  ✔ reconfigure (to `undefined`) (1.971614ms)\n  ▶ reconfigure (to `true`, to turn on)\n    ✔ should reconfigure plugins: nothing -> `true`, used (0.172844ms)\n    ✔ should reconfigure plugins: `undefined` -> `true`, used (0.173045ms)\n    ✔ should reconfigure plugins: `null` -> `true`, used (0.153238ms)\n    ✔ should reconfigure plugins: `false` -> `true`, used (0.269365ms)\n    ✔ should reconfigure plugins: `true` -> `true`, used (0.275176ms)\n    ✔ should reconfigure plugins: `string` -> `true`, used (0.183383ms)\n    ✔ should reconfigure plugins: `array` -> `true`, used (0.137548ms)\n    ✔ should reconfigure plugins: `object` -> `true`, used (0.131356ms)\n  ✔ reconfigure (to `true`, to turn on) (2.30522ms)\n  ▶ reconfigure (to `false`, to turn off)\n    ✔ should reconfigure plugins: nothing -> `false`, not used (0.195276ms)\n    ✔ should reconfigure plugins: `undefined` -> `false`, not used (0.1762ms)\n    ✔ should reconfigure plugins: `null` -> `false`, not used (0.150462ms)\n    ✔ should reconfigure plugins: `false` -> `false`, not used (0.241874ms)\n    ✔ should reconfigure plugins: `true` -> `false`, not used (0.177844ms)\n    ✔ should reconfigure plugins: `string` -> `false`, not used (0.12818ms)\n    ✔ should reconfigure plugins: `array` -> `false`, not used (0.115697ms)\n    ✔ should reconfigure plugins: `object` -> `false`, not used (0.210664ms)\n  ✔ reconfigure (to `false`, to turn off) (2.232774ms)\n  ▶ reconfigure (non-first parameters)\n    ✔ should reconfigure plugins (non-first parameters) (0.213249ms)\n    ✔ should keep parameter length (#1) (0.150552ms)\n    ✔ should keep parameter length (#2) (0.159709ms)\n    ✔ should keep parameter length (#3) (0.141425ms)\n  ✔ reconfigure (non-first parameters) (1.07772ms)\n✔ `use` (19.863372ms)\n▶ site\n  ✔ has a markedlil-style lab with receipts (5.569116ms)\n✔ site (6.837723ms)\n✔ pure Lil VFile keeps constructor, value, and path behavior (17.127255ms)\n✔ pure Lil VFile matches upstream construction and diagnostics (5.217918ms)\n✔ pure Lil VFile preserves path validation (0.913392ms)\n✔ CommonJS exposes the pure Lil VFile subpath (4.957106ms)\n✔ pure Lil constructors and prototypes match upstream (0.816911ms)\n✔ pure Lil VFile matches official ordered path options (1.12607ms)\n✔ pure Lil VFile supports URLs, encodings, and custom fields (1.185151ms)\n✔ pure Lil VFile diagnostics match official messages (6.535698ms)\n✔ pure Lil VFile rejects invalid path parts at the same evaluation point (1.677654ms)\nℹ tests 224\nℹ suites 3\nℹ pass 224\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1280.457899\n\n> @itslil/unified@11.0.6 check:types\n> tsc --noEmit --strict --target ES2022 --module NodeNext --moduleResolution NodeNext test/types.test.ts\n\n"
     }
   },
   "findings": [
-    "The one LilScript compiler (aa2052f0) rebuilt the port from the unified/trough/VFile rewrite; dist/unified.esm.js, dist/unified.closed.js and dist/vfile.esm.js are compiler output plus the license banner, with no post-minifier.",
+    "The one LilScript compiler (24968659) rebuilt the port from the unified/trough/VFile rewrite; dist/unified.esm.js, dist/unified.closed.js and dist/vfile.esm.js are compiler output plus the license banner, with no post-minifier.",
     "dist/unified.cjs, dist/unified.umd.js and dist/vfile.cjs are esbuild format conversions of the compiler's ESM (not minified): post-processed by esbuild, not compiler-written (plan M12.2).",
-    "Previous public dist/unified.esm.js 4642 -> 4206 Brotli-11 (the previous file was an old-route compile by 4dc4e33).",
-    "Against the source-built official graph: Terser 4339, Oxc 4411, esbuild 4612 Brotli-11; ours 4206.",
-    "This compiler renames no properties, so the closed lane (lilscript.closed.toml) is byte-identical to the npm compile.",
+    "Previous public dist/unified.esm.js 4206 -> 4199 Brotli-11 (the previous file was compiled by aa2052f0, the 2026-09-24 release).",
+    "Against the source-built official graph: Terser 4339, Oxc 4411, esbuild 4612 Brotli-11; ours 4199.",
+    "This compiler renames no properties, so the closed lane (lilscript.closed.toml) differs from the npm compile only through its optimizer settings: 4197 vs 4199 Brotli-11.",
     "Upstream version gap: pinned 11.0.5; no compatibility upgrade is implied."
   ],
   "primaryArtifact": "dist/unified.esm.js",
   "beforePage": {
     "url": "https://yeargun.github.io/unifiedlil/",
     "status": 200,
-    "sha256": "6b6a5e9ec76af9abf092f2c2c05a8f3e9c78759aff6826a19f8a74bdec14eaac",
-    "lastModified": "Thu, 10 Sep 2026 21:14:04 GMT"
+    "sha256": "c5f96c36343dec74b048e388f849ff5b7055c8b59eafe2cb598a642b10cfb641",
+    "lastModified": "Thu, 24 Sep 2026 05:08:36 GMT"
   },
-  "codecSha256": "125776830df72bbaf9704fee3c38bb0bf29bfc6bcceb5bc8707a0507a128d7b9",
+  "codecSha256": "85329d361ef3339d4ff7b7ca1f00065d561340eb4fc98a2799af327134a3a3f0",
   "publicationArtifacts": [
     {
       "path": "dist/unified.esm.js",
-      "sha256": "d472b3cb63b1eadf918dff953293b93ea4c36e81c52d12000b5ae3b1a3fee95b"
+      "sha256": "b297935e93810d5527269669fb22f8827e2f809d59e3984d3f05c991e0d9e0b9"
     },
     {
       "path": "dist/unified.closed.js",
-      "sha256": "d472b3cb63b1eadf918dff953293b93ea4c36e81c52d12000b5ae3b1a3fee95b"
+      "sha256": "99f087edc9a9d8f4bc5ea73d4b5d430d25e49e8297ae9549340725b2280da351"
     },
     {
       "path": "dist/unified.cjs",
-      "sha256": "1678eed2c7708a6383987eb162396d01c856065803f42ed67be6706ad655b1b5"
+      "sha256": "713ca67055ba407646f45031d85671932a6405f2edca4a57358f026c527419ae"
     },
     {
       "path": "dist/unified.umd.js",
-      "sha256": "d65a0181b344983a575102e315a121d4602159314ffef3200f2cab10e30f3b5b"
+      "sha256": "14e56819f26cd2af08e43ae6c91570b4237078e507165e22c2c35aa350973087"
     },
     {
       "path": "dist/vfile.esm.js",
-      "sha256": "14e7434ed510cea6e9939526d267d4fd14822b3836a5d34e46f2ab38514ebffd"
+      "sha256": "540986960a343490a2cb684db464729f73e3a86363574c6bf815a64e040c9066"
     },
     {
       "path": "dist/vfile.cjs",
-      "sha256": "928f73a2d125b01c60a6b671428bc540af5f9fc9cbd03e47fdbcfb3f43ed8713"
+      "sha256": "63eb51c734aff2733b053358d1e9a63424d9138f65c40e3a0cdfc40337f6fc70"
     }
   ],
   "publicationPolicy": "Promote freshly tested distribution",
-  "publicationBase": "753b5078027ad7aaa8526b2c28f0623a5b4751c8",
+  "publicationBase": "7e15633a71a5eaec8ad9f9cf5ef2f5dc8128453b",
   "publicationSourceFingerprint": "8276504d4b14949f2750ef206164beae26a273887ad6f70dfdc1e1e6c35feef2",
   "comparisonArtifacts": [
     {
@@ -245,25 +245,25 @@
     },
     {
       "path": "site/esm-comparison/lilscript.js",
-      "sha256": "d472b3cb63b1eadf918dff953293b93ea4c36e81c52d12000b5ae3b1a3fee95b"
+      "sha256": "b297935e93810d5527269669fb22f8827e2f809d59e3984d3f05c991e0d9e0b9"
     },
     {
       "path": "site/source-build.json",
-      "sha256": "0144de8f6ccd9ab048564e53e263ceeb11ee6b8ae15b8676713e8a1e238b8d50"
+      "sha256": "d64b77c39ba881272e62fc447584ce572ec75f8424d599bbe041767c34f98ebb"
     },
     {
       "path": "site/comparison.json",
-      "sha256": "a9a2e35826fa0164ad4851fbafe646dbb5b446828e02ec8c4e9832089d920eef"
+      "sha256": "7c3dd69fd7825a31696971457234825a625fd3fe8f2ae0b106e440862a2e773e"
     }
   ],
   "sourceBuildReceipt": "comparison/source-build/result.json",
   "currentMeasurement": {
     "compiler": {
-      "commit": "aa2052f081ca8184666ca280ee9b91d476e46cfc",
-      "sha256": "13cb49a93fb3e376a5978484835322c84adea692b69ae4720775291377cf18f9"
+      "commit": "249686599dc3bf1b6bf70dc9a030081b755bbb24",
+      "sha256": "47048e41164027e92d3bf1d1840d8d83e04c60532c031ceb3346222e194b3041"
     },
     "source": {
-      "commit": "5ed5ffcb7529a1bbb5c310fa4a4157762bdd7d8a"
+      "commit": "7cabd089b1b3e66dfd31fc53ea7a37ad3f4a7587"
     },
     "upstream": {
       "repository": "https://github.com/unifiedjs/unified.git",

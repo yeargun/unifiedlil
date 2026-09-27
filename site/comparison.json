@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
-  "measuredAt": "2026-09-24T05:06:25Z",
+  "measuredAt": "2026-09-27T15:21:32Z",
   "name": "unifiedlil",
   "compiler": {
-    "commit": "aa2052f081ca8184666ca280ee9b91d476e46cfc",
-    "sha256": "13cb49a93fb3e376a5978484835322c84adea692b69ae4720775291377cf18f9"
+    "commit": "249686599dc3bf1b6bf70dc9a030081b755bbb24",
+    "sha256": "47048e41164027e92d3bf1d1840d8d83e04c60532c031ceb3346222e194b3041"
   },
   "upstream": {
     "package": "unified",
@@ -30,29 +30,29 @@
     "node": "v24.11.1",
     "rayonThreads": 8,
     "loadAtStart": [
-      22.21533203125,
-      20.22265625,
-      13.92822265625
+      10.75,
+      24.794921875,
+      19.11767578125
     ],
     "loadAtEnd": [
-      16.0048828125,
-      20.52783203125,
-      16.85595703125
+      11.01025390625,
+      22.80859375,
+      18.7451171875
     ]
   },
   "build": {
-    "compilerSeconds": 2.759380340576172,
+    "compilerSeconds": 0.9066832065582275,
     "compilerInvocations": 3,
     "compilerScope": "Sum of the wall times of the compiler invocations in one package build (src/index.lil with lilscript.toml and lilscript.closed.toml, src/vfile.lil with lilscript.toml), median of three clean builds.",
-    "primaryCompilerSeconds": 0.8500988483428955,
+    "primaryCompilerSeconds": 0.3125028610229492,
     "primaryCompilerRange": [
-      0.3702263832092285,
-      1.1881723403930664
+      0.2963895797729492,
+      0.3713071346282959
     ],
     "primaryCompilerScope": "The src/index.lil lilscript.toml invocation that writes the published ESM, median of three clean builds.",
-    "packageSeconds": 6.770709283002361,
-    "originalSeconds": 95.13405420300114,
-    "originalEsmSeconds": 1.132797059,
+    "packageSeconds": 1.274375305045396,
+    "originalSeconds": 10.933989227982238,
+    "originalEsmSeconds": 0.35663540899999996,
     "packageScope": "node scripts/build.mjs --compile",
     "originalScope": "npm run build",
     "protocol": {
@@ -73,10 +73,10 @@
       "note": "Terser 5.51.2, 3 passes, mangle on"
     },
     "lilscript": {
-      "raw": 12250,
-      "gzip9": 4632,
-      "brotli11": 4206,
-      "sha256": "d472b3cb63b1eadf918dff953293b93ea4c36e81c52d12000b5ae3b1a3fee95b",
+      "raw": 12073,
+      "gzip9": 4639,
+      "brotli11": 4199,
+      "sha256": "b297935e93810d5527269669fb22f8827e2f809d59e3984d3f05c991e0d9e0b9",
       "file": "./esm-comparison/lilscript.js"
     },
     "originalOxc": {
@@ -97,9 +97,9 @@
   "sourceBuild": {
     "original": {
       "complete": true,
-      "medianSeconds": 95.13405420300114,
-      "minimumSeconds": 40.23610101699887,
-      "maximumSeconds": 116.31260622300033,
+      "medianSeconds": 10.933989227982238,
+      "minimumSeconds": 10.774090700026136,
+      "maximumSeconds": 13.304639153007884,
       "samples": [
         {
           "command": [
@@ -107,8 +107,8 @@
             "run",
             "build"
           ],
-          "wallSeconds": 116.31260622300033,
-          "cpuSeconds": 61.161551,
+          "wallSeconds": 13.304639153007884,
+          "cpuSeconds": 16.17428,
           "exitCode": 0,
           "timedOut": false,
           "log": "original-build-1.log",
@@ -120,8 +120,8 @@
             "run",
             "build"
           ],
-          "wallSeconds": 95.13405420300114,
-          "cpuSeconds": 63.425426,
+          "wallSeconds": 10.933989227982238,
+          "cpuSeconds": 15.549361000000001,
           "exitCode": 0,
           "timedOut": false,
           "log": "original-build-2.log",
@@ -133,8 +133,8 @@
             "run",
             "build"
           ],
-          "wallSeconds": 40.23610101699887,
-          "cpuSeconds": 52.28147699999996,
+          "wallSeconds": 10.774090700026136,
+          "cpuSeconds": 15.514598999999999,
           "exitCode": 0,
           "timedOut": false,
           "log": "original-build-3.log",
@@ -144,9 +144,9 @@
     },
     "lilscript": {
       "complete": true,
-      "medianSeconds": 6.770709283002361,
-      "minimumSeconds": 2.130199465995247,
-      "maximumSeconds": 6.979831069998909,
+      "medianSeconds": 1.274375305045396,
+      "minimumSeconds": 1.1710526079987176,
+      "maximumSeconds": 1.3743197549483739,
       "samples": [
         {
           "command": [
@@ -154,12 +154,12 @@
             "-c",
             "node scripts/build.mjs --compile"
           ],
-          "wallSeconds": 6.979831069998909,
-          "cpuSeconds": 2.5562659999999937,
+          "wallSeconds": 1.3743197549483739,
+          "cpuSeconds": 1.223472000000002,
           "exitCode": 0,
           "timedOut": false,
           "log": "lilscript-build-1.log",
-          "logSha256": "aa5d2863da8842f4bc56f3abfb65575d1dd5c999989f5c68e366573433cf636b"
+          "logSha256": "90f332508a62fb3d77e7a9b3e06ca30c0cb9409a9a534d0723d3dd628e8939f2"
         },
         {
           "command": [
@@ -167,12 +167,12 @@
             "-c",
             "node scripts/build.mjs --compile"
           ],
-          "wallSeconds": 6.770709283002361,
-          "cpuSeconds": 2.6719720000000073,
+          "wallSeconds": 1.274375305045396,
+          "cpuSeconds": 1.261575000000002,
           "exitCode": 0,
           "timedOut": false,
           "log": "lilscript-build-2.log",
-          "logSha256": "d3e2240b846ccc7ba373e5341358033472759ec878b66c400faf69690cbbb4ec"
+          "logSha256": "818e2a4658acc6e4b1579384348d7211338b305a2c763abb7ae466a100f8f8a7"
         },
         {
           "command": [
@@ -180,12 +180,12 @@
             "-c",
             "node scripts/build.mjs --compile"
           ],
-          "wallSeconds": 2.130199465995247,
-          "cpuSeconds": 2.0999960000000115,
+          "wallSeconds": 1.1710526079987176,
+          "cpuSeconds": 1.180340000000002,
           "exitCode": 0,
           "timedOut": false,
           "log": "lilscript-build-3.log",
-          "logSha256": "a483b70ecc07f637e06cf8459ee70c03ea1f9e444816f703ab1aebfe865c4e51"
+          "logSha256": "40e0a94e3512351c4f7d5d73f4e0c3f0b3c9042a6cc30b63180d4154f47d6027"
         }
       ]
     },

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "name": "unifiedlil",
-  "startedAt": "2026-09-24T04:58:28Z",
+  "startedAt": "2026-09-27T15:20:43Z",
   "machine": {
     "provider": "Azure",
     "instanceClass": "Standard_B8als_v2",
@@ -13,19 +13,19 @@
     "node": "v24.11.1",
     "rayonThreads": 8,
     "loadAtStart": [
-      22.21533203125,
-      20.22265625,
-      13.92822265625
+      10.75,
+      24.794921875,
+      19.11767578125
     ],
     "loadAtEnd": [
-      16.0048828125,
-      20.52783203125,
-      16.85595703125
+      11.01025390625,
+      22.80859375,
+      18.7451171875
     ]
   },
   "compiler": {
-    "commit": "aa2052f081ca8184666ca280ee9b91d476e46cfc",
-    "sha256": "13cb49a93fb3e376a5978484835322c84adea692b69ae4720775291377cf18f9"
+    "commit": "249686599dc3bf1b6bf70dc9a030081b755bbb24",
+    "sha256": "47048e41164027e92d3bf1d1840d8d83e04c60532c031ceb3346222e194b3041"
   },
   "source": {
     "repository": "https://github.com/unifiedjs/unified.git",
@@ -35,7 +35,7 @@
     "directory": "."
   },
   "portSource": {
-    "commit": "5ed5ffcb7529a1bbb5c310fa4a4157762bdd7d8a"
+    "commit": "7cabd089b1b3e66dfd31fc53ea7a37ad3f4a7587"
   },
   "prerequisiteAdjustments": "Use TypeScript 5.4.5, matching the compiler bundled by upstream tsd 0.31.2 and satisfying upstream ^5.0.0.",
   "steps": {
@@ -48,13 +48,13 @@
         "--no-fund"
       ],
       "cwd": "upstream",
-      "wallSeconds": 154.4216297499952,
-      "cpuSeconds": 74.328979,
+      "wallSeconds": 2.3772693760110997,
+      "cpuSeconds": 2.355894,
       "exitCode": 0,
       "timedOut": false,
       "log": "original-install.log",
-      "logSha256": "d66b810046ed0b4f40248a8cffe42639d72e3c27606110c57224ef7487cd0e9a",
-      "tail": "npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.\nnpm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead\nnpm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported\nnpm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead\nnpm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.\n\nadded 870 packages in 3m\n"
+      "logSha256": "ce7bf91f54adc7390cff6bf1c2572fd00ce9cfbd0611637e273059c4710a80c9",
+      "tail": "\nup to date in 2s\n"
     },
     "original-setup-0": {
       "command": [
@@ -68,13 +68,13 @@
         "typescript@5.4.5"
       ],
       "cwd": "upstream",
-      "wallSeconds": 35.14114455300296,
-      "cpuSeconds": 12.395735,
+      "wallSeconds": 2.378927804005798,
+      "cpuSeconds": 2.4639629999999992,
       "exitCode": 0,
       "timedOut": false,
       "log": "original-setup-0.log",
-      "logSha256": "cef2c9a7bb4bc7f4f9bfe7bbdc810109e7153859e6cdde848a06c9c49b36189d",
-      "tail": "\nremoved 1 package, and changed 1 package in 34s\n"
+      "logSha256": "ce7bf91f54adc7390cff6bf1c2572fd00ce9cfbd0611637e273059c4710a80c9",
+      "tail": "\nup to date in 2s\n"
     },
     "original-build-1": {
       "command": [
@@ -83,8 +83,8 @@
         "build"
       ],
       "cwd": "upstream",
-      "wallSeconds": 116.31260622300033,
-      "cpuSeconds": 61.161551,
+      "wallSeconds": 13.304639153007884,
+      "cpuSeconds": 16.17428,
       "exitCode": 0,
       "timedOut": false,
       "log": "original-build-1.log",
@@ -98,61 +98,61 @@
         "node scripts/build.mjs --compile"
       ],
       "cwd": "port",
-      "wallSeconds": 6.979831069998909,
-      "cpuSeconds": 2.5562659999999937,
+      "wallSeconds": 1.3743197549483739,
+      "cpuSeconds": 1.223472000000002,
       "exitCode": 0,
       "timedOut": false,
       "log": "lilscript-build-1.log",
-      "logSha256": "aa5d2863da8842f4bc56f3abfb65575d1dd5c999989f5c68e366573433cf636b",
-      "tail": "compiled src/index.lil with lilscript.toml in 1650.7 ms\ncompiled src/index.lil with lilscript.closed.toml in 2202.5 ms\ncompiled src/vfile.lil with lilscript.toml in 1260.5 ms\nwrote dist/unified.esm.js, dist/unified.cjs, dist/unified.umd.js, dist/unified.closed.js, dist/vfile.esm.js, dist/vfile.cjs\n",
+      "logSha256": "90f332508a62fb3d77e7a9b3e06ca30c0cb9409a9a534d0723d3dd628e8939f2",
+      "tail": "compiled src/index.lil with lilscript.toml in 407.6 ms\ncompiled src/index.lil with lilscript.closed.toml in 414.9 ms\ncompiled src/vfile.lil with lilscript.toml in 303.7 ms\nwrote dist/unified.esm.js, dist/unified.cjs, dist/unified.umd.js, dist/unified.closed.js, dist/vfile.esm.js, dist/vfile.cjs\n",
       "invocations": [
         {
           "args": [
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/src/index.lil",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/src/index.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/lilscript.toml",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/lilscript.toml",
             "-o",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.raw.js"
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.raw.js"
           ],
-          "startedAt": 1790226216.681497,
-          "wallSeconds": 0.8500988483428955,
+          "startedAt": 1790522461.3664036,
+          "wallSeconds": 0.3125028610229492,
           "exitCode": 0,
-          "output": "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.raw.js",
-          "sha256": "7dfa54a6de280d8cb79b57156440afb00908d8ba24fb401d06628104437f3ec1"
+          "output": "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.raw.js",
+          "sha256": "a65fccf86a47748c037b75a187679987207572ec64e20c8ec49971296fd1221f"
         },
         {
           "args": [
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/src/index.lil",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/src/index.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/lilscript.closed.toml",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/lilscript.closed.toml",
             "-o",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.closed.raw.js"
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.closed.raw.js"
           ],
-          "startedAt": 1790226218.3212779,
-          "wallSeconds": 1.3788883686065674,
+          "startedAt": 1790522461.7522962,
+          "wallSeconds": 0.353116512298584,
           "exitCode": 0,
-          "output": "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.closed.raw.js",
-          "sha256": "7dfa54a6de280d8cb79b57156440afb00908d8ba24fb401d06628104437f3ec1"
+          "output": "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.closed.raw.js",
+          "sha256": "b75ab26137c16f7fd2d1036661d423c2f297d19ae7ff89b3e7622f7d5d53b63e"
         },
         {
           "args": [
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/src/vfile.lil",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/src/vfile.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/lilscript.toml",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/lilscript.toml",
             "-o",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/vfile.raw.js"
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/vfile.raw.js"
           ],
-          "startedAt": 1790226220.571952,
-          "wallSeconds": 0.530393123626709,
+          "startedAt": 1790522462.1596167,
+          "wallSeconds": 0.2493448257446289,
           "exitCode": 0,
-          "output": "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/vfile.raw.js",
-          "sha256": "587ad4812105e47e82845cbf2d5a8a0b808a3d16cd43ad8c25956aa25e38fada"
+          "output": "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/vfile.raw.js",
+          "sha256": "61612660ccb95d4f1466a7cbd129140ac11510d424adc7f3920026ef0c3d3992"
         }
       ]
     },
@@ -163,61 +163,61 @@
         "node scripts/build.mjs --compile"
       ],
       "cwd": "port",
-      "wallSeconds": 6.770709283002361,
-      "cpuSeconds": 2.6719720000000073,
+      "wallSeconds": 1.274375305045396,
+      "cpuSeconds": 1.261575000000002,
       "exitCode": 0,
       "timedOut": false,
       "log": "lilscript-build-2.log",
-      "logSha256": "d3e2240b846ccc7ba373e5341358033472759ec878b66c400faf69690cbbb4ec",
-      "tail": "compiled src/index.lil with lilscript.toml in 1663.0 ms\ncompiled src/index.lil with lilscript.closed.toml in 1851.8 ms\ncompiled src/vfile.lil with lilscript.toml in 1130.5 ms\nwrote dist/unified.esm.js, dist/unified.cjs, dist/unified.umd.js, dist/unified.closed.js, dist/vfile.esm.js, dist/vfile.cjs\n",
+      "logSha256": "818e2a4658acc6e4b1579384348d7211338b305a2c763abb7ae466a100f8f8a7",
+      "tail": "compiled src/index.lil with lilscript.toml in 437.8 ms\ncompiled src/index.lil with lilscript.closed.toml in 380.5 ms\ncompiled src/vfile.lil with lilscript.toml in 272.2 ms\nwrote dist/unified.esm.js, dist/unified.cjs, dist/unified.umd.js, dist/unified.closed.js, dist/vfile.esm.js, dist/vfile.cjs\n",
       "invocations": [
         {
           "args": [
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/src/index.lil",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/src/index.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/lilscript.toml",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/lilscript.toml",
             "-o",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.raw.js"
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.raw.js"
           ],
-          "startedAt": 1790226223.7260673,
-          "wallSeconds": 1.1881723403930664,
+          "startedAt": 1790522462.7321296,
+          "wallSeconds": 0.3713071346282959,
           "exitCode": 0,
-          "output": "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.raw.js",
-          "sha256": "7dfa54a6de280d8cb79b57156440afb00908d8ba24fb401d06628104437f3ec1"
+          "output": "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.raw.js",
+          "sha256": "a65fccf86a47748c037b75a187679987207572ec64e20c8ec49971296fd1221f"
         },
         {
           "args": [
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/src/index.lil",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/src/index.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/lilscript.closed.toml",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/lilscript.closed.toml",
             "-o",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.closed.raw.js"
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.closed.raw.js"
           ],
-          "startedAt": 1790226225.542601,
-          "wallSeconds": 1.2500474452972412,
+          "startedAt": 1790522463.164615,
+          "wallSeconds": 0.3212897777557373,
           "exitCode": 0,
-          "output": "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.closed.raw.js",
-          "sha256": "7dfa54a6de280d8cb79b57156440afb00908d8ba24fb401d06628104437f3ec1"
+          "output": "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.closed.raw.js",
+          "sha256": "b75ab26137c16f7fd2d1036661d423c2f297d19ae7ff89b3e7622f7d5d53b63e"
         },
         {
           "args": [
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/src/vfile.lil",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/src/vfile.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/lilscript.toml",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/lilscript.toml",
             "-o",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/vfile.raw.js"
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/vfile.raw.js"
           ],
-          "startedAt": 1790226227.4967387,
-          "wallSeconds": 0.47791457176208496,
+          "startedAt": 1790522463.5438213,
+          "wallSeconds": 0.21408629417419434,
           "exitCode": 0,
-          "output": "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/vfile.raw.js",
-          "sha256": "587ad4812105e47e82845cbf2d5a8a0b808a3d16cd43ad8c25956aa25e38fada"
+          "output": "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/vfile.raw.js",
+          "sha256": "61612660ccb95d4f1466a7cbd129140ac11510d424adc7f3920026ef0c3d3992"
         }
       ]
     },
@@ -228,8 +228,8 @@
         "build"
       ],
       "cwd": "upstream",
-      "wallSeconds": 95.13405420300114,
-      "cpuSeconds": 63.425426,
+      "wallSeconds": 10.933989227982238,
+      "cpuSeconds": 15.549361000000001,
       "exitCode": 0,
       "timedOut": false,
       "log": "original-build-2.log",
@@ -243,8 +243,8 @@
         "build"
       ],
       "cwd": "upstream",
-      "wallSeconds": 40.23610101699887,
-      "cpuSeconds": 52.28147699999996,
+      "wallSeconds": 10.774090700026136,
+      "cpuSeconds": 15.514598999999999,
       "exitCode": 0,
       "timedOut": false,
       "log": "original-build-3.log",
@@ -258,74 +258,74 @@
         "node scripts/build.mjs --compile"
       ],
       "cwd": "port",
-      "wallSeconds": 2.130199465995247,
-      "cpuSeconds": 2.0999960000000115,
+      "wallSeconds": 1.1710526079987176,
+      "cpuSeconds": 1.180340000000002,
       "exitCode": 0,
       "timedOut": false,
       "log": "lilscript-build-3.log",
-      "logSha256": "a483b70ecc07f637e06cf8459ee70c03ea1f9e444816f703ab1aebfe865c4e51",
-      "tail": "compiled src/index.lil with lilscript.toml in 562.6 ms\ncompiled src/index.lil with lilscript.closed.toml in 497.2 ms\ncompiled src/vfile.lil with lilscript.toml in 429.9 ms\nwrote dist/unified.esm.js, dist/unified.cjs, dist/unified.umd.js, dist/unified.closed.js, dist/vfile.esm.js, dist/vfile.cjs\n",
+      "logSha256": "40e0a94e3512351c4f7d5d73f4e0c3f0b3c9042a6cc30b63180d4154f47d6027",
+      "tail": "compiled src/index.lil with lilscript.toml in 361.0 ms\ncompiled src/index.lil with lilscript.closed.toml in 378.8 ms\ncompiled src/vfile.lil with lilscript.toml in 285.9 ms\nwrote dist/unified.esm.js, dist/unified.cjs, dist/unified.umd.js, dist/unified.closed.js, dist/vfile.esm.js, dist/vfile.cjs\n",
       "invocations": [
         {
           "args": [
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/src/index.lil",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/src/index.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/lilscript.toml",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/lilscript.toml",
             "-o",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.raw.js"
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.raw.js"
           ],
-          "startedAt": 1790226364.5058558,
-          "wallSeconds": 0.3702263832092285,
+          "startedAt": 1790522485.683551,
+          "wallSeconds": 0.2963895797729492,
           "exitCode": 0,
-          "output": "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.raw.js",
-          "sha256": "7dfa54a6de280d8cb79b57156440afb00908d8ba24fb401d06628104437f3ec1"
+          "output": "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.raw.js",
+          "sha256": "a65fccf86a47748c037b75a187679987207572ec64e20c8ec49971296fd1221f"
         },
         {
           "args": [
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/src/index.lil",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/src/index.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/lilscript.closed.toml",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/lilscript.closed.toml",
             "-o",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.closed.raw.js"
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.closed.raw.js"
           ],
-          "startedAt": 1790226365.0483878,
-          "wallSeconds": 0.3303217887878418,
+          "startedAt": 1790522486.0375702,
+          "wallSeconds": 0.3228616714477539,
           "exitCode": 0,
-          "output": "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.closed.raw.js",
-          "sha256": "7dfa54a6de280d8cb79b57156440afb00908d8ba24fb401d06628104437f3ec1"
+          "output": "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.closed.raw.js",
+          "sha256": "b75ab26137c16f7fd2d1036661d423c2f297d19ae7ff89b3e7622f7d5d53b63e"
         },
         {
           "args": [
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/src/vfile.lil",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/src/vfile.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/lilscript.toml",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/lilscript.toml",
             "-o",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/vfile.raw.js"
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/vfile.raw.js"
           ],
-          "startedAt": 1790226365.588492,
-          "wallSeconds": 0.2192072868347168,
+          "startedAt": 1790522486.4206107,
+          "wallSeconds": 0.2249000072479248,
           "exitCode": 0,
-          "output": "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/vfile.raw.js",
-          "sha256": "587ad4812105e47e82845cbf2d5a8a0b808a3d16cd43ad8c25956aa25e38fada"
+          "output": "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/vfile.raw.js",
+          "sha256": "61612660ccb95d4f1466a7cbd129140ac11510d424adc7f3920026ef0c3d3992"
         }
       ]
     },
     "original-esm": {
       "command": [
         "node",
-        "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/tools/source-esm.mjs",
-        "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild",
+        "/home/azureuser/lilscript-work/release-0927/srcbuild/unifiedlil/srcbuild/tools/source-esm.mjs",
+        "/home/azureuser/lilscript-work/release-0927/srcbuild/unifiedlil/srcbuild",
         "unifiedlil"
       ],
       "cwd": "upstream",
-      "wallSeconds": 6.627403384001809,
-      "cpuSeconds": 9.057514999999967,
+      "wallSeconds": 2.336893420026172,
+      "cpuSeconds": 3.0126770000000054,
       "exitCode": 0,
       "timedOut": false,
       "log": "original-esm.log",
@@ -339,13 +339,13 @@
         "npm run check:sources && node --test test/*.test.mjs test/official/index.js && npm run check:types"
       ],
       "cwd": "port",
-      "wallSeconds": 11.772793232004915,
-      "cpuSeconds": 19.594323999999986,
+      "wallSeconds": 3.68431264400715,
+      "cpuSeconds": 6.255366999999994,
       "exitCode": 0,
       "timedOut": false,
       "log": "lilscript-tests.log",
-      "logSha256": "c482639597843c22cec4188bc251e039ffa38293e2d6d0e4ff4c805763eb15a4",
-      "tail": "ins: `object` -> `string`, right wins (0.171952ms)\n  ✔ reconfigure (to `string`) (9.2009ms)\n  ▶ reconfigure (to `undefined`)\n    ✔ should reconfigure plugins: nothing -> `undefined`, right wins (0.168135ms)\n    ✔ should reconfigure plugins: `undefined` -> `undefined`, right wins (0.148448ms)\n    ✔ should reconfigure plugins: `null` -> `undefined`, right wins (0.161322ms)\n    ✔ should reconfigure plugins: `false` -> `undefined`, right wins (0.227346ms)\n    ✔ should reconfigure plugins: `true` -> `undefined`, right wins (0.224972ms)\n    ✔ should reconfigure plugins: `string` -> `undefined`, right wins (0.235862ms)\n    ✔ should reconfigure plugins: `array` -> `undefined`, right wins (0.210564ms)\n    ✔ should reconfigure plugins: `object` -> `undefined`, right wins (0.188123ms)\n  ✔ reconfigure (to `undefined`) (9.397058ms)\n  ▶ reconfigure (to `true`, to turn on)\n    ✔ should reconfigure plugins: nothing -> `true`, used (0.211316ms)\n    ✔ should reconfigure plugins: `undefined` -> `true`, used (0.174166ms)\n    ✔ should reconfigure plugins: `null` -> `true`, used (0.172724ms)\n    ✔ should reconfigure plugins: `false` -> `true`, used (0.199574ms)\n    ✔ should reconfigure plugins: `true` -> `true`, used (7.365621ms)\n    ✔ should reconfigure plugins: `string` -> `true`, used (0.240521ms)\n    ✔ should reconfigure plugins: `array` -> `true`, used (0.236714ms)\n    ✔ should reconfigure plugins: `object` -> `true`, used (0.181551ms)\n  ✔ reconfigure (to `true`, to turn on) (9.641636ms)\n  ▶ reconfigure (to `false`, to turn off)\n    ✔ should reconfigure plugins: nothing -> `false`, not used (0.195336ms)\n    ✔ should reconfigure plugins: `undefined` -> `false`, not used (0.183173ms)\n    ✔ should reconfigure plugins: `null` -> `false`, not used (0.146775ms)\n    ✔ should reconfigure plugins: `false` -> `false`, not used (0.143139ms)\n    ✔ should reconfigure plugins: `true` -> `false`, not used (0.140122ms)\n    ✔ should reconfigure plugins: `string` -> `false`, not used (0.176571ms)\n    ✔ should reconfigure plugins: `array` -> `false`, not used (7.264091ms)\n    ✔ should reconfigure plugins: `object` -> `false`, not used (0.194625ms)\n  ✔ reconfigure (to `false`, to turn off) (9.255041ms)\n  ▶ reconfigure (non-first parameters)\n    ✔ should reconfigure plugins (non-first parameters) (0.281578ms)\n    ✔ should keep parameter length (#1) (0.21344ms)\n    ✔ should keep parameter length (#2) (0.200015ms)\n    ✔ should keep parameter length (#3) (0.188042ms)\n  ✔ reconfigure (non-first parameters) (1.75622ms)\n✔ `use` (72.423018ms)\n▶ site\n  ✔ has a markedlil-style lab with receipts (7.177946ms)\n✔ site (8.604781ms)\n✔ pure Lil VFile keeps constructor, value, and path behavior (20.325824ms)\n✔ pure Lil VFile matches upstream construction and diagnostics (8.991307ms)\n✔ pure Lil VFile preserves path validation (0.993151ms)\n✔ CommonJS exposes the pure Lil VFile subpath (9.53158ms)\n✔ pure Lil constructors and prototypes match upstream (0.787575ms)\n✔ pure Lil VFile matches official ordered path options (0.841036ms)\n✔ pure Lil VFile supports URLs, encodings, and custom fields (8.40587ms)\n✔ pure Lil VFile diagnostics match official messages (1.117314ms)\n✔ pure Lil VFile rejects invalid path parts at the same evaluation point (9.712448ms)\nℹ tests 224\nℹ suites 3\nℹ pass 224\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 4603.90689\n\n> @itslil/unified@11.0.6 check:types\n> tsc --noEmit --strict --target ES2022 --module NodeNext --moduleResolution NodeNext test/types.test.ts\n\n"
+      "logSha256": "788ef898b13c691199b368bd65420b6688bd8c20d512a00a166e375a43e69779",
+      "tail": "ins: `object` -> `string`, right wins (0.130996ms)\n  ✔ reconfigure (to `string`) (1.829488ms)\n  ▶ reconfigure (to `undefined`)\n    ✔ should reconfigure plugins: nothing -> `undefined`, right wins (0.135333ms)\n    ✔ should reconfigure plugins: `undefined` -> `undefined`, right wins (0.163687ms)\n    ✔ should reconfigure plugins: `null` -> `undefined`, right wins (0.137597ms)\n    ✔ should reconfigure plugins: `false` -> `undefined`, right wins (0.127409ms)\n    ✔ should reconfigure plugins: `true` -> `undefined`, right wins (0.145112ms)\n    ✔ should reconfigure plugins: `string` -> `undefined`, right wins (0.138289ms)\n    ✔ should reconfigure plugins: `array` -> `undefined`, right wins (0.28281ms)\n    ✔ should reconfigure plugins: `object` -> `undefined`, right wins (0.172834ms)\n  ✔ reconfigure (to `undefined`) (1.971614ms)\n  ▶ reconfigure (to `true`, to turn on)\n    ✔ should reconfigure plugins: nothing -> `true`, used (0.172844ms)\n    ✔ should reconfigure plugins: `undefined` -> `true`, used (0.173045ms)\n    ✔ should reconfigure plugins: `null` -> `true`, used (0.153238ms)\n    ✔ should reconfigure plugins: `false` -> `true`, used (0.269365ms)\n    ✔ should reconfigure plugins: `true` -> `true`, used (0.275176ms)\n    ✔ should reconfigure plugins: `string` -> `true`, used (0.183383ms)\n    ✔ should reconfigure plugins: `array` -> `true`, used (0.137548ms)\n    ✔ should reconfigure plugins: `object` -> `true`, used (0.131356ms)\n  ✔ reconfigure (to `true`, to turn on) (2.30522ms)\n  ▶ reconfigure (to `false`, to turn off)\n    ✔ should reconfigure plugins: nothing -> `false`, not used (0.195276ms)\n    ✔ should reconfigure plugins: `undefined` -> `false`, not used (0.1762ms)\n    ✔ should reconfigure plugins: `null` -> `false`, not used (0.150462ms)\n    ✔ should reconfigure plugins: `false` -> `false`, not used (0.241874ms)\n    ✔ should reconfigure plugins: `true` -> `false`, not used (0.177844ms)\n    ✔ should reconfigure plugins: `string` -> `false`, not used (0.12818ms)\n    ✔ should reconfigure plugins: `array` -> `false`, not used (0.115697ms)\n    ✔ should reconfigure plugins: `object` -> `false`, not used (0.210664ms)\n  ✔ reconfigure (to `false`, to turn off) (2.232774ms)\n  ▶ reconfigure (non-first parameters)\n    ✔ should reconfigure plugins (non-first parameters) (0.213249ms)\n    ✔ should keep parameter length (#1) (0.150552ms)\n    ✔ should keep parameter length (#2) (0.159709ms)\n    ✔ should keep parameter length (#3) (0.141425ms)\n  ✔ reconfigure (non-first parameters) (1.07772ms)\n✔ `use` (19.863372ms)\n▶ site\n  ✔ has a markedlil-style lab with receipts (5.569116ms)\n✔ site (6.837723ms)\n✔ pure Lil VFile keeps constructor, value, and path behavior (17.127255ms)\n✔ pure Lil VFile matches upstream construction and diagnostics (5.217918ms)\n✔ pure Lil VFile preserves path validation (0.913392ms)\n✔ CommonJS exposes the pure Lil VFile subpath (4.957106ms)\n✔ pure Lil constructors and prototypes match upstream (0.816911ms)\n✔ pure Lil VFile matches official ordered path options (1.12607ms)\n✔ pure Lil VFile supports URLs, encodings, and custom fields (1.185151ms)\n✔ pure Lil VFile diagnostics match official messages (6.535698ms)\n✔ pure Lil VFile rejects invalid path parts at the same evaluation point (1.677654ms)\nℹ tests 224\nℹ suites 3\nℹ pass 224\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1280.457899\n\n> @itslil/unified@11.0.6 check:types\n> tsc --noEmit --strict --target ES2022 --module NodeNext --moduleResolution NodeNext test/types.test.ts\n\n"
     }
   },
   "nativeBuilds": [
@@ -356,8 +356,8 @@
         "build"
       ],
       "cwd": "upstream",
-      "wallSeconds": 116.31260622300033,
-      "cpuSeconds": 61.161551,
+      "wallSeconds": 13.304639153007884,
+      "cpuSeconds": 16.17428,
       "exitCode": 0,
       "timedOut": false,
       "log": "original-build-1.log",
@@ -371,8 +371,8 @@
         "build"
       ],
       "cwd": "upstream",
-      "wallSeconds": 95.13405420300114,
-      "cpuSeconds": 63.425426,
+      "wallSeconds": 10.933989227982238,
+      "cpuSeconds": 15.549361000000001,
       "exitCode": 0,
       "timedOut": false,
       "log": "original-build-2.log",
@@ -386,8 +386,8 @@
         "build"
       ],
       "cwd": "upstream",
-      "wallSeconds": 40.23610101699887,
-      "cpuSeconds": 52.28147699999996,
+      "wallSeconds": 10.774090700026136,
+      "cpuSeconds": 15.514598999999999,
       "exitCode": 0,
       "timedOut": false,
       "log": "original-build-3.log",
@@ -403,61 +403,61 @@
         "node scripts/build.mjs --compile"
       ],
       "cwd": "port",
-      "wallSeconds": 6.979831069998909,
-      "cpuSeconds": 2.5562659999999937,
+      "wallSeconds": 1.3743197549483739,
+      "cpuSeconds": 1.223472000000002,
       "exitCode": 0,
       "timedOut": false,
       "log": "lilscript-build-1.log",
-      "logSha256": "aa5d2863da8842f4bc56f3abfb65575d1dd5c999989f5c68e366573433cf636b",
-      "tail": "compiled src/index.lil with lilscript.toml in 1650.7 ms\ncompiled src/index.lil with lilscript.closed.toml in 2202.5 ms\ncompiled src/vfile.lil with lilscript.toml in 1260.5 ms\nwrote dist/unified.esm.js, dist/unified.cjs, dist/unified.umd.js, dist/unified.closed.js, dist/vfile.esm.js, dist/vfile.cjs\n",
+      "logSha256": "90f332508a62fb3d77e7a9b3e06ca30c0cb9409a9a534d0723d3dd628e8939f2",
+      "tail": "compiled src/index.lil with lilscript.toml in 407.6 ms\ncompiled src/index.lil with lilscript.closed.toml in 414.9 ms\ncompiled src/vfile.lil with lilscript.toml in 303.7 ms\nwrote dist/unified.esm.js, dist/unified.cjs, dist/unified.umd.js, dist/unified.closed.js, dist/vfile.esm.js, dist/vfile.cjs\n",
       "invocations": [
         {
           "args": [
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/src/index.lil",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/src/index.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/lilscript.toml",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/lilscript.toml",
             "-o",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.raw.js"
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.raw.js"
           ],
-          "startedAt": 1790226216.681497,
-          "wallSeconds": 0.8500988483428955,
+          "startedAt": 1790522461.3664036,
+          "wallSeconds": 0.3125028610229492,
           "exitCode": 0,
-          "output": "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.raw.js",
-          "sha256": "7dfa54a6de280d8cb79b57156440afb00908d8ba24fb401d06628104437f3ec1"
+          "output": "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.raw.js",
+          "sha256": "a65fccf86a47748c037b75a187679987207572ec64e20c8ec49971296fd1221f"
         },
         {
           "args": [
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/src/index.lil",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/src/index.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/lilscript.closed.toml",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/lilscript.closed.toml",
             "-o",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.closed.raw.js"
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.closed.raw.js"
           ],
-          "startedAt": 1790226218.3212779,
-          "wallSeconds": 1.3788883686065674,
+          "startedAt": 1790522461.7522962,
+          "wallSeconds": 0.353116512298584,
           "exitCode": 0,
-          "output": "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.closed.raw.js",
-          "sha256": "7dfa54a6de280d8cb79b57156440afb00908d8ba24fb401d06628104437f3ec1"
+          "output": "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.closed.raw.js",
+          "sha256": "b75ab26137c16f7fd2d1036661d423c2f297d19ae7ff89b3e7622f7d5d53b63e"
         },
         {
           "args": [
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/src/vfile.lil",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/src/vfile.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/lilscript.toml",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/lilscript.toml",
             "-o",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/vfile.raw.js"
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/vfile.raw.js"
           ],
-          "startedAt": 1790226220.571952,
-          "wallSeconds": 0.530393123626709,
+          "startedAt": 1790522462.1596167,
+          "wallSeconds": 0.2493448257446289,
           "exitCode": 0,
-          "output": "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/vfile.raw.js",
-          "sha256": "587ad4812105e47e82845cbf2d5a8a0b808a3d16cd43ad8c25956aa25e38fada"
+          "output": "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/vfile.raw.js",
+          "sha256": "61612660ccb95d4f1466a7cbd129140ac11510d424adc7f3920026ef0c3d3992"
         }
       ]
     },
@@ -468,61 +468,61 @@
         "node scripts/build.mjs --compile"
       ],
       "cwd": "port",
-      "wallSeconds": 6.770709283002361,
-      "cpuSeconds": 2.6719720000000073,
+      "wallSeconds": 1.274375305045396,
+      "cpuSeconds": 1.261575000000002,
       "exitCode": 0,
       "timedOut": false,
       "log": "lilscript-build-2.log",
-      "logSha256": "d3e2240b846ccc7ba373e5341358033472759ec878b66c400faf69690cbbb4ec",
-      "tail": "compiled src/index.lil with lilscript.toml in 1663.0 ms\ncompiled src/index.lil with lilscript.closed.toml in 1851.8 ms\ncompiled src/vfile.lil with lilscript.toml in 1130.5 ms\nwrote dist/unified.esm.js, dist/unified.cjs, dist/unified.umd.js, dist/unified.closed.js, dist/vfile.esm.js, dist/vfile.cjs\n",
+      "logSha256": "818e2a4658acc6e4b1579384348d7211338b305a2c763abb7ae466a100f8f8a7",
+      "tail": "compiled src/index.lil with lilscript.toml in 437.8 ms\ncompiled src/index.lil with lilscript.closed.toml in 380.5 ms\ncompiled src/vfile.lil with lilscript.toml in 272.2 ms\nwrote dist/unified.esm.js, dist/unified.cjs, dist/unified.umd.js, dist/unified.closed.js, dist/vfile.esm.js, dist/vfile.cjs\n",
       "invocations": [
         {
           "args": [
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/src/index.lil",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/src/index.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/lilscript.toml",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/lilscript.toml",
             "-o",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.raw.js"
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.raw.js"
           ],
-          "startedAt": 1790226223.7260673,
-          "wallSeconds": 1.1881723403930664,
+          "startedAt": 1790522462.7321296,
+          "wallSeconds": 0.3713071346282959,
           "exitCode": 0,
-          "output": "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.raw.js",
-          "sha256": "7dfa54a6de280d8cb79b57156440afb00908d8ba24fb401d06628104437f3ec1"
+          "output": "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.raw.js",
+          "sha256": "a65fccf86a47748c037b75a187679987207572ec64e20c8ec49971296fd1221f"
         },
         {
           "args": [
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/src/index.lil",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/src/index.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/lilscript.closed.toml",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/lilscript.closed.toml",
             "-o",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.closed.raw.js"
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.closed.raw.js"
           ],
-          "startedAt": 1790226225.542601,
-          "wallSeconds": 1.2500474452972412,
+          "startedAt": 1790522463.164615,
+          "wallSeconds": 0.3212897777557373,
           "exitCode": 0,
-          "output": "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.closed.raw.js",
-          "sha256": "7dfa54a6de280d8cb79b57156440afb00908d8ba24fb401d06628104437f3ec1"
+          "output": "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.closed.raw.js",
+          "sha256": "b75ab26137c16f7fd2d1036661d423c2f297d19ae7ff89b3e7622f7d5d53b63e"
         },
         {
           "args": [
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/src/vfile.lil",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/src/vfile.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/lilscript.toml",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/lilscript.toml",
             "-o",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/vfile.raw.js"
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/vfile.raw.js"
           ],
-          "startedAt": 1790226227.4967387,
-          "wallSeconds": 0.47791457176208496,
+          "startedAt": 1790522463.5438213,
+          "wallSeconds": 0.21408629417419434,
           "exitCode": 0,
-          "output": "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/vfile.raw.js",
-          "sha256": "587ad4812105e47e82845cbf2d5a8a0b808a3d16cd43ad8c25956aa25e38fada"
+          "output": "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/vfile.raw.js",
+          "sha256": "61612660ccb95d4f1466a7cbd129140ac11510d424adc7f3920026ef0c3d3992"
         }
       ]
     },
@@ -533,61 +533,61 @@
         "node scripts/build.mjs --compile"
       ],
       "cwd": "port",
-      "wallSeconds": 2.130199465995247,
-      "cpuSeconds": 2.0999960000000115,
+      "wallSeconds": 1.1710526079987176,
+      "cpuSeconds": 1.180340000000002,
       "exitCode": 0,
       "timedOut": false,
       "log": "lilscript-build-3.log",
-      "logSha256": "a483b70ecc07f637e06cf8459ee70c03ea1f9e444816f703ab1aebfe865c4e51",
-      "tail": "compiled src/index.lil with lilscript.toml in 562.6 ms\ncompiled src/index.lil with lilscript.closed.toml in 497.2 ms\ncompiled src/vfile.lil with lilscript.toml in 429.9 ms\nwrote dist/unified.esm.js, dist/unified.cjs, dist/unified.umd.js, dist/unified.closed.js, dist/vfile.esm.js, dist/vfile.cjs\n",
+      "logSha256": "40e0a94e3512351c4f7d5d73f4e0c3f0b3c9042a6cc30b63180d4154f47d6027",
+      "tail": "compiled src/index.lil with lilscript.toml in 361.0 ms\ncompiled src/index.lil with lilscript.closed.toml in 378.8 ms\ncompiled src/vfile.lil with lilscript.toml in 285.9 ms\nwrote dist/unified.esm.js, dist/unified.cjs, dist/unified.umd.js, dist/unified.closed.js, dist/vfile.esm.js, dist/vfile.cjs\n",
       "invocations": [
         {
           "args": [
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/src/index.lil",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/src/index.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/lilscript.toml",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/lilscript.toml",
             "-o",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.raw.js"
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.raw.js"
           ],
-          "startedAt": 1790226364.5058558,
-          "wallSeconds": 0.3702263832092285,
+          "startedAt": 1790522485.683551,
+          "wallSeconds": 0.2963895797729492,
           "exitCode": 0,
-          "output": "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.raw.js",
-          "sha256": "7dfa54a6de280d8cb79b57156440afb00908d8ba24fb401d06628104437f3ec1"
+          "output": "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.raw.js",
+          "sha256": "a65fccf86a47748c037b75a187679987207572ec64e20c8ec49971296fd1221f"
         },
         {
           "args": [
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/src/index.lil",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/src/index.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/lilscript.closed.toml",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/lilscript.closed.toml",
             "-o",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.closed.raw.js"
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.closed.raw.js"
           ],
-          "startedAt": 1790226365.0483878,
-          "wallSeconds": 0.3303217887878418,
+          "startedAt": 1790522486.0375702,
+          "wallSeconds": 0.3228616714477539,
           "exitCode": 0,
-          "output": "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/unified.closed.raw.js",
-          "sha256": "7dfa54a6de280d8cb79b57156440afb00908d8ba24fb401d06628104437f3ec1"
+          "output": "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/unified.closed.raw.js",
+          "sha256": "b75ab26137c16f7fd2d1036661d423c2f297d19ae7ff89b3e7622f7d5d53b63e"
         },
         {
           "args": [
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/src/vfile.lil",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/src/vfile.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/lilscript.toml",
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/lilscript.toml",
             "-o",
-            "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/vfile.raw.js"
+            "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/vfile.raw.js"
           ],
-          "startedAt": 1790226365.588492,
-          "wallSeconds": 0.2192072868347168,
+          "startedAt": 1790522486.4206107,
+          "wallSeconds": 0.2249000072479248,
           "exitCode": 0,
-          "output": "/home/azureuser/lilscript-work/release-m2/unifiedlil/srcbuild/ports/unifiedlil/dist/vfile.raw.js",
-          "sha256": "587ad4812105e47e82845cbf2d5a8a0b808a3d16cd43ad8c25956aa25e38fada"
+          "output": "/home/azureuser/lilscript-work/release-0927/ports/unifiedlil/dist/vfile.raw.js",
+          "sha256": "61612660ccb95d4f1466a7cbd129140ac11510d424adc7f3920026ef0c3d3992"
         }
       ]
     }
@@ -612,19 +612,19 @@
     "external": [],
     "samples": [
       {
-        "bundleSeconds": 0.13221009600000003,
-        "wallSeconds": 1.802237035
+        "bundleSeconds": 0.04877728399999998,
+        "wallSeconds": 0.51844177
       },
       {
-        "bundleSeconds": 0.07945455100000026,
-        "wallSeconds": 1.132797059
+        "bundleSeconds": 0.019522888999999963,
+        "wallSeconds": 0.35663540899999996
       },
       {
-        "bundleSeconds": 0.05932836099999986,
-        "wallSeconds": 0.6986976400000003
+        "bundleSeconds": 0.014325812999999925,
+        "wallSeconds": 0.28190803299999995
       }
     ],
-    "medianSeconds": 1.132797059,
+    "medianSeconds": 0.35663540899999996,
     "toolchain": {
       "esbuild": "0.28.1",
       "terser": "5.51.2",
@@ -700,90 +700,90 @@
   "lilscriptArtifacts": [
     {
       "path": "dist/unified.umd.js",
-      "raw": 20475,
-      "gzip9": 5861,
-      "brotli11": 5194,
-      "sha256": "d65a0181b344983a575102e315a121d4602159314ffef3200f2cab10e30f3b5b"
+      "raw": 19691,
+      "gzip9": 5822,
+      "brotli11": 5162,
+      "sha256": "14e56819f26cd2af08e43ae6c91570b4237078e507165e22c2c35aa350973087"
     },
     {
       "path": "dist/unified.closed.raw.js",
-      "raw": 12173,
-      "gzip9": 4574,
-      "brotli11": 4156,
-      "sha256": "7dfa54a6de280d8cb79b57156440afb00908d8ba24fb401d06628104437f3ec1"
+      "raw": 12154,
+      "gzip9": 4572,
+      "brotli11": 4151,
+      "sha256": "b75ab26137c16f7fd2d1036661d423c2f297d19ae7ff89b3e7622f7d5d53b63e"
     },
     {
       "path": "dist/unified.closed.js",
-      "raw": 12250,
-      "gzip9": 4632,
-      "brotli11": 4206,
-      "sha256": "d472b3cb63b1eadf918dff953293b93ea4c36e81c52d12000b5ae3b1a3fee95b"
+      "raw": 12231,
+      "gzip9": 4629,
+      "brotli11": 4197,
+      "sha256": "99f087edc9a9d8f4bc5ea73d4b5d430d25e49e8297ae9549340725b2280da351"
     },
     {
       "path": "dist/vfile.cjs",
-      "raw": 11103,
-      "gzip9": 3579,
-      "brotli11": 3186,
-      "sha256": "928f73a2d125b01c60a6b671428bc540af5f9fc9cbd03e47fdbcfb3f43ed8713"
+      "raw": 10635,
+      "gzip9": 3539,
+      "brotli11": 3151,
+      "sha256": "63eb51c734aff2733b053358d1e9a63424d9138f65c40e3a0cdfc40337f6fc70"
     },
     {
       "path": "dist/vfile.raw.js",
-      "raw": 6513,
-      "gzip9": 2621,
-      "brotli11": 2365,
-      "sha256": "587ad4812105e47e82845cbf2d5a8a0b808a3d16cd43ad8c25956aa25e38fada"
+      "raw": 6432,
+      "gzip9": 2623,
+      "brotli11": 2359,
+      "sha256": "61612660ccb95d4f1466a7cbd129140ac11510d424adc7f3920026ef0c3d3992"
     },
     {
       "path": "dist/unified.cjs",
-      "raw": 19336,
-      "gzip9": 5835,
-      "brotli11": 5179,
-      "sha256": "1678eed2c7708a6383987eb162396d01c856065803f42ed67be6706ad655b1b5"
+      "raw": 18682,
+      "gzip9": 5794,
+      "brotli11": 5150,
+      "sha256": "713ca67055ba407646f45031d85671932a6405f2edca4a57358f026c527419ae"
     },
     {
       "path": "dist/unified.esm.js",
-      "raw": 12250,
-      "gzip9": 4632,
-      "brotli11": 4206,
-      "sha256": "d472b3cb63b1eadf918dff953293b93ea4c36e81c52d12000b5ae3b1a3fee95b"
+      "raw": 12073,
+      "gzip9": 4639,
+      "brotli11": 4199,
+      "sha256": "b297935e93810d5527269669fb22f8827e2f809d59e3984d3f05c991e0d9e0b9"
     },
     {
       "path": "dist/vfile.esm.js",
-      "raw": 6609,
-      "gzip9": 2694,
-      "brotli11": 2417,
-      "sha256": "14e7434ed510cea6e9939526d267d4fd14822b3836a5d34e46f2ab38514ebffd"
+      "raw": 6528,
+      "gzip9": 2698,
+      "brotli11": 2415,
+      "sha256": "540986960a343490a2cb684db464729f73e3a86363574c6bf815a64e040c9066"
     },
     {
       "path": "dist/unified.raw.js",
-      "raw": 12173,
-      "gzip9": 4574,
-      "brotli11": 4156,
-      "sha256": "7dfa54a6de280d8cb79b57156440afb00908d8ba24fb401d06628104437f3ec1"
+      "raw": 11996,
+      "gzip9": 4583,
+      "brotli11": 4147,
+      "sha256": "a65fccf86a47748c037b75a187679987207572ec64e20c8ec49971296fd1221f"
     }
   ],
   "nativeBuildsSummary": {
     "samples": 3,
     "successful": 3,
-    "medianSeconds": 95.13405420300114,
-    "minimumSeconds": 40.23610101699887,
-    "maximumSeconds": 116.31260622300033
+    "medianSeconds": 10.933989227982238,
+    "minimumSeconds": 10.774090700026136,
+    "maximumSeconds": 13.304639153007884
   },
   "lilscriptBuildsSummary": {
     "samples": 3,
     "successful": 3,
-    "medianSeconds": 6.770709283002361,
-    "minimumSeconds": 2.130199465995247,
-    "maximumSeconds": 6.979831069998909
+    "medianSeconds": 1.274375305045396,
+    "minimumSeconds": 1.1710526079987176,
+    "maximumSeconds": 1.3743197549483739
   },
   "status": "complete",
-  "finishedAt": "2026-09-24T05:06:25Z",
+  "finishedAt": "2026-09-27T15:21:32Z",
   "sourceBuild": {
     "original": {
       "complete": true,
-      "medianSeconds": 95.13405420300114,
-      "minimumSeconds": 40.23610101699887,
-      "maximumSeconds": 116.31260622300033,
+      "medianSeconds": 10.933989227982238,
+      "minimumSeconds": 10.774090700026136,
+      "maximumSeconds": 13.304639153007884,
       "samples": [
         {
           "command": [
@@ -791,8 +791,8 @@
             "run",
             "build"
           ],
-          "wallSeconds": 116.31260622300033,
-          "cpuSeconds": 61.161551,
+          "wallSeconds": 13.304639153007884,
+          "cpuSeconds": 16.17428,
           "exitCode": 0,
           "timedOut": false,
           "log": "original-build-1.log",
@@ -804,8 +804,8 @@
             "run",
             "build"
           ],
-          "wallSeconds": 95.13405420300114,
-          "cpuSeconds": 63.425426,
+          "wallSeconds": 10.933989227982238,
+          "cpuSeconds": 15.549361000000001,
           "exitCode": 0,
           "timedOut": false,
           "log": "original-build-2.log",
@@ -817,8 +817,8 @@
             "run",
             "build"
           ],
-          "wallSeconds": 40.23610101699887,
-          "cpuSeconds": 52.28147699999996,
+          "wallSeconds": 10.774090700026136,
+          "cpuSeconds": 15.514598999999999,
           "exitCode": 0,
           "timedOut": false,
           "log": "original-build-3.log",
@@ -828,9 +828,9 @@
     },
     "lilscript": {
       "complete": true,
-      "medianSeconds": 6.770709283002361,
-      "minimumSeconds": 2.130199465995247,
-      "maximumSeconds": 6.979831069998909,
+      "medianSeconds": 1.274375305045396,
+      "minimumSeconds": 1.1710526079987176,
+      "maximumSeconds": 1.3743197549483739,
       "samples": [
         {
           "command": [
@@ -838,12 +838,12 @@
             "-c",
             "node scripts/build.mjs --compile"
           ],
-          "wallSeconds": 6.979831069998909,
-          "cpuSeconds": 2.5562659999999937,
+          "wallSeconds": 1.3743197549483739,
+          "cpuSeconds": 1.223472000000002,
           "exitCode": 0,
           "timedOut": false,
           "log": "lilscript-build-1.log",
-          "logSha256": "aa5d2863da8842f4bc56f3abfb65575d1dd5c999989f5c68e366573433cf636b"
+          "logSha256": "90f332508a62fb3d77e7a9b3e06ca30c0cb9409a9a534d0723d3dd628e8939f2"
         },
         {
           "command": [
@@ -851,12 +851,12 @@
             "-c",
             "node scripts/build.mjs --compile"
           ],
-          "wallSeconds": 6.770709283002361,
-          "cpuSeconds": 2.6719720000000073,
+          "wallSeconds": 1.274375305045396,
+          "cpuSeconds": 1.261575000000002,
           "exitCode": 0,
           "timedOut": false,
           "log": "lilscript-build-2.log",
-          "logSha256": "d3e2240b846ccc7ba373e5341358033472759ec878b66c400faf69690cbbb4ec"
+          "logSha256": "818e2a4658acc6e4b1579384348d7211338b305a2c763abb7ae466a100f8f8a7"
         },
         {
           "command": [
@@ -864,12 +864,12 @@
             "-c",
             "node scripts/build.mjs --compile"
           ],
-          "wallSeconds": 2.130199465995247,
-          "cpuSeconds": 2.0999960000000115,
+          "wallSeconds": 1.1710526079987176,
+          "cpuSeconds": 1.180340000000002,
           "exitCode": 0,
           "timedOut": false,
           "log": "lilscript-build-3.log",
-          "logSha256": "a483b70ecc07f637e06cf8459ee70c03ea1f9e444816f703ab1aebfe865c4e51"
+          "logSha256": "40e0a94e3512351c4f7d5d73f4e0c3f0b3c9042a6cc30b63180d4154f47d6027"
         }
       ]
     },

@@ -15,7 +15,7 @@ Two compiles ship from the same `.lil` source:
 | Lane | Config | Meaning |
 | --- | --- | --- |
 | **library** (npm) | `lilscript.toml` · `--target js-module` | reusable ESM. Export names and `extern class` keys stay. |
-| **closed** | `lilscript.closed.toml` · `--target js-module` | closed LilScript world. The compiler renames no properties yet, so `extern class` keys keep their names and this file currently equals the library file. ESM export names stay so the lane is testable. |
+| **closed** | `lilscript.closed.toml` · `--target js-module` | closed LilScript world. The compiler renames no properties yet, so `extern class` keys keep their names; the file differs from the library file only through its optimizer settings (candidate search `production`, no beam width). ESM export names stay so the lane is testable. |
 
 You publish the library lane. The closed artifact is `dist/unified.closed.js`.
 

@@ -56,7 +56,7 @@
           <p class="score-note">
             Official rows are one esbuild bundle of <code>unified@11.0.5</code>, built from its pinned Git source, plus the packages it needs at runtime, then Terser, Oxc or esbuild.
             The LilScript row is <code>dist/unified.esm.js</code> exactly as the compiler wrote it, with no post-minifier.
-            Closed LilScript is the same source built with <code>lilscript.closed.toml</code>; the compiler renames no properties, so the two files match. Runtime checks: 224/224 pass.
+            Closed LilScript is the same source built with <code>lilscript.closed.toml</code>; the compiler renames no properties, so the two files differ only through optimizer settings. Runtime checks: 224/224 pass.
           </p>
         </div>
       </section>
@@ -224,7 +224,7 @@
             <p>
               <strong>Why this surface.</strong> Comparing against a single published file would hide official dependencies.
               The fair fight is the runtime graph you actually import, then the same minifiers the JS ecosystem ships.
-              Closed LilScript is the closed-world build; the compiler renames no properties yet, so today it equals the library file.
+              Closed LilScript is the closed-world build; the compiler renames no properties yet, so today it differs from the library file only in optimizer settings.
               The CommonJS and UMD files are esbuild format conversions of the compiler's ESM and are labelled as such under <a href="#compiler">compiler</a>.
             </p>
             <a href="https://github.com/yeargun/unifiedlil">README ↗</a>
