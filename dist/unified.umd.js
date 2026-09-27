@@ -38,13 +38,7 @@ var unified = (() => {
   var g = (a, b2) => {
     for (let c2 in a) {
       let d2 = a[c2], e2 = d2;
-      if (typeof d2 == "function") {
-        f(d2, c2);
-        e2 = { writable: true, value: d2 };
-      } else {
-        f(d2.get, "get " + c2);
-        f(d2.set, "set " + c2);
-      }
+      typeof d2 == "function" ? (f(d2, c2), e2 = { writable: true, value: d2 }) : (f(d2.get, "get " + c2), f(d2.set, "set " + c2));
       e2.configurable = true;
       Object.defineProperty(b2, c2, e2);
     }
@@ -76,15 +70,14 @@ var unified = (() => {
     return a[b2];
   };
   var m = (a, b2) => {
-    if (a == null || typeof a != "object" && typeof a != "function") a = {};
+    (a == null || typeof a != "object" && typeof a != "function") && (a = {});
     if (b2 != null) for (let c2 in b2) {
       let d2 = l(a, c2), e2 = l(b2, c2);
       if (a !== e2) {
         let b3 = e2;
         if (e2 && (j(e2) || Array.isArray(e2))) b3 = m(Array.isArray(e2) ? d2 && Array.isArray(d2) ? d2 : [] : d2 && j(d2) ? d2 : {}, e2);
         else if (e2 === void 0) continue;
-        if (c2 == "__proto__") Object.defineProperty(a, c2, { enumerable: true, configurable: true, value: b3, writable: true });
-        else a[c2] = b3;
+        c2 == "__proto__" ? Object.defineProperty(a, c2, { enumerable: true, configurable: true, value: b3, writable: true }) : a[c2] = b3;
       }
     }
     return a;
@@ -105,30 +98,24 @@ var unified = (() => {
         let g2 = a[d2], h2 = b4[0];
         if (h2) return e2(h2);
         let i2 = Array.from(b4).slice(1);
-        for (let a2 = 0; a2 < c2.length; ++a2) if (i2[a2] == null) i2[a2] = c2[a2];
+        for (let a2 = 0; a2 < c2.length; ++a2) i2[a2] == null && (i2[a2] = c2[a2]);
         c2 = i2;
-        if (g2) ((a2, b5) => {
+        g2 ? ((a2, b5) => {
           let c3 = false, d3 = ba((a3) => {
-            if (!c3) {
-              c3 = true;
-              b5.apply(void 0, a3);
-            }
+            !c3 && (c3 = true, b5.apply(void 0, a3));
           }), e3 = (a3) => d3(null, a3);
           return ba((b6) => {
             let f3 = Array.from(b6), g3 = a2.length > f3.length, h3;
-            if (g3) f3.push(d3);
+            g3 && f3.push(d3);
             try {
               h3 = a2.apply(void 0, f3);
             } catch (a3) {
               if (g3 && c3) throw a3;
               return d3(a3);
             }
-            if (!g3) if (h3 && h3.then && typeof h3.then == "function") h3.then(e3, d3);
-            else if (Error.prototype.isPrototypeOf(h3)) d3(h3);
-            else e3(h3);
+            !g3 && (h3 && h3.then && typeof h3.then == "function" ? h3.then(e3, d3) : Error.prototype.isPrototypeOf(h3) ? d3(h3) : e3(h3));
           });
-        })(g2, f2).apply(void 0, i2);
-        else e2.apply(void 0, o(i2));
+        })(g2, f2).apply(void 0, i2) : e2.apply(void 0, o(i2));
       });
       f2.apply(void 0, o(c2));
     }), use: (c2) => {
@@ -152,10 +139,7 @@ var unified = (() => {
             c2 = e2 + 1;
             break;
           }
-        } else if (d2 < 0) {
-          f2 = true;
-          d2 = e2 + 1;
-        }
+        } else d2 < 0 && (f2 = true, d2 = e2 + 1);
       }
       return d2 < 0 ? "" : a.slice(c2, d2);
     }
@@ -169,21 +153,11 @@ var unified = (() => {
           break;
         }
       } else {
-        if (g2 < 0) {
-          f2 = true;
-          g2 = e2 + 1;
-        }
-        if (h2 > -1) if (a.codePointAt(e2) === b2.codePointAt(h2)) {
-          --h2;
-          if (h2 < 0) d2 = e2;
-        } else {
-          h2 = -1;
-          d2 = g2;
-        }
+        g2 < 0 && (f2 = true, g2 = e2 + 1);
+        h2 > -1 && (a.codePointAt(e2) === b2.codePointAt(h2) ? (--h2, h2 < 0 && (d2 = e2)) : (h2 = -1, d2 = g2));
       }
     }
-    if (c2 == d2) d2 = g2;
-    else if (d2 < 0) d2 = a.length;
+    c2 == d2 ? d2 = g2 : d2 < 0 && (d2 = a.length);
     return a.slice(c2, d2);
   };
   var w = (a, b2) => {
@@ -203,13 +177,7 @@ var unified = (() => {
               if (c3.length > 2) {
                 let a3 = +c3.lastIndexOf("/");
                 if (a3 != c3.length - 1) {
-                  if (a3 < 0) {
-                    c3 = "";
-                    d3 = 0;
-                  } else {
-                    c3 = c3.slice(0, a3);
-                    d3 = c3.length - 1 - +c3.lastIndexOf("/");
-                  }
+                  a3 < 0 ? (c3 = "", d3 = 0) : (c3 = c3.slice(0, a3), d3 = c3.length - 1 - +c3.lastIndexOf("/"));
                   e3 = h2;
                   f2 = 0;
                   continue;
@@ -222,10 +190,7 @@ var unified = (() => {
                 continue;
               }
             }
-            if (b3) {
-              c3 = c3.length > 0 ? c3 + "/.." : "..";
-              d3 = 2;
-            }
+            b3 && (c3 = c3.length > 0 ? c3 + "/.." : "..", d3 = 2);
           } else {
             let b4 = a2.slice(e3 + 1, h2);
             c3 = c3.length > 0 ? c3 + "/" + b4 : b4;
@@ -233,13 +198,12 @@ var unified = (() => {
           }
           e3 = h2;
           f2 = 0;
-        } else if (g2 === 46 && f2 > -1) ++f2;
-        else f2 = -1;
+        } else f2 = g2 === 46 && f2 > -1 ? f2 + 1 : -1;
       }
       return c3;
     })(c2, !d2);
-    if (e2.length == 0 && !d2) e2 = ".";
-    if (e2.length > 0 && q(c2, c2.length - 1)) e2 = e2 + "/";
+    e2.length == 0 && !d2 && (e2 = ".");
+    e2.length > 0 && q(c2, c2.length - 1) && (e2 = e2 + "/");
     return d2 ? "/" + e2 : e2;
   };
   var x = (a) => !!a && typeof a == "object" && "href" in a && !!a.href && "protocol" in a && !!a.protocol && a.auth === void 0;
@@ -250,29 +214,17 @@ var unified = (() => {
   var B = (a) => A(a && a.start) + "-" + A(a && a.end);
   var C = (a) => a && typeof a == "number" ? a : 1;
   var E = (a, b2, c2, d2) => {
-    if (typeof c2 == "string") {
-      d2 = c2;
-      c2 = void 0;
-    }
+    typeof c2 == "string" && (d2 = c2, c2 = void 0);
     let e2 = "", f2 = false, g2 = !c2 ? {} : "line" in c2 && "column" in c2 || "start" in c2 && "end" in c2 ? { place: c2 } : "type" in c2 ? { ancestors: [c2], place: c2.position } : Object.assign({}, c2);
-    if (typeof b2 == "string") e2 = b2;
-    else if (!g2.cause && b2) {
-      f2 = true;
-      e2 = b2.message;
-      g2.cause = b2;
-    }
+    typeof b2 == "string" ? e2 = b2 : !g2.cause && b2 && (f2 = true, e2 = b2.message, g2.cause = b2);
     if (!g2.ruleId && !g2.source && typeof d2 == "string") {
       let a2 = d2.indexOf(":");
-      if (a2 === -1) g2.ruleId = d2;
-      else {
-        g2.source = d2.slice(0, a2);
-        g2.ruleId = d2.slice(a2 + 1);
-      }
+      a2 === -1 ? g2.ruleId = d2 : (g2.source = d2.slice(0, a2), g2.ruleId = d2.slice(a2 + 1));
     }
     let h2 = g2.ancestors;
     if (!g2.place && h2) {
       let a2 = h2[h2.length - 1];
-      if (a2) g2.place = a2.position;
+      a2 && (g2.place = a2.position);
     }
     let i2 = g2.place, j2 = i2 && "start" in i2 ? i2.start : i2, l2 = g2.cause;
     return Object.assign(Object.setPrototypeOf(new Error(), a), { ancestors: h2 || void 0, cause: l2 || void 0, column: j2 ? j2.column : void 0, fatal: void 0, file: "", message: e2, line: j2 ? j2.line : void 0, name: ((a2) => !a2 || typeof a2 != "object" ? "" : "position" in a2 || "type" in a2 ? B(a2.position) : "start" in a2 || "end" in a2 ? B(a2) : "line" in a2 || "column" in a2 ? A(a2) : "")(i2) || "1:1", place: i2 || void 0, reason: e2, ruleId: g2.ruleId || void 0, source: g2.source || void 0, stack: f2 && l2 && typeof l2.stack == "string" ? l2.stack : "", actual: void 0, expected: void 0, note: void 0, url: void 0 });
@@ -308,9 +260,8 @@ var unified = (() => {
       if (!Array.isArray(c2)) {
         if (!("plugins" in c2) && !("settings" in c2)) throw new Error("Expected usable value but received an empty preset, which is probably a mistake: presets typically come with `plugins` and sometimes with `settings`, but this has neither");
         V(a, b2, c2.plugins);
-        if (c2.settings) b2.settings = m(b2.settings, c2.settings);
-      } else if (e2) V(a, b2, c2);
-      else W(a, c2[0], c2.slice(1));
+        c2.settings && (b2.settings = m(b2.settings, c2.settings));
+      } else e2 ? V(a, b2, c2) : W(a, c2[0], c2.slice(1));
     } else throw new TypeError("Expected usable value, not `" + c2 + "`");
   };
   var V = (a, b2, c2) => {
@@ -328,11 +279,10 @@ var unified = (() => {
     if (d2 > -1) {
       if (c2.length == 0) return;
       let b3 = c2[0], e3 = a[d2][1];
-      if (i(e3) && i(b3)) c2[0] = m(e3, b3);
+      i(e3) && i(b3) && (c2[0] = m(e3, b3));
     }
     let e2 = [b2].concat(c2);
-    if (d2 < 0) a.push(e2);
-    else a[d2] = e2;
+    d2 < 0 ? a.push(e2) : a[d2] = e2;
   };
   var X = (a, b2) => b2 ? a(void 0, b2) : new Promise(a);
   var k = {}.hasOwnProperty;
@@ -362,10 +312,10 @@ var unified = (() => {
       let c3 = I[b2];
       if (c3 in d2) {
         let b3 = d2[c3];
-        if (b3 != null) a[c3] = c3 == "history" ? b3.slice() : b3;
+        b3 != null && (a[c3] = c3 == "history" ? b3.slice() : b3);
       }
     }
-    for (let b2 in d2) if (!I.includes(b2)) a[b2] = d2[b2];
+    for (let b2 in d2) !I.includes(b2) && (a[b2] = d2[b2]);
   });
   h(K, "VFile");
   function ea(a) {
@@ -403,16 +353,10 @@ var unified = (() => {
           d2 = b2 + 1;
           break;
         }
-        continue;
+      } else {
+        c2 < 0 && (g2 = true, c2 = b2 + 1);
+        h2 === 46 ? e2 < 0 ? e2 = b2 : f2 = 1 : e2 > -1 && (f2 = -1);
       }
-      if (c2 < 0) {
-        g2 = true;
-        c2 = b2 + 1;
-      }
-      if (h2 === 46) {
-        if (e2 < 0) e2 = b2;
-        else f2 = 1;
-      } else if (e2 > -1) f2 = -1;
     }
     return e2 < 0 || c2 < 0 || f2 == 0 || f2 == 1 && e2 == c2 - 1 && e2 == d2 + 1 ? "" : a2.slice(e2, c2);
   })(a.path) : void 0), set: da((a, b2) => {
@@ -424,18 +368,18 @@ var unified = (() => {
     }
     a.path = w(a.dirname, a.stem + (b2 || ""));
   }) }, path: { get: ea((a) => a.history[a.history.length - 1]), set: da((a, b2) => {
-    if (x(b2)) b2 = ((a2) => {
-      if (a2.protocol !== "file:") y("The URL must be of scheme file", "ERR_INVALID_URL_SCHEME");
-      if (a2.hostname !== "") y('File URL host must be "localhost" or empty on darwin', "ERR_INVALID_FILE_URL_HOST");
+    x(b2) && (b2 = ((a2) => {
+      a2.protocol !== "file:" && y("The URL must be of scheme file", "ERR_INVALID_URL_SCHEME");
+      a2.hostname !== "" && y('File URL host must be "localhost" or empty on darwin', "ERR_INVALID_FILE_URL_HOST");
       let c2 = a2.pathname;
       for (let a3 = 0; a3 < c2.length; ++a3) if (c2.codePointAt(a3) === 37 && c2.codePointAt(a3 + 1) === 50) {
         let b3 = c2.codePointAt(a3 + 2);
-        if (b3 === 70 || b3 === 102) y("File URL path must not include encoded / characters", "ERR_INVALID_FILE_URL_PATH");
+        (b3 === 70 || b3 === 102) && y("File URL path must not include encoded / characters", "ERR_INVALID_FILE_URL_PATH");
       }
       return globalThis.decodeURIComponent(c2);
-    })(b2);
+    })(b2));
     G(b2, "path");
-    if (a.path !== b2) a.history.push(b2);
+    a.path !== b2 && a.history.push(b2);
   }) }, stem: { get: ea((a) => typeof a.path == "string" ? s(a.path, a.extname) : void 0), set: da((a, b2) => {
     G(b2, "stem");
     F(b2, "stem");
@@ -450,10 +394,7 @@ var unified = (() => {
     return e2;
   }), message: ca((a, b2, c2, d2) => {
     let f2 = E(J.prototype, b2, c2, d2);
-    if (a.path) {
-      f2.name = a.path + ":" + f2.name;
-      f2.file = a.path;
-    }
+    a.path && (f2.name = a.path + ":" + f2.name, f2.file = a.path);
     f2.fatal = false;
     a.messages.push(f2);
     return f2;
@@ -492,7 +433,7 @@ var unified = (() => {
     let d2 = a.attachers, e2 = a.namespace;
     R("use", a.frozen);
     let f2 = b2[0];
-    if (f2 != null) U(d2, e2, f2, Array.from(b2).slice(1), true);
+    f2 != null && U(d2, e2, f2, Array.from(b2).slice(1), true);
     return a;
   });
   function ga(a) {
@@ -512,10 +453,11 @@ var unified = (() => {
       a.freezeIndex = b2;
       if (!(b2 < a.attachers.length)) break;
       let c2 = a.attachers[b2], d2 = c2.slice(1);
-      if (d2[0] === false) continue;
-      if (d2[0] === true) d2[0] = void 0;
-      let e2 = c2[0].apply(a, d2);
-      if (typeof e2 == "function") a.transformers.use(e2);
+      if (d2[0] !== false) {
+        d2[0] === true && (d2[0] = void 0);
+        let b3 = c2[0].apply(a, d2);
+        typeof b3 == "function" && a.transformers.use(b3);
+      }
     }
     a.frozen = true;
     a.freezeIndex = 1 / 0;
@@ -535,10 +477,8 @@ var unified = (() => {
         if (b3 || !g3 || !h3) f2(b3);
         else {
           let f3 = a.stringify(g3, h3);
-          if (c(f3)) h3.value = f3;
-          else h3.result = f3;
-          if (e2) e2(h3);
-          else d2(void 0, h3);
+          c(f3) ? h3.value = f3 : h3.result = f3;
+          e2 ? e2(h3) : d2(void 0, h3);
         }
       });
     }, d2);
@@ -558,16 +498,11 @@ var unified = (() => {
     S(b2);
     a.freeze();
     let f2 = a.transformers;
-    if (!d2 && typeof c2 == "function") {
-      d2 = c2;
-      c2 = void 0;
-    }
+    !d2 && typeof c2 == "function" && (d2 = c2, c2 = void 0);
     return X((a2, e2) => {
       f2.run(b2, O(c2), (c3, f3, g2) => {
         let h2 = f3 || b2;
-        if (c3) e2(c3);
-        else if (a2) a2(h2);
-        else d2(void 0, h2, g2);
+        c3 ? e2(c3) : a2 ? a2(h2) : d2(void 0, h2, g2);
       });
     }, d2);
   }), runSync: ga((a, b2, c2) => {

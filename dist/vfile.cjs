@@ -35,13 +35,7 @@ var d = (a, b) => {
 var e = (a, b) => {
   for (let c2 in a) {
     let e2 = a[c2], f2 = e2;
-    if (typeof e2 == "function") {
-      d(e2, c2);
-      f2 = { writable: true, value: e2 };
-    } else {
-      d(e2.get, "get " + c2);
-      d(e2.set, "set " + c2);
-    }
+    typeof e2 == "function" ? (d(e2, c2), f2 = { writable: true, value: e2 }) : (d(e2.get, "get " + c2), d(e2.set, "set " + c2));
     f2.configurable = true;
     Object.defineProperty(b, c2, f2);
   }
@@ -64,10 +58,7 @@ var i = (a, b) => {
           c2 = e2 + 1;
           break;
         }
-      } else if (d2 < 0) {
-        f2 = true;
-        d2 = e2 + 1;
-      }
+      } else d2 < 0 && (f2 = true, d2 = e2 + 1);
     }
     return d2 < 0 ? "" : a.slice(c2, d2);
   }
@@ -81,21 +72,11 @@ var i = (a, b) => {
         break;
       }
     } else {
-      if (h2 < 0) {
-        f2 = true;
-        h2 = e2 + 1;
-      }
-      if (i2 > -1) if (a.codePointAt(e2) === b.codePointAt(i2)) {
-        --i2;
-        if (i2 < 0) d2 = e2;
-      } else {
-        i2 = -1;
-        d2 = h2;
-      }
+      h2 < 0 && (f2 = true, h2 = e2 + 1);
+      i2 > -1 && (a.codePointAt(e2) === b.codePointAt(i2) ? (--i2, i2 < 0 && (d2 = e2)) : (i2 = -1, d2 = h2));
     }
   }
-  if (c2 == d2) d2 = h2;
-  else if (d2 < 0) d2 = a.length;
+  c2 == d2 ? d2 = h2 : d2 < 0 && (d2 = a.length);
   return a.slice(c2, d2);
 };
 var m = (a, b) => {
@@ -115,13 +96,7 @@ var m = (a, b) => {
             if (c3.length > 2) {
               let a3 = +c3.lastIndexOf("/");
               if (a3 != c3.length - 1) {
-                if (a3 < 0) {
-                  c3 = "";
-                  d3 = 0;
-                } else {
-                  c3 = c3.slice(0, a3);
-                  d3 = c3.length - 1 - +c3.lastIndexOf("/");
-                }
+                a3 < 0 ? (c3 = "", d3 = 0) : (c3 = c3.slice(0, a3), d3 = c3.length - 1 - +c3.lastIndexOf("/"));
                 e3 = h2;
                 f2 = 0;
                 continue;
@@ -134,10 +109,7 @@ var m = (a, b) => {
               continue;
             }
           }
-          if (b2) {
-            c3 = c3.length > 0 ? c3 + "/.." : "..";
-            d3 = 2;
-          }
+          b2 && (c3 = c3.length > 0 ? c3 + "/.." : "..", d3 = 2);
         } else {
           let b3 = a2.slice(e3 + 1, h2);
           c3 = c3.length > 0 ? c3 + "/" + b3 : b3;
@@ -145,13 +117,12 @@ var m = (a, b) => {
         }
         e3 = h2;
         f2 = 0;
-      } else if (g2 === 46 && f2 > -1) ++f2;
-      else f2 = -1;
+      } else g2 === 46 && f2 > -1 ? ++f2 : f2 = -1;
     }
     return c3;
   })(c2, !d2);
-  if (e2.length == 0 && !d2) e2 = ".";
-  if (e2.length > 0 && g(c2, c2.length - 1)) e2 = e2 + "/";
+  e2.length == 0 && !d2 && (e2 = ".");
+  e2.length > 0 && g(c2, c2.length - 1) && (e2 = e2 + "/");
   return d2 ? "/" + e2 : e2;
 };
 var n = (a) => !!a && typeof a == "object" && "href" in a && !!a.href && "protocol" in a && !!a.protocol && a.auth === void 0;
@@ -162,29 +133,17 @@ var q = (a) => s(a && a.line) + ":" + s(a && a.column);
 var r = (a) => q(a && a.start) + "-" + q(a && a.end);
 var s = (a) => a && typeof a == "number" ? a : 1;
 var u = (a, b, c2, d2) => {
-  if (typeof c2 == "string") {
-    d2 = c2;
-    c2 = void 0;
-  }
+  typeof c2 == "string" && (d2 = c2, c2 = void 0);
   let e2 = "", f2 = false, g2 = !c2 ? {} : "line" in c2 && "column" in c2 || "start" in c2 && "end" in c2 ? { place: c2 } : "type" in c2 ? { ancestors: [c2], place: c2.position } : Object.assign({}, c2);
-  if (typeof b == "string") e2 = b;
-  else if (!g2.cause && b) {
-    f2 = true;
-    e2 = b.message;
-    g2.cause = b;
-  }
+  typeof b == "string" ? e2 = b : !g2.cause && b && (f2 = true, e2 = b.message, g2.cause = b);
   if (!g2.ruleId && !g2.source && typeof d2 == "string") {
     let a2 = d2.indexOf(":");
-    if (a2 === -1) g2.ruleId = d2;
-    else {
-      g2.source = d2.slice(0, a2);
-      g2.ruleId = d2.slice(a2 + 1);
-    }
+    a2 === -1 ? g2.ruleId = d2 : (g2.source = d2.slice(0, a2), g2.ruleId = d2.slice(a2 + 1));
   }
   let h2 = g2.ancestors;
   if (!g2.place && h2) {
     let a2 = h2[h2.length - 1];
-    if (a2) g2.place = a2.position;
+    a2 && (g2.place = a2.position);
   }
   let i2 = g2.place, j = i2 && "start" in i2 ? i2.start : i2, l = g2.cause;
   return Object.assign(Object.setPrototypeOf(new Error(), a), { ancestors: h2 || void 0, cause: l || void 0, column: j ? j.column : void 0, fatal: void 0, file: "", message: e2, line: j ? j.line : void 0, name: ((a2) => !a2 || typeof a2 != "object" ? "" : "position" in a2 || "type" in a2 ? r(a2.position) : "start" in a2 || "end" in a2 ? r(a2) : "line" in a2 || "column" in a2 ? q(a2) : "")(i2) || "1:1", place: i2 || void 0, reason: e2, ruleId: g2.ruleId || void 0, source: g2.source || void 0, stack: f2 && l && typeof l.stack == "string" ? l.stack : "", actual: void 0, expected: void 0, note: void 0, url: void 0 });
@@ -227,10 +186,10 @@ var A = E((a, b) => {
     let c2 = y[b2];
     if (c2 in d2) {
       let b3 = d2[c2];
-      if (b3 != null) a[c2] = c2 == "history" ? b3.slice() : b3;
+      b3 != null && (a[c2] = c2 == "history" ? b3.slice() : b3);
     }
   }
-  for (let b2 in d2) if (!y.includes(b2)) a[b2] = d2[b2];
+  for (let b2 in d2) !y.includes(b2) && (a[b2] = d2[b2]);
 });
 f(A, "VFile");
 function F(a) {
@@ -268,16 +227,10 @@ var C = { basename: { get: F((a) => typeof a.path == "string" ? i(a.path) : void
         d2 = b + 1;
         break;
       }
-      continue;
+    } else {
+      c2 < 0 && (g2 = true, c2 = b + 1);
+      h2 === 46 ? e2 < 0 ? e2 = b : f2 = 1 : e2 > -1 && (f2 = -1);
     }
-    if (c2 < 0) {
-      g2 = true;
-      c2 = b + 1;
-    }
-    if (h2 === 46) {
-      if (e2 < 0) e2 = b;
-      else f2 = 1;
-    } else if (e2 > -1) f2 = -1;
   }
   return e2 < 0 || c2 < 0 || f2 == 0 || f2 == 1 && e2 == c2 - 1 && e2 == d2 + 1 ? "" : a2.slice(e2, c2);
 })(a.path) : void 0), set: E((a, b) => {
@@ -289,18 +242,18 @@ var C = { basename: { get: F((a) => typeof a.path == "string" ? i(a.path) : void
   }
   a.path = m(a.dirname, a.stem + (b || ""));
 }) }, path: { get: F((a) => a.history[a.history.length - 1]), set: E((a, b) => {
-  if (n(b)) b = ((a2) => {
-    if (a2.protocol !== "file:") o("The URL must be of scheme file", "ERR_INVALID_URL_SCHEME");
-    if (a2.hostname !== "") o('File URL host must be "localhost" or empty on darwin', "ERR_INVALID_FILE_URL_HOST");
+  n(b) && (b = ((a2) => {
+    a2.protocol !== "file:" && o("The URL must be of scheme file", "ERR_INVALID_URL_SCHEME");
+    a2.hostname !== "" && o('File URL host must be "localhost" or empty on darwin', "ERR_INVALID_FILE_URL_HOST");
     let c2 = a2.pathname;
     for (let a3 = 0; a3 < c2.length; ++a3) if (c2.codePointAt(a3) === 37 && c2.codePointAt(a3 + 1) === 50) {
       let b2 = c2.codePointAt(a3 + 2);
-      if (b2 === 70 || b2 === 102) o("File URL path must not include encoded / characters", "ERR_INVALID_FILE_URL_PATH");
+      (b2 === 70 || b2 === 102) && o("File URL path must not include encoded / characters", "ERR_INVALID_FILE_URL_PATH");
     }
     return globalThis.decodeURIComponent(c2);
-  })(b);
+  })(b));
   w(b, "path");
-  if (a.path !== b) a.history.push(b);
+  a.path !== b && a.history.push(b);
 }) }, stem: { get: F((a) => typeof a.path == "string" ? i(a.path, a.extname) : void 0), set: E((a, b) => {
   w(b, "stem");
   v(b, "stem");
@@ -315,10 +268,7 @@ var C = { basename: { get: F((a) => typeof a.path == "string" ? i(a.path) : void
   return e2;
 }), message: D((a, b, c2, d2) => {
   let f2 = u(z.prototype, b, c2, d2);
-  if (a.path) {
-    f2.name = a.path + ":" + f2.name;
-    f2.file = a.path;
-  }
+  a.path && (f2.name = a.path + ":" + f2.name, f2.file = a.path);
   f2.fatal = false;
   a.messages.push(f2);
   return f2;
