@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import {unified} from '../../dist/unified.esm.js'
+import {unified} from '../../dist/unified.node.js'
 
 test('core', async function (t) {
   await t.test('should expose the public api', async function () {
-    assert.deepEqual(Object.keys(await import('../../dist/unified.esm.js')).sort(), [
+    assert.deepEqual(Object.keys(await import('../../dist/unified.node.js')).sort(), [
       'unified'
     ])
   })

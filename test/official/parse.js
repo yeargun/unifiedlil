@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import {unified} from '../../dist/unified.esm.js'
+import {unified} from '../../dist/unified.node.js'
 
 test('`parse`', async function (t) {
   const givenNode = {type: 'alpha'}

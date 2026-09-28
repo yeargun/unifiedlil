@@ -1,7 +1,7 @@
 import process from 'node:process'
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import {unified} from '../../dist/unified.esm.js'
+import {unified} from '../../dist/unified.node.js'
 import {VFile} from '@itslil/unified/vfile'
 
 test('`runSync`', async function (t) {

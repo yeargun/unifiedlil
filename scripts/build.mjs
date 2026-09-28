@@ -3,9 +3,11 @@ import {
   appendFileSync,
   constants,
   copyFileSync,
+  cpSync,
   existsSync,
   mkdirSync,
   readFileSync,
+  rmSync,
   writeFileSync,
 } from "node:fs"
 import { dirname, resolve } from "node:path"
@@ -18,7 +20,14 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..")
 const lilscriptRoot = process.env.LILSCRIPT_ROOT ?? resolve(root, "..", "lilscript")
 const dist = resolve(root, "dist")
 const file = "unified"
-const banner = "/*! @itslil/unified 11.0.6 | LilScript reimplementation of unified | MIT */\n"
+const { version } = JSON.parse(readFileSync(resolve(root, "package.json"), "utf8"))
+const banner = `/*! @itslil/unified ${version} | LilScript reimplementation of unified | MIT */\n`
+// The Node programs (the `node` condition) bind what vfile imports under `node`
+// (src/vfile-imports.lil): node:path, node:process and node:url's fileURLToPath.
+const nodeImports = `import minpathNode from 'node:path';
+import minprocNode from 'node:process';
+import {fileURLToPath as urlToPathNode} from 'node:url';
+`
 
 function compilerPath() {
   const candidates = [
@@ -44,10 +53,10 @@ function run(cmd, args) {
 // build; scripts/record-release.mjs reads it for the compile times the Pages site shows.
 const compileTimings = []
 
-function compileLil(compiler, sourceName, configName, outputName) {
+function compileLil(compiler, sourceName, configName, outputName, source = resolve(root, "src")) {
   const start = performance.now()
   run(compiler, [
-    resolve(root, "src", sourceName),
+    resolve(source, sourceName),
     "--target",
     "js-module",
     "--config",
@@ -71,9 +80,21 @@ function compileIfRequested() {
   mkdirSync(dist, { recursive: true })
   // index.lil exports unified's public API only, so the compiler's artifact is the public module;
   // entry.lil keeps the runtime exports (VFileRuntime, ProcessorRuntime) that other ports link.
-  compileLil(compiler, "index.lil", "lilscript.toml", `${file}.raw.js`)
-  compileLil(compiler, "index.lil", "lilscript.closed.toml", `${file}.closed.raw.js`)
-  compileLil(compiler, "vfile.lil", "lilscript.toml", "vfile.raw.js")
+  // vfile imports #minpath, #minproc and #minurl per export condition. The Node programs
+  // compile src/ as it is (src/vfile-imports.lil binds node:path, node:process and node:url);
+  // the default programs, for every runtime without `node`, compile a staging copy with vfile's
+  // shims (src/browser/vfile-imports.lil) in its place.
+  compileLil(compiler, "index.lil", "lilscript.toml", `${file}.node.raw.js`)
+  compileLil(compiler, "vfile.lil", "lilscript.toml", "vfile.node.raw.js")
+  const staging = resolve(root, ".tmp", "default-src")
+  rmSync(staging, { recursive: true, force: true })
+  cpSync(resolve(root, "src"), staging, { recursive: true })
+  cpSync(resolve(root, "src", "browser", "vfile-imports.lil"), resolve(staging, "vfile-imports.lil"))
+  compileLil(compiler, "index.lil", "lilscript.toml", `${file}.raw.js`, staging)
+  // The closed lane is the library file (unified.esm.js) under the closed-world settings.
+  compileLil(compiler, "index.lil", "lilscript.closed.toml", `${file}.closed.raw.js`, staging)
+  compileLil(compiler, "vfile.lil", "lilscript.toml", "vfile.raw.js", staging)
+  rmSync(staging, { recursive: true, force: true })
   if (process.env.UNIFIEDLIL_COMPILE_TIMING) {
     const totalMs = compileTimings.reduce((sum, entry) => sum + entry.wallMs, 0)
     appendFileSync(
@@ -101,7 +122,7 @@ function exportedNames(source) {
   return names.sort()
 }
 
-function publish(rawName, name, publicBanner, keep) {
+function publish(rawName, name, publicBanner, keep, node) {
   const rawFile = resolve(dist, rawName)
   if (!existsSync(rawFile)) {
     throw new Error(`dist/${rawName} is missing. Run with --compile after building LilScript.`)
@@ -111,21 +132,27 @@ function publish(rawName, name, publicBanner, keep) {
   if (names.join(",") !== [...keep].sort().join(",")) {
     throw new Error(`dist/${rawName} exports ${names.join(", ")}; expected ${keep.join(", ")}`)
   }
-  writeFileSync(resolve(dist, name), `${publicBanner}${source.trimEnd()}\n`)
+  // Only the Node programs may read the Node modules; the default ones carry vfile's shims.
+  const reads = /\b(?:minpathNode|minprocNode|urlToPathNode)\b/.test(source)
+  if (reads !== node) throw new Error(`dist/${rawName}: ${node ? "the Node program lacks" : "a default program reads"} the Node module bindings`)
+  writeFileSync(resolve(dist, name), `${publicBanner}${node ? nodeImports : ""}${source.trimEnd()}\n`)
 }
 
-publish(`${file}.raw.js`, `${file}.esm.js`, banner, ["unified"])
-publish(`${file}.closed.raw.js`, `${file}.closed.js`, banner, ["unified"])
-const vfileBanner = "/*! @itslil/unified vfile browser runtime | LilScript reimplementation of vfile@6.0.3 | MIT */\n"
-publish("vfile.raw.js", "vfile.esm.js", vfileBanner, ["VFile", "VFileMessage", "createVFileMessage"])
+publish(`${file}.raw.js`, `${file}.esm.js`, banner, ["unified"], false)
+publish(`${file}.node.raw.js`, `${file}.node.js`, banner, ["unified"], true)
+publish(`${file}.closed.raw.js`, `${file}.closed.js`, banner, ["unified"], false)
+const vfileBanner = `/*! @itslil/unified ${version} vfile | LilScript reimplementation of vfile@6.0.3 | MIT */\n`
+publish("vfile.raw.js", "vfile.esm.js", vfileBanner, ["VFile", "VFileMessage", "createVFileMessage"], false)
+publish("vfile.node.raw.js", "vfile.node.js", vfileBanner, ["VFile", "VFileMessage", "createVFileMessage"], true)
 
 // CommonJS and UMD: the compiler has no CommonJS or script-with-exports target yet, so these three
 // files are esbuild format conversions of the compiler's ESM (no minification). They are labelled
 // "post-processed by esbuild, not compiler-written" in site/results.json and on the site; replacing
 // them with compiler-written files is plan task M12.2.
+// CommonJS is what `require` gets under `node`: the Node programs.
 await esbuild({
   absWorkingDir: dist,
-  entryPoints: [resolve(dist, `${file}.esm.js`)],
+  entryPoints: [resolve(dist, `${file}.node.js`)],
   outfile: resolve(dist, `${file}.cjs`),
   bundle: true,
   format: "cjs",
@@ -140,7 +167,7 @@ await esbuild({
 
 await esbuild({
   absWorkingDir: dist,
-  entryPoints: [resolve(dist, "vfile.esm.js")],
+  entryPoints: [resolve(dist, "vfile.node.js")],
   outfile: resolve(dist, "vfile.cjs"),
   bundle: true,
   format: "cjs",
@@ -171,4 +198,4 @@ await esbuild({
 })
 
 copyFileSync(resolve(root, "types", `${file}.d.ts`), resolve(dist, `${file}.d.ts`))
-console.log(`wrote dist/${file}.esm.js, dist/${file}.cjs, dist/${file}.umd.js, dist/${file}.closed.js, dist/vfile.esm.js, dist/vfile.cjs`)
+console.log(`wrote dist/${file}.esm.js, dist/${file}.node.js, dist/${file}.cjs, dist/${file}.umd.js, dist/${file}.closed.js, dist/vfile.esm.js, dist/vfile.node.js, dist/vfile.cjs`)

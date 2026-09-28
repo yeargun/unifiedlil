@@ -2,7 +2,7 @@ import assert from "node:assert/strict"
 import test from "node:test"
 
 import {unified as official} from "unified"
-import {unified as actual} from "../dist/unified.esm.js"
+import {unified as actual} from "../dist/unified.node.js"
 import {VFile} from "vfile"
 
 function configure(factory, trace) {

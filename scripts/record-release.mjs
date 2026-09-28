@@ -10,8 +10,8 @@
 // 3. Measures document throughput of the delivered ESM against official unified in this Node.
 //
 // Every hash is of a file on disk at the moment of the run. The official rows (Terser, esbuild, Oxc)
-// come from the paired source build of unified's pinned Git revision (comparison/source-build/) and,
-// like `previousRelease`, are left as they are.
+// come from the paired source build of unified's pinned Git revision (comparison/source-build/) and
+// are left as they are. The page shows this release only, so no previous release is kept.
 import { createHash } from "node:crypto"
 import { execFileSync } from "node:child_process"
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs"
@@ -61,10 +61,12 @@ function measure(paths) {
 }
 const esbuildLabel = "post-processed by esbuild (format conversion of the compiler's ESM, not minified), not compiler-written"
 const deliveredFiles = [
-  ["dist/unified.esm.js", "ESM (npm import, browser)", "compiler"],
-  ["dist/unified.closed.js", "closed-world ESM", "compiler"],
-  ["dist/vfile.esm.js", "@itslil/unified/vfile ESM", "compiler"],
-  ["dist/unified.cjs", "CommonJS (npm require)", esbuildLabel],
+  ["dist/unified.esm.js", "ESM for every runtime without `node` (browsers, workers, edge): vfile's own path shims", "compiler"],
+  ["dist/unified.node.js", "ESM, `node` condition: node:path, node:process and node:url, as vfile imports them", "compiler"],
+  ["dist/unified.closed.js", "closed-world ESM (the library file under the closed settings)", "compiler"],
+  ["dist/vfile.esm.js", "@itslil/unified/vfile ESM, every runtime without `node`", "compiler"],
+  ["dist/vfile.node.js", "@itslil/unified/vfile ESM, `node` condition", "compiler"],
+  ["dist/unified.cjs", "CommonJS (`node` with `require`)", esbuildLabel],
   ["dist/unified.umd.js", "UMD / IIFE (unpkg, jsdelivr)", esbuildLabel],
   ["dist/vfile.cjs", "@itslil/unified/vfile CommonJS", esbuildLabel],
 ]
@@ -121,7 +123,8 @@ function throughput(lanes) {
   })
 }
 const official = await import("unified")
-const lil = await import(pathToFileURL(resolve(root, "dist", "unified.esm.js")).href)
+// Measured in Node, so both lanes are what Node resolves: the Node program here.
+const lil = await import(pathToFileURL(resolve(root, "dist", "unified.node.js")).href)
 const [officialRun, lilRun] = throughput([official.unified, lil.unified])
 if (officialRun.out !== lilRun.out) throw new Error("throughput workload output differs from official unified")
 
@@ -159,6 +162,7 @@ results.compiler = {
   host: { cpus: cpus().length, loadAverage1m: Math.round(loadAverage1m * 10) / 10 },
   date: new Date().toISOString().slice(0, 10),
 }
+delete results.previousRelease
 writeFileSync(resultsPath, `${JSON.stringify(results, null, 2)}\n`)
 console.log(
   `recorded: ESM ${esm.brotli11} B Brotli-11 (bar ${bar.brotli11}); ` +

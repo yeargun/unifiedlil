@@ -1,6 +1,6 @@
 {
   "name": "@itslil/unified",
-  "version": "11.0.6",
+  "version": "11.0.7",
   "description": "unified processor reimplemented in LilScript",
   "keywords": [
     "unified",
@@ -30,14 +30,20 @@
   "exports": {
     ".": {
       "types": "./dist/unified.d.ts",
-      "import": "./dist/unified.esm.js",
-      "require": "./dist/unified.cjs",
+      "node": {
+        "import": "./dist/unified.node.js",
+        "require": "./dist/unified.cjs",
+        "default": "./dist/unified.node.js"
+      },
       "default": "./dist/unified.esm.js"
     },
     "./vfile": {
       "types": "./types/vfile.d.ts",
-      "import": "./dist/vfile.esm.js",
-      "require": "./dist/vfile.cjs",
+      "node": {
+        "import": "./dist/vfile.node.js",
+        "require": "./dist/vfile.cjs",
+        "default": "./dist/vfile.node.js"
+      },
       "default": "./dist/vfile.esm.js"
     },
     "./closed": "./dist/unified.closed.js",
@@ -47,11 +53,13 @@
   "files": [
     "src",
     "dist/unified.esm.js",
+    "dist/unified.node.js",
     "dist/unified.cjs",
     "dist/unified.umd.js",
     "dist/unified.closed.js",
     "dist/unified.d.ts",
     "dist/vfile.esm.js",
+    "dist/vfile.node.js",
     "dist/vfile.cjs",
     "types/vfile.d.ts",
     "LICENSE",
