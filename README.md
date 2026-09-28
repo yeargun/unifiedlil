@@ -19,10 +19,23 @@ Two compiles ship from the same `.lil` source:
 
 You publish the library lane. The closed artifact is `dist/unified.closed.js`.
 
-The ESM files (`dist/unified.esm.js`, `dist/unified.closed.js`,
-`dist/vfile.esm.js`) are exactly what the compiler wrote, plus a license banner;
-no minifier runs over them. The CommonJS and UMD files (`dist/unified.cjs`,
-`dist/unified.umd.js`, `dist/vfile.cjs`) are esbuild format conversions of that
+vfile imports `#minpath`, `#minproc` and `#minurl` per export condition:
+`node:path`, `node:process` and `node:url`'s `fileURLToPath` under `node`, its own
+small shims everywhere else. This package resolves the same way. Under `node`
+(Node, Deno, Bun) `@itslil/unified` and `@itslil/unified/vfile` give
+`dist/unified.node.js` and `dist/vfile.node.js`, which import those three Node
+modules as vfile does; every other runtime (browsers, workers, edge runtimes,
+React Native) gets `dist/unified.esm.js` and `dist/vfile.esm.js`, which carry the
+shims. `test/environments.test.mjs` bundles upstream vfile and this package with
+each runtime's conditions and compares the working directory, every path getter
+and setter, file URLs and the errors they throw.
+
+The ESM files (`dist/unified.esm.js`, `dist/unified.node.js`,
+`dist/unified.closed.js`, `dist/vfile.esm.js`, `dist/vfile.node.js`) are exactly
+what the compiler wrote, plus a license banner and, in the Node files, the three
+Node imports; no minifier runs over them. The CommonJS files (`dist/unified.cjs`,
+`dist/vfile.cjs`, for `require` under `node`) and the UMD file
+(`dist/unified.umd.js`) are esbuild format conversions of the Node and default
 ESM (not minified) because the compiler has no CommonJS target yet; the site
 labels them as post-processed.
 

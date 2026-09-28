@@ -170,8 +170,8 @@ function renderCompiler() {
   if (!compiler) return
   const samples = compiler.compileWallMs ?? []
   const esm = (data.delivered ?? []).find((row) => row.file === `dist/${data.file}.esm.js`)
-  const before = data.previousRelease?.files?.[`dist/${data.file}.esm.js`]
-  const change = esm && before ? smallerThan(esm.brotli11, before.brotli11) : null
+  const bar = (data.size ?? []).find((lane) => lane.baseline)
+  const change = esm && bar ? smallerThan(esm.brotli11, bar.brotli11) : null
   const cards = [
     {
       label: `compile time, median of ${samples.length} builds`,
@@ -183,7 +183,7 @@ function renderCompiler() {
       value: samples.map((value) => (value / 1000).toFixed(2)).join(" · ") + " s",
     },
     {
-      label: before ? `ESM Brotli-11 vs previous release (${formatter.format(before.brotli11)} B)` : "ESM Brotli-11",
+      label: bar ? `ESM Brotli-11 vs the bar (${bar.name}, ${formatter.format(bar.brotli11)} B)` : "ESM Brotli-11",
       value: change ? change.text : esm ? `${formatter.format(esm.brotli11)} B` : "—",
     },
     {
@@ -206,12 +206,11 @@ function renderCompiler() {
     .join("")
   document.querySelector("#delivered-body").innerHTML = (data.delivered ?? [])
     .map((row) => {
-      const previous = data.previousRelease?.files?.[row.file]
-      const verdict = previous ? smallerThan(row.brotli11, previous.brotli11) : null
+      const verdict = bar ? smallerThan(row.brotli11, bar.brotli11) : null
       const written = row.compilerWritten
         ? `<strong>compiler</strong>`
         : `<span class="post-processed">${escapeHtml(row.writtenBy)}</span>`
-      return `<tr><th scope="row">${escapeHtml(row.file)}<small>${escapeHtml(row.role)}</small></th><td>${formatter.format(row.raw)}</td><td>${formatter.format(row.gzip9)}</td><td>${formatter.format(row.brotli11)}</td><td class="verdict ${verdict ? verdict.state : ""}">${previous ? `${formatter.format(previous.brotli11)} B · <strong>${escapeHtml(verdict.text)}</strong>` : "—"}</td><td class="written">${written}</td></tr>`
+      return `<tr><th scope="row">${escapeHtml(row.file)}<small>${escapeHtml(row.role)}</small></th><td>${formatter.format(row.raw)}</td><td>${formatter.format(row.gzip9)}</td><td>${formatter.format(row.brotli11)}</td><td class="verdict ${verdict ? verdict.state : ""}">${verdict ? `<strong>${escapeHtml(verdict.text)}</strong>` : "—"}</td><td class="written">${written}</td></tr>`
     })
     .join("")
   const host = compiler.host
@@ -222,7 +221,6 @@ function renderCompiler() {
     host
       ? `Host: ${host.instanceClass ? `Azure ${host.instanceClass}, ` : ""}${host.cpus} CPUs, shared with other jobs; 1-minute load average ${host.loadAverage1m.toFixed(1)} when timing began.`
       : "",
-    data.previousRelease ? `Previous release: ${data.previousRelease.label}.` : "",
   ]
     .filter(Boolean)
     .join(" ")
