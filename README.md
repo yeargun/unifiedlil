@@ -57,3 +57,8 @@ mapping shared with remark. `npm run measure:graph` compares that unmodified
 output with the complete official browser graph compressed by Terser 5.51.2.
 
 The LilScript compiler lives next door at `../lilscript`.
+
+
+## Comparison with the original
+
+See [COMPARISON.md](COMPARISON.md) for current size and build-time comparisons against minified upstream.
