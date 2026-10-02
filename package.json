@@ -58,7 +58,17 @@
     "NOTICE.md",
     "README.md"
   ],
-  "sideEffects": false,
+  "sideEffects": [
+    "./dist/unified.cjs",
+    "./dist/unified.closed.js",
+    "./dist/unified.closed.raw.js",
+    "./dist/unified.esm.js",
+    "./dist/unified.raw.js",
+    "./dist/unified.umd.js",
+    "./dist/vfile.cjs",
+    "./dist/vfile.esm.js",
+    "./dist/vfile.raw.js"
+  ],
   "engines": {
     "node": ">=18"
   },
