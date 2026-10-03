@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "package": "@itslil/unified",
+  "version": "11.0.7",
+  "checkedAt": "2026-10-03T15:05:12.217231+00:00",
+  "compilerSha256": "8ff44fabb92c949e68240ce6541038fd52e2f3c04d1a9ac470031e4238541c3a",
+  "buildReport": "./comparison/package-build-report.json",
+  "packageBuildSeconds": 38.424,
+  "validation": {
+    "ok": true,
+    "checks": [
+      {
+        "suite": "test",
+        "command": [
+          "bash",
+          "-c",
+          "npm run check:sources && node --test-concurrency=1 --test test/*.test.mjs test/official/index.js && npm run check:types"
+        ],
+        "returncode": 0,
+        "log": "./comparison/package-validation/test.log",
+        "logSha256": "8ab115b81e6da88bdfdd186463a6ba0766c45ee1b805d58155c6cf0c900a77de"
+      },
+      {
+        "suite": "pack",
+        "command": [
+          "npm",
+          "run",
+          "check:pack"
+        ],
+        "returncode": 0,
+        "log": "./comparison/package-validation/pack.log",
+        "logSha256": "a928e7d9128ff018829413037e3f817de0b65241f187f7c4f8a62534d4adc644"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "src/browser/vfile-imports.lil",
+      "sha256": "17515fa203f6b6981aa3d6d3024ee2204605ca241493f833f523e2e8ca260b50"
+    },
+    {
+      "path": "src/browser.lil",
+      "sha256": "e7aec62e6d00b9a4d48be7c60ab2e89aff27f0980a996064fa3a7c9d710f2b6a"
+    },
+    {
+      "path": "src/entry.lil",
+      "sha256": "baa802c68e7c54ef57c3023187f6a52ef16c186a234314010f4b18f71b263782"
+    },
+    {
+      "path": "src/extend.lil",
+      "sha256": "4055d2d1d1a84eb61b897c2f6d706c2c17d283df4d520a0620d18b753f340b12"
+    },
+    {
+      "path": "src/host.lil",
+      "sha256": "745c7baa0a9b13001eae15b75a8be9ea063a88a51945e56728522d44a331ee89"
+    },
+    {
+      "path": "src/index.lil",
+      "sha256": "04a636b7c62fda30c4a61ff9bedf1ff640583b332107843c0a79ec186aa4aab7"
+    },
+    {
+      "path": "src/plain.lil",
+      "sha256": "8a52a7e342eebf815c188da089eba5acaad37b604d13111a471f7437ed1d4249"
+    },
+    {
+      "path": "src/trough.lil",
+      "sha256": "9759f1e87e4d67fcd65b85963c2cbb6b5b206ac0212d4045bfb2c04125067eff"
+    },
+    {
+      "path": "src/vfile-imports.lil",
+      "sha256": "17515fa203f6b6981aa3d6d3024ee2204605ca241493f833f523e2e8ca260b50"
+    },
+    {
+      "path": "src/vfile.lil",
+      "sha256": "b802ee848f32c20ffd2207d9e4b16b7aac257bd5445f0919dfc8b1b8c7b86e99"
+    },
+    {
+      "path": "package-conditions/browser.lil",
+      "sha256": "17515fa203f6b6981aa3d6d3024ee2204605ca241493f833f523e2e8ca260b50"
+    },
+    {
+      "path": "package-conditions/node.lil",
+      "sha256": "b77e6c528b222565e413a48b7c7ccd99912724078c086149353e5b204d9fda99"
+    },
+    {
+      "path": "package-conditions/vfile.lil",
+      "sha256": "b802ee848f32c20ffd2207d9e4b16b7aac257bd5445f0919dfc8b1b8c7b86e99"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "dist/.lilscript/closed.json",
+      "bytes": 5007,
+      "sha256": "b886b3d34b33154f86aa76fa8510d06fa06d69df3e2c38ba78c6889d45860932"
+    },
+    {
+      "path": "dist/.lilscript/node.json",
+      "bytes": 10416,
+      "sha256": "beba9ac45830a9a30abba7ce737339537a1978790d511fd0e424dcf8919400aa"
+    },
+    {
+      "path": "dist/.lilscript/public.json",
+      "bytes": 9122,
+      "sha256": "f9ecc08f15604ae412dad19a82a2d500edc7150fce4f7eb2a80c4432a92e3310"
+    },
+    {
+      "path": "dist/lilscript.manifest.json",
+      "bytes": 14922,
+      "sha256": "f0de2fb2490640316284cdfc22f13b17b62e45999dc3ed069a087d36cdfd341f"
+    },
+    {
+      "path": "dist/unified.cjs",
+      "bytes": 10238,
+      "sha256": "cf649afa80574ebb8194769cac1a43179db1de08643fc46f936d208c64cc1143"
+    },
+    {
+      "path": "dist/unified.closed.js",
+      "bytes": 12033,
+      "sha256": "447e5510e4c7ce9273974d8fe80363d6224672eb1fefc378c71f277d8df3f94e"
+    },
+    {
+      "path": "dist/unified.closed.raw.js",
+      "bytes": 12033,
+      "sha256": "447e5510e4c7ce9273974d8fe80363d6224672eb1fefc378c71f277d8df3f94e"
+    },
+    {
+      "path": "dist/unified.d.ts",
+      "bytes": 24,
+      "sha256": "25dd92c7cb062f8a187feeefd703685c2b863f9dc190584ee9fb12e7059242d4"
+    },
+    {
+      "path": "dist/unified.esm.js",
+      "bytes": 12157,
+      "sha256": "df4f722b8de804e1f7592025f43bf2f7ac387cae8f1e840cc3d1b7ee3bae3810"
+    },
+    {
+      "path": "dist/unified.node.js",
+      "bytes": 10116,
+      "sha256": "b8c59bd3adfc5e585873629ecde379a40bb33b04a5518e64798e62e2df108929"
+    },
+    {
+      "path": "dist/unified.raw.js",
+      "bytes": 12157,
+      "sha256": "df4f722b8de804e1f7592025f43bf2f7ac387cae8f1e840cc3d1b7ee3bae3810"
+    },
+    {
+      "path": "dist/unified.umd.js",
+      "bytes": 12124,
+      "sha256": "36b0872777ff4515f36aac73db28e25e7b525e0fea6d5744f483792ea80ae16f"
+    },
+    {
+      "path": "dist/vfile.cjs",
+      "bytes": 4803,
+      "sha256": "0bfe24c128df091faf4b7493da711950a8edd94d2267edfa06d5495580d06336"
+    },
+    {
+      "path": "dist/vfile.esm.js",
+      "bytes": 6540,
+      "sha256": "bf5b07d4439f79154a653d8942c6e2d7e530980d2d130a56a8cccbb87d9b4929"
+    },
+    {
+      "path": "dist/vfile.node.js",
+      "bytes": 4499,
+      "sha256": "0818095c1ff7e72f06cdbbed8ab73b43932d23da74734cd07e8bc0ede4286c26"
+    },
+    {
+      "path": "dist/vfile.raw.js",
+      "bytes": 6540,
+      "sha256": "bf5b07d4439f79154a653d8942c6e2d7e530980d2d130a56a8cccbb87d9b4929"
+    }
+  ],
+  "scope": "Checked repository package; independent of npm publication. Main-entry objective comparisons have separate artifacts and timings."
+}

@@ -1,11 +1,11 @@
 /**
- * @import {Plugin} from '../../dist/unified.node.js'
+ * @import {Plugin} from '../../dist/unified.esm.js'
  * @import {Node} from 'unist'
  */
 
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import {unified} from '../../dist/unified.node.js'
+import {unified} from '../../dist/unified.esm.js'
 import {simpleCompiler, simpleParser} from './util/simple.js'
 
 test('`processSync`', async function (t) {

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import {unified} from '../../dist/unified.node.js'
+import {unified} from '../../dist/unified.esm.js'
 
 test('`use`', async function (t) {
   const givenOptions = {alpha: 'bravo', charlie: true, delta: 1}

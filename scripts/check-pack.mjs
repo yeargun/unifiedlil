@@ -7,16 +7,12 @@ const result = JSON.parse(json)[0]
 const file = "unified"
 const required = new Set([
   `dist/${file}.esm.js`,
-  `dist/${file}.node.js`,
   `dist/${file}.cjs`,
   `dist/${file}.umd.js`,
   `dist/${file}.closed.js`,
   `dist/${file}.d.ts`,
   "dist/vfile.esm.js",
-  "dist/vfile.node.js",
   "dist/vfile.cjs",
-  "src/vfile-imports.lil",
-  "src/browser/vfile-imports.lil",
   "types/vfile.d.ts",
   "LICENSE",
   "NOTICE.md",

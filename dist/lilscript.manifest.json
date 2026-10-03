@@ -1,0 +1,773 @@
+{
+  "version": 5,
+  "outputs": [
+    {
+      "mode": "single",
+      "format": "esm",
+      "entries": [
+        {
+          "name": "browser",
+          "file": "unified.esm.js",
+          "dynamic": false,
+          "closure": [
+            "unified.esm.js"
+          ],
+          "row": 4059,
+          "raw_row": 12157
+        }
+      ],
+      "files": [
+        {
+          "file": "unified.esm.js",
+          "role": "entry",
+          "source_map_for": null,
+          "label": [
+            "browser"
+          ],
+          "modules": [
+            "browser.lil",
+            "index.lil",
+            "entry.lil",
+            "host.lil",
+            "plain.lil",
+            "extend.lil",
+            "trough.lil",
+            "vfile.lil",
+            "vfile-imports.lil"
+          ],
+          "anchored": true,
+          "imports": [],
+          "dynamic_imports": [],
+          "bytes": 12157,
+          "codec_bytes": 4059,
+          "sha256": "df4f722b8de804e1f7592025f43bf2f7ac387cae8f1e840cc3d1b7ee3bae3810"
+        }
+      ],
+      "side_effects": [
+        "unified.esm.js"
+      ],
+      "codec_total": 4059,
+      "rows_total": 4059,
+      "setters": 0,
+      "output": "public/primary",
+      "codec": "brotli",
+      "codec_settings": {
+        "brotli": {
+          "quality": 11,
+          "window": 22,
+          "mode": "generic"
+        },
+        "gzip": {
+          "level": 9,
+          "window": 15
+        }
+      },
+      "policy_fingerprint": [
+        97,
+        234,
+        25,
+        117,
+        122,
+        214,
+        226,
+        134,
+        254,
+        128,
+        23,
+        0,
+        130,
+        159,
+        218,
+        114,
+        48,
+        136,
+        100,
+        65,
+        86,
+        127,
+        193,
+        67,
+        129,
+        75,
+        26,
+        135,
+        184,
+        223,
+        96,
+        102
+      ]
+    },
+    {
+      "mode": "single",
+      "format": "iife",
+      "entries": [
+        {
+          "name": "browser",
+          "file": "unified.umd.js",
+          "dynamic": false,
+          "closure": [
+            "unified.umd.js"
+          ],
+          "row": 4135,
+          "raw_row": 12124
+        }
+      ],
+      "files": [
+        {
+          "file": "unified.umd.js",
+          "role": "entry",
+          "source_map_for": null,
+          "label": [
+            "browser"
+          ],
+          "modules": [
+            "entry.lil",
+            "host.lil",
+            "plain.lil",
+            "extend.lil",
+            "trough.lil",
+            "vfile.lil",
+            "vfile-imports.lil"
+          ],
+          "anchored": true,
+          "imports": [],
+          "dynamic_imports": [],
+          "bytes": 12124,
+          "codec_bytes": 4135,
+          "sha256": "36b0872777ff4515f36aac73db28e25e7b525e0fea6d5744f483792ea80ae16f"
+        }
+      ],
+      "side_effects": [
+        "unified.umd.js"
+      ],
+      "codec_total": 4135,
+      "rows_total": 4135,
+      "setters": 0,
+      "output": "public/browser",
+      "codec": "brotli",
+      "codec_settings": {
+        "brotli": {
+          "quality": 11,
+          "window": 22,
+          "mode": "generic"
+        },
+        "gzip": {
+          "level": 9,
+          "window": 15
+        }
+      },
+      "policy_fingerprint": [
+        77,
+        119,
+        20,
+        191,
+        251,
+        156,
+        230,
+        92,
+        106,
+        8,
+        3,
+        211,
+        124,
+        4,
+        238,
+        43,
+        215,
+        248,
+        24,
+        4,
+        52,
+        200,
+        151,
+        78,
+        251,
+        71,
+        252,
+        54,
+        131,
+        39,
+        254,
+        171
+      ]
+    },
+    {
+      "mode": "single",
+      "format": "esm",
+      "entries": [
+        {
+          "name": "browser",
+          "file": "vfile.esm.js",
+          "dynamic": false,
+          "closure": [
+            "vfile.esm.js"
+          ],
+          "row": 2294,
+          "raw_row": 6540
+        }
+      ],
+      "files": [
+        {
+          "file": "vfile.esm.js",
+          "role": "entry",
+          "source_map_for": null,
+          "label": [
+            "browser"
+          ],
+          "modules": [
+            "browser.lil",
+            "index.lil",
+            "entry.lil",
+            "host.lil",
+            "plain.lil",
+            "extend.lil",
+            "trough.lil",
+            "vfile.lil",
+            "vfile-imports.lil"
+          ],
+          "anchored": true,
+          "imports": [],
+          "dynamic_imports": [],
+          "bytes": 6540,
+          "codec_bytes": 2294,
+          "sha256": "bf5b07d4439f79154a653d8942c6e2d7e530980d2d130a56a8cccbb87d9b4929"
+        }
+      ],
+      "side_effects": [
+        "vfile.esm.js"
+      ],
+      "codec_total": 2294,
+      "rows_total": 2294,
+      "setters": 0,
+      "output": "public/vfile-esm",
+      "codec": "brotli",
+      "codec_settings": {
+        "brotli": {
+          "quality": 11,
+          "window": 22,
+          "mode": "generic"
+        },
+        "gzip": {
+          "level": 9,
+          "window": 15
+        }
+      },
+      "policy_fingerprint": [
+        92,
+        153,
+        51,
+        250,
+        97,
+        75,
+        27,
+        220,
+        157,
+        83,
+        204,
+        243,
+        9,
+        67,
+        146,
+        154,
+        69,
+        218,
+        149,
+        34,
+        108,
+        134,
+        13,
+        10,
+        13,
+        157,
+        183,
+        107,
+        22,
+        166,
+        237,
+        153
+      ]
+    },
+    {
+      "mode": "single",
+      "format": "esm",
+      "entries": [
+        {
+          "name": "index",
+          "file": "unified.closed.js",
+          "dynamic": false,
+          "closure": [
+            "unified.closed.js"
+          ],
+          "row": 4041,
+          "raw_row": 12033
+        }
+      ],
+      "files": [
+        {
+          "file": "unified.closed.js",
+          "role": "entry",
+          "source_map_for": null,
+          "label": [
+            "index"
+          ],
+          "modules": [
+            "index.lil",
+            "entry.lil",
+            "host.lil",
+            "plain.lil",
+            "extend.lil",
+            "trough.lil",
+            "vfile.lil",
+            "vfile-imports.lil"
+          ],
+          "anchored": true,
+          "imports": [],
+          "dynamic_imports": [],
+          "bytes": 12033,
+          "codec_bytes": 4041,
+          "sha256": "447e5510e4c7ce9273974d8fe80363d6224672eb1fefc378c71f277d8df3f94e"
+        }
+      ],
+      "side_effects": [
+        "unified.closed.js"
+      ],
+      "codec_total": 4041,
+      "rows_total": 4041,
+      "setters": 0,
+      "output": "closed/primary",
+      "codec": "brotli",
+      "codec_settings": {
+        "brotli": {
+          "quality": 11,
+          "window": 22,
+          "mode": "generic"
+        },
+        "gzip": {
+          "level": 9,
+          "window": 15
+        }
+      },
+      "policy_fingerprint": [
+        114,
+        1,
+        181,
+        126,
+        86,
+        155,
+        42,
+        239,
+        200,
+        173,
+        13,
+        235,
+        148,
+        240,
+        158,
+        196,
+        79,
+        14,
+        248,
+        176,
+        187,
+        64,
+        79,
+        118,
+        167,
+        98,
+        199,
+        12,
+        10,
+        111,
+        181,
+        82
+      ]
+    },
+    {
+      "mode": "single",
+      "format": "esm",
+      "entries": [
+        {
+          "name": "index",
+          "file": "unified.node.js",
+          "dynamic": false,
+          "closure": [
+            "unified.node.js"
+          ],
+          "row": 3364,
+          "raw_row": 10116
+        }
+      ],
+      "files": [
+        {
+          "file": "unified.node.js",
+          "role": "entry",
+          "source_map_for": null,
+          "label": [
+            "index"
+          ],
+          "modules": [
+            "entry.lil",
+            "host.lil",
+            "plain.lil",
+            "extend.lil",
+            "trough.lil",
+            "vfile.lil",
+            "vfile-imports.lil",
+            "module-8",
+            "module-9",
+            "module-10"
+          ],
+          "anchored": true,
+          "imports": [],
+          "dynamic_imports": [],
+          "bytes": 10116,
+          "codec_bytes": 3364,
+          "sha256": "b8c59bd3adfc5e585873629ecde379a40bb33b04a5518e64798e62e2df108929"
+        }
+      ],
+      "side_effects": [
+        "unified.node.js"
+      ],
+      "codec_total": 3364,
+      "rows_total": 3364,
+      "setters": 0,
+      "output": "node/primary",
+      "codec": "brotli",
+      "codec_settings": {
+        "brotli": {
+          "quality": 11,
+          "window": 22,
+          "mode": "generic"
+        },
+        "gzip": {
+          "level": 9,
+          "window": 15
+        }
+      },
+      "policy_fingerprint": [
+        68,
+        48,
+        156,
+        130,
+        192,
+        122,
+        163,
+        227,
+        188,
+        134,
+        207,
+        168,
+        143,
+        59,
+        172,
+        21,
+        124,
+        41,
+        80,
+        94,
+        230,
+        167,
+        59,
+        153,
+        156,
+        27,
+        57,
+        12,
+        103,
+        82,
+        11,
+        59
+      ]
+    },
+    {
+      "mode": "single",
+      "format": "cjs",
+      "entries": [
+        {
+          "name": "index",
+          "file": "unified.cjs",
+          "dynamic": false,
+          "closure": [
+            "unified.cjs"
+          ],
+          "row": 3423,
+          "raw_row": 10238
+        }
+      ],
+      "files": [
+        {
+          "file": "unified.cjs",
+          "role": "entry",
+          "source_map_for": null,
+          "label": [
+            "index"
+          ],
+          "modules": [
+            "entry.lil",
+            "host.lil",
+            "plain.lil",
+            "extend.lil",
+            "trough.lil",
+            "vfile.lil",
+            "vfile-imports.lil",
+            "module-8",
+            "module-9",
+            "module-10"
+          ],
+          "anchored": true,
+          "imports": [],
+          "dynamic_imports": [],
+          "bytes": 10238,
+          "codec_bytes": 3423,
+          "sha256": "cf649afa80574ebb8194769cac1a43179db1de08643fc46f936d208c64cc1143"
+        }
+      ],
+      "side_effects": [
+        "unified.cjs"
+      ],
+      "codec_total": 3423,
+      "rows_total": 3423,
+      "setters": 0,
+      "output": "node/cjs",
+      "codec": "brotli",
+      "codec_settings": {
+        "brotli": {
+          "quality": 11,
+          "window": 22,
+          "mode": "generic"
+        },
+        "gzip": {
+          "level": 9,
+          "window": 15
+        }
+      },
+      "policy_fingerprint": [
+        52,
+        204,
+        223,
+        158,
+        63,
+        205,
+        168,
+        177,
+        98,
+        64,
+        174,
+        27,
+        204,
+        74,
+        184,
+        250,
+        220,
+        63,
+        134,
+        118,
+        79,
+        135,
+        25,
+        51,
+        140,
+        253,
+        36,
+        106,
+        5,
+        155,
+        193,
+        122
+      ]
+    },
+    {
+      "mode": "single",
+      "format": "cjs",
+      "entries": [
+        {
+          "name": "vfile",
+          "file": "vfile.cjs",
+          "dynamic": false,
+          "closure": [
+            "vfile.cjs"
+          ],
+          "row": 1649,
+          "raw_row": 4803
+        }
+      ],
+      "files": [
+        {
+          "file": "vfile.cjs",
+          "role": "entry",
+          "source_map_for": null,
+          "label": [
+            "vfile"
+          ],
+          "modules": [
+            "host.lil",
+            "vfile.lil",
+            "vfile-imports.lil",
+            "module-8",
+            "module-9",
+            "module-10"
+          ],
+          "anchored": true,
+          "imports": [],
+          "dynamic_imports": [],
+          "bytes": 4803,
+          "codec_bytes": 1649,
+          "sha256": "0bfe24c128df091faf4b7493da711950a8edd94d2267edfa06d5495580d06336"
+        }
+      ],
+      "side_effects": [
+        "vfile.cjs"
+      ],
+      "codec_total": 1649,
+      "rows_total": 1649,
+      "setters": 0,
+      "output": "node/vfile-cjs",
+      "codec": "brotli",
+      "codec_settings": {
+        "brotli": {
+          "quality": 11,
+          "window": 22,
+          "mode": "generic"
+        },
+        "gzip": {
+          "level": 9,
+          "window": 15
+        }
+      },
+      "policy_fingerprint": [
+        217,
+        145,
+        244,
+        164,
+        130,
+        76,
+        178,
+        68,
+        96,
+        215,
+        148,
+        134,
+        59,
+        212,
+        98,
+        63,
+        20,
+        250,
+        140,
+        183,
+        139,
+        69,
+        161,
+        11,
+        125,
+        199,
+        93,
+        249,
+        191,
+        154,
+        6,
+        26
+      ]
+    },
+    {
+      "mode": "single",
+      "format": "esm",
+      "entries": [
+        {
+          "name": "vfile",
+          "file": "vfile.node.js",
+          "dynamic": false,
+          "closure": [
+            "vfile.node.js"
+          ],
+          "row": 1576,
+          "raw_row": 4499
+        }
+      ],
+      "files": [
+        {
+          "file": "vfile.node.js",
+          "role": "entry",
+          "source_map_for": null,
+          "label": [
+            "vfile"
+          ],
+          "modules": [
+            "host.lil",
+            "vfile.lil",
+            "vfile-imports.lil",
+            "module-8",
+            "module-9",
+            "module-10"
+          ],
+          "anchored": true,
+          "imports": [],
+          "dynamic_imports": [],
+          "bytes": 4499,
+          "codec_bytes": 1576,
+          "sha256": "0818095c1ff7e72f06cdbbed8ab73b43932d23da74734cd07e8bc0ede4286c26"
+        }
+      ],
+      "side_effects": [
+        "vfile.node.js"
+      ],
+      "codec_total": 1576,
+      "rows_total": 1576,
+      "setters": 0,
+      "output": "node/vfile-esm",
+      "codec": "brotli",
+      "codec_settings": {
+        "brotli": {
+          "quality": 11,
+          "window": 22,
+          "mode": "generic"
+        },
+        "gzip": {
+          "level": 9,
+          "window": 15
+        }
+      },
+      "policy_fingerprint": [
+        123,
+        142,
+        205,
+        209,
+        195,
+        213,
+        229,
+        153,
+        33,
+        95,
+        6,
+        162,
+        151,
+        11,
+        160,
+        223,
+        228,
+        184,
+        4,
+        207,
+        212,
+        140,
+        120,
+        130,
+        53,
+        185,
+        219,
+        244,
+        62,
+        166,
+        65,
+        36
+      ]
+    }
+  ],
+  "aliases": {
+    "unified.raw.js": "unified.esm.js",
+    "unified.closed.raw.js": "unified.closed.js",
+    "vfile.raw.js": "vfile.esm.js"
+  },
+  "providers": [],
+  "source_sha256": "d49247e4e478fbda59f20b6cdd3c76302800e69008b94e257b39e11790c8fe7a"
+}

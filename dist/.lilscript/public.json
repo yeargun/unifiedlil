@@ -1,0 +1,398 @@
+{
+  "version": 5,
+  "source_sha256": "f112e2a4ca7b9518a01cbd924ea08549a7fc7a80f9437a2e77bea378ab8ca26f",
+  "inputs": {
+    "root": 0,
+    "entries": [
+      {
+        "name": "browser",
+        "module": 0
+      },
+      {
+        "name": "index",
+        "module": 1
+      },
+      {
+        "name": "vfile",
+        "module": 7
+      }
+    ],
+    "modules": [
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/unifiedlil/.tmp/conditions/browser/browser.lil",
+        "bytes": 66,
+        "sha256": "e7aec62e6d00b9a4d48be7c60ab2e89aff27f0980a996064fa3a7c9d710f2b6a",
+        "dependencies": [
+          1
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/unifiedlil/.tmp/conditions/browser/index.lil",
+        "bytes": 163,
+        "sha256": "04a636b7c62fda30c4a61ff9bedf1ff640583b332107843c0a79ec186aa4aab7",
+        "dependencies": [
+          2
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/unifiedlil/.tmp/conditions/browser/entry.lil",
+        "bytes": 12498,
+        "sha256": "baa802c68e7c54ef57c3023187f6a52ef16c186a234314010f4b18f71b263782",
+        "dependencies": [
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/unifiedlil/.tmp/conditions/browser/host.lil",
+        "bytes": 2379,
+        "sha256": "745c7baa0a9b13001eae15b75a8be9ea063a88a51945e56728522d44a331ee89",
+        "dependencies": [],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/unifiedlil/.tmp/conditions/browser/plain.lil",
+        "bytes": 1307,
+        "sha256": "8a52a7e342eebf815c188da089eba5acaad37b604d13111a471f7437ed1d4249",
+        "dependencies": [
+          3
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/unifiedlil/.tmp/conditions/browser/extend.lil",
+        "bytes": 1592,
+        "sha256": "4055d2d1d1a84eb61b897c2f6d706c2c17d283df4d520a0620d18b753f340b12",
+        "dependencies": [
+          3,
+          4
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/unifiedlil/.tmp/conditions/browser/trough.lil",
+        "bytes": 3312,
+        "sha256": "9759f1e87e4d67fcd65b85963c2cbb6b5b206ac0212d4045bfb2c04125067eff",
+        "dependencies": [
+          3
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/unifiedlil/.tmp/conditions/browser/vfile.lil",
+        "bytes": 12263,
+        "sha256": "b802ee848f32c20ffd2207d9e4b16b7aac257bd5445f0919dfc8b1b8c7b86e99",
+        "dependencies": [
+          8,
+          3
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/unifiedlil/.tmp/conditions/browser/vfile-imports.lil",
+        "bytes": 7943,
+        "sha256": "17515fa203f6b6981aa3d6d3024ee2204605ca241493f833f523e2e8ca260b50",
+        "dependencies": [
+          3
+        ],
+        "dynamic_dependencies": []
+      }
+    ],
+    "host_modules": [],
+    "host_reserved": []
+  },
+  "outputs": [
+    {
+      "mode": "single",
+      "format": "esm",
+      "entries": [
+        {
+          "name": "browser",
+          "file": "unified.esm.js",
+          "dynamic": false,
+          "closure": [
+            "unified.esm.js"
+          ],
+          "row": 4059,
+          "raw_row": 12157
+        }
+      ],
+      "files": [
+        {
+          "file": "unified.esm.js",
+          "role": "entry",
+          "source_map_for": null,
+          "label": [
+            "browser"
+          ],
+          "modules": [
+            "browser.lil",
+            "index.lil",
+            "entry.lil",
+            "host.lil",
+            "plain.lil",
+            "extend.lil",
+            "trough.lil",
+            "vfile.lil",
+            "vfile-imports.lil"
+          ],
+          "anchored": true,
+          "imports": [],
+          "dynamic_imports": [],
+          "bytes": 12157,
+          "codec_bytes": 4059,
+          "sha256": "df4f722b8de804e1f7592025f43bf2f7ac387cae8f1e840cc3d1b7ee3bae3810"
+        }
+      ],
+      "side_effects": [
+        "unified.esm.js"
+      ],
+      "codec_total": 4059,
+      "rows_total": 4059,
+      "setters": 0,
+      "output": "primary",
+      "codec": "brotli",
+      "codec_settings": {
+        "brotli": {
+          "quality": 11,
+          "window": 22,
+          "mode": "generic"
+        },
+        "gzip": {
+          "level": 9,
+          "window": 15
+        }
+      },
+      "policy_fingerprint": [
+        97,
+        234,
+        25,
+        117,
+        122,
+        214,
+        226,
+        134,
+        254,
+        128,
+        23,
+        0,
+        130,
+        159,
+        218,
+        114,
+        48,
+        136,
+        100,
+        65,
+        86,
+        127,
+        193,
+        67,
+        129,
+        75,
+        26,
+        135,
+        184,
+        223,
+        96,
+        102
+      ]
+    },
+    {
+      "mode": "single",
+      "format": "iife",
+      "entries": [
+        {
+          "name": "browser",
+          "file": "unified.umd.js",
+          "dynamic": false,
+          "closure": [
+            "unified.umd.js"
+          ],
+          "row": 4135,
+          "raw_row": 12124
+        }
+      ],
+      "files": [
+        {
+          "file": "unified.umd.js",
+          "role": "entry",
+          "source_map_for": null,
+          "label": [
+            "browser"
+          ],
+          "modules": [
+            "entry.lil",
+            "host.lil",
+            "plain.lil",
+            "extend.lil",
+            "trough.lil",
+            "vfile.lil",
+            "vfile-imports.lil"
+          ],
+          "anchored": true,
+          "imports": [],
+          "dynamic_imports": [],
+          "bytes": 12124,
+          "codec_bytes": 4135,
+          "sha256": "36b0872777ff4515f36aac73db28e25e7b525e0fea6d5744f483792ea80ae16f"
+        }
+      ],
+      "side_effects": [
+        "unified.umd.js"
+      ],
+      "codec_total": 4135,
+      "rows_total": 4135,
+      "setters": 0,
+      "output": "browser",
+      "codec": "brotli",
+      "codec_settings": {
+        "brotli": {
+          "quality": 11,
+          "window": 22,
+          "mode": "generic"
+        },
+        "gzip": {
+          "level": 9,
+          "window": 15
+        }
+      },
+      "policy_fingerprint": [
+        77,
+        119,
+        20,
+        191,
+        251,
+        156,
+        230,
+        92,
+        106,
+        8,
+        3,
+        211,
+        124,
+        4,
+        238,
+        43,
+        215,
+        248,
+        24,
+        4,
+        52,
+        200,
+        151,
+        78,
+        251,
+        71,
+        252,
+        54,
+        131,
+        39,
+        254,
+        171
+      ]
+    },
+    {
+      "mode": "single",
+      "format": "esm",
+      "entries": [
+        {
+          "name": "browser",
+          "file": "vfile.esm.js",
+          "dynamic": false,
+          "closure": [
+            "vfile.esm.js"
+          ],
+          "row": 2294,
+          "raw_row": 6540
+        }
+      ],
+      "files": [
+        {
+          "file": "vfile.esm.js",
+          "role": "entry",
+          "source_map_for": null,
+          "label": [
+            "browser"
+          ],
+          "modules": [
+            "browser.lil",
+            "index.lil",
+            "entry.lil",
+            "host.lil",
+            "plain.lil",
+            "extend.lil",
+            "trough.lil",
+            "vfile.lil",
+            "vfile-imports.lil"
+          ],
+          "anchored": true,
+          "imports": [],
+          "dynamic_imports": [],
+          "bytes": 6540,
+          "codec_bytes": 2294,
+          "sha256": "bf5b07d4439f79154a653d8942c6e2d7e530980d2d130a56a8cccbb87d9b4929"
+        }
+      ],
+      "side_effects": [
+        "vfile.esm.js"
+      ],
+      "codec_total": 2294,
+      "rows_total": 2294,
+      "setters": 0,
+      "output": "vfile-esm",
+      "codec": "brotli",
+      "codec_settings": {
+        "brotli": {
+          "quality": 11,
+          "window": 22,
+          "mode": "generic"
+        },
+        "gzip": {
+          "level": 9,
+          "window": 15
+        }
+      },
+      "policy_fingerprint": [
+        92,
+        153,
+        51,
+        250,
+        97,
+        75,
+        27,
+        220,
+        157,
+        83,
+        204,
+        243,
+        9,
+        67,
+        146,
+        154,
+        69,
+        218,
+        149,
+        34,
+        108,
+        134,
+        13,
+        10,
+        13,
+        157,
+        183,
+        107,
+        22,
+        166,
+        237,
+        153
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1204 @@
+
+> @itslil/unified@11.0.7 check:sources
+> node scripts/check-shared-sources.mjs
+
+checked 6 pinned shared Lil sources
+TAP version 13
+# Subtest: @itslil/unified JS library API
+    # Subtest: keeps export names and pinned processor keys
+    ok 1 - keeps export names and pinned processor keys
+      ---
+      duration_ms: 2.486091
+      ...
+    # Subtest: exposes unified on ESM and CJS
+    ok 2 - exposes unified on ESM and CJS
+      ---
+      duration_ms: 0.438342
+      ...
+    # Subtest: processSync parses, transforms, and stringifies
+    ok 3 - processSync parses, transforms, and stringifies
+      ---
+      duration_ms: 2.163306
+      ...
+    # Subtest: preserves caller-provided VFile identity in CommonJS
+    ok 4 - preserves caller-provided VFile identity in CommonJS
+      ---
+      duration_ms: 0.407574
+      ...
+    # Subtest: preserves caller-provided VFile identity in ESM
+    ok 5 - preserves caller-provided VFile identity in ESM
+      ---
+      duration_ms: 0.26172
+      ...
+    # Subtest: runs transformers in order and accepts plugin options
+    ok 6 - runs transformers in order and accepts plugin options
+      ---
+      duration_ms: 0.531256
+      ...
+    # Subtest: parse treats a string as file.value
+    ok 7 - parse treats a string as file.value
+      ---
+      duration_ms: 0.288561
+      ...
+    # Subtest: registers a direct plugin in each Node artifact
+    ok 8 - registers a direct plugin in each Node artifact
+      ---
+      duration_ms: 13.165081
+      ...
+    # Subtest: always passes parser documents as strings
+    ok 9 - always passes parser documents as strings
+      ---
+      duration_ms: 0.360386
+      ...
+    # Subtest: data() is a mutable bag
+    ok 10 - data() is a mutable bag
+      ---
+      duration_ms: 0.278802
+      ...
+    # Subtest: supports the deprecated copy method
+    ok 11 - supports the deprecated copy method
+      ---
+      duration_ms: 0.320171
+      ...
+    # Subtest: process and run return promises
+    ok 12 - process and run return promises
+      ---
+      duration_ms: 0.341852
+      ...
+    # Subtest: throws when parser or compiler is missing
+    ok 13 - throws when parser or compiler is missing
+      ---
+      duration_ms: 0.676458
+      ...
+    1..13
+ok 1 - @itslil/unified JS library API
+  ---
+  duration_ms: 23.67226
+  type: 'suite'
+  ...
+# Subtest: browser graph contains the directly composed pure LilScript VFile
+ok 2 - browser graph contains the directly composed pure LilScript VFile
+  ---
+  duration_ms: 34.85257
+  ...
+# Subtest: @itslil/unified closed LilScript lane
+    # Subtest: is compiled next to the library artifact
+    ok 1 - is compiled next to the library artifact
+      ---
+      duration_ms: 0.883887
+      ...
+    # Subtest: keeps the unified export and can construct a processor
+    ok 2 - keeps the unified export and can construct a processor
+      ---
+      duration_ms: 9.089431
+      ...
+    1..2
+ok 3 - @itslil/unified closed LilScript lane
+  ---
+  duration_ms: 11.246765
+  type: 'suite'
+  ...
+# Subtest: processor behavior and evaluation order match unified@11.0.5
+ok 4 - processor behavior and evaluation order match unified@11.0.5
+  ---
+  duration_ms: 3.795696
+  ...
+# Subtest: plugin errors and asynchronous completion match upstream
+ok 5 - plugin errors and asynchronous completion match upstream
+  ---
+  duration_ms: 1.017077
+  ...
+# Subtest: the VFile behaves as upstream's under each runtime's conditions
+ok 6 - the VFile behaves as upstream's under each runtime's conditions
+  ---
+  duration_ms: 168.772397
+  ...
+# Subtest: unified resolves the program built for each condition set
+ok 7 - unified resolves the program built for each condition set
+  ---
+  duration_ms: 18.012105
+  ...
+# Subtest: each program imports only what vfile imports under its conditions
+ok 8 - each program imports only what vfile imports under its conditions
+  ---
+  duration_ms: 1.24812
+  ...
+# Subtest: canonical graph measurement uses pinned official Terser
+ok 9 - canonical graph measurement uses pinned official Terser
+  ---
+  duration_ms: 801.100109
+  ...
+# Subtest: core
+    # Subtest: should expose the public api
+    ok 1 - should expose the public api
+      ---
+      duration_ms: 1.377332
+      ...
+    # Subtest: should expose a frozen processor
+    ok 2 - should expose a frozen processor
+      ---
+      duration_ms: 0.496531
+      ...
+    # Subtest: should create a new processor implementing the ancestral processor when called
+    ok 3 - should create a new processor implementing the ancestral processor when called
+      ---
+      duration_ms: 0.45314
+      ...
+    1..3
+ok 10 - core
+  ---
+  duration_ms: 3.908808
+  ...
+# Subtest: `data`
+    # Subtest: should return self as setter
+    ok 1 - should return self as setter
+      ---
+      duration_ms: 0.263103
+      ...
+    # Subtest: should yield data as getter (not defined)
+    ok 2 - should yield data as getter (not defined)
+      ---
+      duration_ms: 0.160491
+      ...
+    # Subtest: should yield data as getter (defined)
+    ok 3 - should yield data as getter (defined)
+      ---
+      duration_ms: 0.14424
+      ...
+    # Subtest: should not yield data prototypal fields
+    ok 4 - should not yield data prototypal fields
+      ---
+      duration_ms: 0.150262
+      ...
+    # Subtest: should yield dataset as getter w/o key
+    ok 5 - should yield dataset as getter w/o key
+      ---
+      duration_ms: 0.29298
+      ...
+    # Subtest: should set dataset as setter w/o key (\#1)
+    ok 6 - should set dataset as setter w/o key (\#1)
+      ---
+      duration_ms: 0.257723
+      ...
+    # Subtest: should set dataset as setter w/o key (\#2)
+    ok 7 - should set dataset as setter w/o key (\#2)
+      ---
+      duration_ms: 0.242084
+      ...
+    # Subtest: should support functions in data
+    ok 8 - should support functions in data
+      ---
+      duration_ms: 0.347211
+      ...
+    1..8
+ok 11 - `data`
+  ---
+  duration_ms: 3.499892
+  ...
+# Subtest: `freeze`
+    # Subtest: data
+        # Subtest: should be able to call `data()` (getter) when not frozen
+        ok 1 - should be able to call `data()` (getter) when not frozen
+          ---
+          duration_ms: 0.41615
+          ...
+        # Subtest: should be able to call `data()` (getter) when frozen
+        ok 2 - should be able to call `data()` (getter) when frozen
+          ---
+          duration_ms: 0.246001
+          ...
+        # Subtest: should be able to call `data(key)` (getter) when not frozen
+        ok 3 - should be able to call `data(key)` (getter) when not frozen
+          ---
+          duration_ms: 0.202259
+          ...
+        # Subtest: should be able to call `data(key)` (getter) when frozen
+        ok 4 - should be able to call `data(key)` (getter) when frozen
+          ---
+          duration_ms: 0.271629
+          ...
+        # Subtest: should be able to call `data(value)` (setter) when not frozen
+        ok 5 - should be able to call `data(value)` (setter) when not frozen
+          ---
+          duration_ms: 0.187502
+          ...
+        # Subtest: should not be able to call `data(value)` (setter) when frozen
+        ok 6 - should not be able to call `data(value)` (setter) when frozen
+          ---
+          duration_ms: 0.177312
+          ...
+        # Subtest: should be able to call `data(key, value)` (setter) when not frozen
+        ok 7 - should be able to call `data(key, value)` (setter) when not frozen
+          ---
+          duration_ms: 0.164349
+          ...
+        # Subtest: should not be able to call `data(key, value)` (setter) when frozen
+        ok 8 - should not be able to call `data(key, value)` (setter) when frozen
+          ---
+          duration_ms: 0.278682
+          ...
+        1..8
+    ok 1 - data
+      ---
+      duration_ms: 2.884949
+      ...
+    # Subtest: parse
+        # Subtest: should be able to call `parse` when not frozen
+        ok 1 - should be able to call `parse` when not frozen
+          ---
+          duration_ms: 0.431899
+          ...
+        # Subtest: should be able to call `parse` when frozen
+        ok 2 - should be able to call `parse` when frozen
+          ---
+          duration_ms: 0.140774
+          ...
+        1..2
+    ok 2 - parse
+      ---
+      duration_ms: 0.942997
+      ...
+    # Subtest: stringify
+        # Subtest: should be able to call `stringify` when not frozen
+        ok 1 - should be able to call `stringify` when not frozen
+          ---
+          duration_ms: 0.250159
+          ...
+        # Subtest: should be able to call `stringify` when frozen
+        ok 2 - should be able to call `stringify` when frozen
+          ---
+          duration_ms: 0.145713
+          ...
+        1..2
+    ok 3 - stringify
+      ---
+      duration_ms: 0.669725
+      ...
+    # Subtest: run
+        # Subtest: should be able to call `run` when not frozen
+        ok 1 - should be able to call `run` when not frozen
+          ---
+          duration_ms: 0.589365
+          ...
+        # Subtest: should be able to call `run` when frozen
+        ok 2 - should be able to call `run` when frozen
+          ---
+          duration_ms: 0.18648
+          ...
+        1..2
+    ok 4 - run
+      ---
+      duration_ms: 1.22159
+      ...
+    # Subtest: runSync
+        # Subtest: should be able to call `runSync` when not frozen
+        ok 1 - should be able to call `runSync` when not frozen
+          ---
+          duration_ms: 0.240902
+          ...
+        # Subtest: should be able to call `runSync` when frozen
+        ok 2 - should be able to call `runSync` when frozen
+          ---
+          duration_ms: 0.206287
+          ...
+        1..2
+    ok 5 - runSync
+      ---
+      duration_ms: 0.674144
+      ...
+    # Subtest: process
+        # Subtest: should be able to call `process` when not frozen
+        ok 1 - should be able to call `process` when not frozen
+          ---
+          duration_ms: 0.276488
+          ...
+        # Subtest: should be able to call `process` when frozen
+        ok 2 - should be able to call `process` when frozen
+          ---
+          duration_ms: 0.158757
+          ...
+        1..2
+    ok 6 - process
+      ---
+      duration_ms: 1.414962
+      ...
+    # Subtest: processSync
+        # Subtest: should be able to call `processSync` when not frozen
+        ok 1 - should be able to call `processSync` when not frozen
+          ---
+          duration_ms: 0.284023
+          ...
+        # Subtest: should be able to call `processSync` when frozen
+        ok 2 - should be able to call `processSync` when frozen
+          ---
+          duration_ms: 0.212378
+          ...
+        1..2
+    ok 7 - processSync
+      ---
+      duration_ms: 0.840696
+      ...
+    # Subtest: freeze
+        # Subtest: should be able to call `freeze` when not frozen
+        ok 1 - should be able to call `freeze` when not frozen
+          ---
+          duration_ms: 0.198763
+          ...
+        # Subtest: should be able to call `freeze` when frozen
+        ok 2 - should be able to call `freeze` when frozen
+          ---
+          duration_ms: 0.106169
+          ...
+        # Subtest: should freeze once, even for nested calls
+        ok 3 - should freeze once, even for nested calls
+          ---
+          duration_ms: 0.274765
+          ...
+        1..3
+    ok 8 - freeze
+      ---
+      duration_ms: 0.863769
+      ...
+    1..8
+ok 12 - `freeze`
+  ---
+  duration_ms: 10.511396
+  ...
+# Subtest: `parse`
+    # Subtest: should throw without `parser`
+    ok 1 - should throw without `parser`
+      ---
+      duration_ms: 0.223019
+      ...
+    # Subtest: should support a plain function
+    ok 2 - should support a plain function
+      ---
+      duration_ms: 0.239519
+      ...
+    # Subtest: should support an arrow function
+    ok 3 - should support an arrow function
+      ---
+      duration_ms: 0.14903
+      ...
+    1..3
+ok 13 - `parse`
+  ---
+  duration_ms: 0.969107
+  ...
+# Subtest: `process`
+    # Subtest: should throw w/o `parser`
+    ok 1 - should throw w/o `parser`
+      ---
+      duration_ms: 0.236995
+      ...
+    # Subtest: should throw w/o `compiler`
+    ok 2 - should throw w/o `compiler`
+      ---
+      duration_ms: 0.235552
+      ...
+    # Subtest: should pass/yield expected values
+    ok 3 - should pass/yield expected values
+      ---
+      duration_ms: 0.659246
+      ...
+    # Subtest: should rethrow errors in `done` throws
+    ok 4 - should rethrow errors in `done` throws
+      ---
+      duration_ms: 0.369843
+      ...
+    # Subtest: should support `process` w/o `done` (promise)
+    ok 5 - should support `process` w/o `done` (promise)
+      ---
+      duration_ms: 0.367359
+      ...
+    1..5
+ok 14 - `process`
+  ---
+  duration_ms: 2.765735
+  ...
+# Subtest: process (compilers)
+    # Subtest: should compile `string`
+    ok 1 - should compile `string`
+      ---
+      duration_ms: 0.319969
+      ...
+    # Subtest: should compile `Uint8Array`
+    ok 2 - should compile `Uint8Array`
+      ---
+      duration_ms: 0.36276
+      ...
+    # Subtest: should compile non-text
+    ok 3 - should compile non-text
+      ---
+      duration_ms: 0.201318
+      ...
+    1..3
+ok 15 - process (compilers)
+  ---
+  duration_ms: 1.230658
+  ...
+# Subtest: `processSync`
+    # Subtest: should throw w/o `parser`
+    ok 1 - should throw w/o `parser`
+      ---
+      duration_ms: 0.279685
+      ...
+    # Subtest: should throw w/o `compiler`
+    ok 2 - should throw w/o `compiler`
+      ---
+      duration_ms: 0.226725
+      ...
+    # Subtest: should support `processSync`
+    ok 3 - should support `processSync`
+      ---
+      duration_ms: 0.212738
+      ...
+    # Subtest: should throw transform errors from `processSync`
+    ok 4 - should throw transform errors from `processSync`
+      ---
+      duration_ms: 0.607599
+      ...
+    1..4
+ok 16 - `processSync`
+  ---
+  duration_ms: 1.80281
+  ...
+# Subtest: `run`
+    # Subtest: should pass/yield expected values
+    ok 1 - should pass/yield expected values
+      ---
+      duration_ms: 0.355326
+      ...
+    # Subtest: should pass a file if implicitly not given
+    ok 2 - should pass a file if implicitly not given
+      ---
+      duration_ms: 0.253966
+      ...
+    # Subtest: should pass a file if explicitly not given
+    ok 3 - should pass a file if explicitly not given
+      ---
+      duration_ms: 0.327193
+      ...
+    # Subtest: should yield an error returned from a sync transformer
+    ok 4 - should yield an error returned from a sync transformer
+      ---
+      duration_ms: 0.296837
+      ...
+    # Subtest: should yield a tree when returned from a sync transformer
+    ok 5 - should yield a tree when returned from a sync transformer
+      ---
+      duration_ms: 0.307757
+      ...
+    # Subtest: should yield an error when passed to a transformer’s `next` (sync)
+    ok 6 - should yield an error when passed to a transformer’s `next` (sync)
+      ---
+      duration_ms: 0.205365
+      ...
+    # Subtest: should yield an error when passed to a transformer’s `next` (async)
+    ok 7 - should yield an error when passed to a transformer’s `next` (async)
+      ---
+      duration_ms: 46.279385
+      ...
+    # Subtest: should yield a tree when passed to a transformer’s `next` (sync)
+    ok 8 - should yield a tree when passed to a transformer’s `next` (sync)
+      ---
+      duration_ms: 0.370445
+      ...
+    # Subtest: should yield a tree when passed to a transformer’s `next` (async)
+    ok 9 - should yield a tree when passed to a transformer’s `next` (async)
+      ---
+      duration_ms: 1.164132
+      ...
+    # Subtest: should yield an error when rejected from a transformer
+    ok 10 - should yield an error when rejected from a transformer
+      ---
+      duration_ms: 0.484358
+      ...
+    # Subtest: should yield a tree when resolved from a transformer
+    ok 11 - should yield a tree when resolved from a transformer
+      ---
+      duration_ms: 0.273593
+      ...
+    # Subtest: should swallow further errors when passed to a transformer’s `next` (sync)
+    ok 12 - should swallow further errors when passed to a transformer’s `next` (sync)
+      ---
+      duration_ms: 0.256972
+      ...
+    # Subtest: should swallow further errors when passed to a transformer’s `next` (async)
+    ok 13 - should swallow further errors when passed to a transformer’s `next` (async)
+      ---
+      duration_ms: 1.309485
+      ...
+    # Subtest: should support `async function`s
+    ok 14 - should support `async function`s
+      ---
+      duration_ms: 0.305453
+      ...
+    # Subtest: should pass/yield expected values (promise)
+    ok 15 - should pass/yield expected values (promise)
+      ---
+      duration_ms: 0.167554
+      ...
+    # Subtest: should pass a file if implicitly not given (promise)
+    ok 16 - should pass a file if implicitly not given (promise)
+      ---
+      duration_ms: 0.210324
+      ...
+    # Subtest: should pass a file if explicitly not given (promise)
+    ok 17 - should pass a file if explicitly not given (promise)
+      ---
+      duration_ms: 0.239188
+      ...
+    # Subtest: should yield an error returned from a sync transformer (promise)
+    ok 18 - should yield an error returned from a sync transformer (promise)
+      ---
+      duration_ms: 0.271959
+      ...
+    # Subtest: should yield a tree when returned from a sync transformer (promise)
+    ok 19 - should yield a tree when returned from a sync transformer (promise)
+      ---
+      duration_ms: 0.246713
+      ...
+    # Subtest: should yield an error when passed to a transformer’s `next` (sync) (promise)
+    ok 20 - should yield an error when passed to a transformer’s `next` (sync) (promise)
+      ---
+      duration_ms: 0.222126
+      ...
+    # Subtest: should yield an error when passed to a transformer’s `next` (async) (promise)
+    ok 21 - should yield an error when passed to a transformer’s `next` (async) (promise)
+      ---
+      duration_ms: 2.037741
+      ...
+    # Subtest: should yield a tree when passed to a transformer’s `next` (sync) (promise)
+    ok 22 - should yield a tree when passed to a transformer’s `next` (sync) (promise)
+      ---
+      duration_ms: 0.253285
+      ...
+    # Subtest: should yield a tree when passed to a transformer’s `next` (async) (promise)
+    ok 23 - should yield a tree when passed to a transformer’s `next` (async) (promise)
+      ---
+      duration_ms: 1.132092
+      ...
+    # Subtest: should yield an error when rejected from a transformer (promise)
+    ok 24 - should yield an error when rejected from a transformer (promise)
+      ---
+      duration_ms: 0.342382
+      ...
+    # Subtest: should yield a tree when resolved from a transformer (promise)
+    ok 25 - should yield a tree when resolved from a transformer (promise)
+      ---
+      duration_ms: 0.223789
+      ...
+    # Subtest: should swallow further errors when passed to a transformer’s `next` (sync) (promise)
+    ok 26 - should swallow further errors when passed to a transformer’s `next` (sync) (promise)
+      ---
+      duration_ms: 0.337854
+      ...
+    # Subtest: should swallow further errors when passed to a transformer’s `next` (async) (promise)
+    ok 27 - should swallow further errors when passed to a transformer’s `next` (async) (promise)
+      ---
+      duration_ms: 1.743459
+      ...
+    # Subtest: should support `async function`s (promise)
+    ok 28 - should support `async function`s (promise)
+      ---
+      duration_ms: 0.34123
+      ...
+    1..28
+ok 17 - `run`
+  ---
+  duration_ms: 62.880179
+  ...
+# Subtest: `runSync`
+    # Subtest: should throw w/o `tree`
+    ok 1 - should throw w/o `tree`
+      ---
+      duration_ms: 0.233127
+      ...
+    # Subtest: should pass/yield expected values
+    ok 2 - should pass/yield expected values
+      ---
+      duration_ms: 0.121899
+      ...
+    # Subtest: should throw an error returned from a sync transformer
+    ok 3 - should throw an error returned from a sync transformer
+      ---
+      duration_ms: 0.32538
+      ...
+    # Subtest: should yield a tree when returned from a sync transformer
+    ok 4 - should yield a tree when returned from a sync transformer
+      ---
+      duration_ms: 0.244709
+      ...
+    # Subtest: should throw an error when passed to a transformer’s `next` (sync)
+    ok 5 - should throw an error when passed to a transformer’s `next` (sync)
+      ---
+      duration_ms: 0.215544
+      ...
+    # Subtest: should throw and leave an error uncaught when passed to a transformer’s `next` (async)
+    ok 6 - should throw and leave an error uncaught when passed to a transformer’s `next` (async)
+      ---
+      duration_ms: 3.574832
+      ...
+    # Subtest: should yield a tree when passed to a transformer’s `next` (sync)
+    ok 7 - should yield a tree when passed to a transformer’s `next` (sync)
+      ---
+      duration_ms: 0.187622
+      ...
+    # Subtest: should throw and ignore a tree when passed to a transformer’s `next` (async)
+    ok 8 - should throw and ignore a tree when passed to a transformer’s `next` (async)
+      ---
+      duration_ms: 0.302187
+      ...
+    # Subtest: should throw and leave an error unhandled when rejected from a transformer
+    ok 9 - should throw and leave an error unhandled when rejected from a transformer
+      ---
+      duration_ms: 1.085205
+      ...
+    # Subtest: should throw and ignore a tree when resolved from a transformer
+    ok 10 - should throw and ignore a tree when resolved from a transformer
+      ---
+      duration_ms: 0.290655
+      ...
+    1..10
+ok 18 - `runSync`
+  ---
+  duration_ms: 7.663498
+  ...
+# Subtest: `stringify`
+    # Subtest: should throw without `compiler`
+    ok 1 - should throw without `compiler`
+      ---
+      duration_ms: 0.185177
+      ...
+    # Subtest: should support a plain function
+    ok 2 - should support a plain function
+      ---
+      duration_ms: 1.026083
+      ...
+    # Subtest: should support an arrow function
+    ok 3 - should support an arrow function
+      ---
+      duration_ms: 0.147236
+      ...
+    1..3
+ok 19 - `stringify`
+  ---
+  duration_ms: 1.719203
+  ...
+# Subtest: `use`
+    # Subtest: should ignore no value
+    ok 1 - should ignore no value
+      ---
+      duration_ms: 0.11192
+      ...
+    # Subtest: should ignore `undefined`
+    ok 2 - should ignore `undefined`
+      ---
+      duration_ms: 0.091422
+      ...
+    # Subtest: should ignore `null`
+    ok 3 - should ignore `null`
+      ---
+      duration_ms: 0.084919
+      ...
+    # Subtest: should throw when given invalid values (`false`)
+    ok 4 - should throw when given invalid values (`false`)
+      ---
+      duration_ms: 0.123993
+      ...
+    # Subtest: should throw when given invalid values (`true`)
+    ok 5 - should throw when given invalid values (`true`)
+      ---
+      duration_ms: 0.222016
+      ...
+    # Subtest: should throw when given invalid values (`string`)
+    ok 6 - should throw when given invalid values (`string`)
+      ---
+      duration_ms: 0.193373
+      ...
+    # Subtest: should support a plugin
+    ok 7 - should support a plugin
+      ---
+      duration_ms: 0.177162
+      ...
+    # Subtest: should support a plugin w/ options
+    ok 8 - should support a plugin w/ options
+      ---
+      duration_ms: 0.150402
+      ...
+    # Subtest: should support a list of plugins
+    ok 9 - should support a list of plugins
+      ---
+      duration_ms: 0.227797
+      ...
+    # Subtest: should support a list w/ a single plugin
+    ok 10 - should support a list w/ a single plugin
+      ---
+      duration_ms: 0.133129
+      ...
+    # Subtest: should support a list of tuples and plugins
+    ok 11 - should support a list of tuples and plugins
+      ---
+      duration_ms: 0.135985
+      ...
+    # Subtest: should throw when given invalid values (`false`) in lists
+    ok 12 - should throw when given invalid values (`false`) in lists
+      ---
+      duration_ms: 0.177533
+      ...
+    # Subtest: should throw when given invalid values (`true`) in lists
+    ok 13 - should throw when given invalid values (`true`) in lists
+      ---
+      duration_ms: 0.202009
+      ...
+    # Subtest: should throw when given invalid values (`string`) in lists
+    ok 14 - should throw when given invalid values (`string`) in lists
+      ---
+      duration_ms: 0.140493
+      ...
+    # Subtest: should attach transformers
+    ok 15 - should attach transformers
+      ---
+      duration_ms: 0.164238
+      ...
+    # Subtest: should throw when given a preset w/ invalid `plugins` (`false`)
+    ok 16 - should throw when given a preset w/ invalid `plugins` (`false`)
+      ---
+      duration_ms: 0.424737
+      ...
+    # Subtest: should throw when given a preset w/ invalid `plugins` (`object`)
+    ok 17 - should throw when given a preset w/ invalid `plugins` (`object`)
+      ---
+      duration_ms: 0.161032
+      ...
+    # Subtest: should throw when given a preset w/o `settings` or `plugins`
+    ok 18 - should throw when given a preset w/o `settings` or `plugins`
+      ---
+      duration_ms: 0.152837
+      ...
+    # Subtest: should support a preset w/ empty `plugins`
+    ok 19 - should support a preset w/ empty `plugins`
+      ---
+      duration_ms: 0.126598
+      ...
+    # Subtest: should support a preset w/ empty `settings`
+    ok 20 - should support a preset w/ empty `settings`
+      ---
+      duration_ms: 0.152175
+      ...
+    # Subtest: should support a preset w/ a plugin
+    ok 21 - should support a preset w/ a plugin
+      ---
+      duration_ms: 0.216396
+      ...
+    # Subtest: should support a preset w/ plugins
+    ok 22 - should support a preset w/ plugins
+      ---
+      duration_ms: 0.173205
+      ...
+    # Subtest: should support a preset w/ settings
+    ok 23 - should support a preset w/ settings
+      ---
+      duration_ms: 0.166062
+      ...
+    # Subtest: should support presets w/ settings and merge
+    ok 24 - should support presets w/ settings and merge
+      ---
+      duration_ms: 0.15976
+      ...
+    # Subtest: should support extending presets
+    ok 25 - should support extending presets
+      ---
+      duration_ms: 0.219421
+      ...
+    # Subtest: should support a preset w/ plugin tuples
+    ok 26 - should support a preset w/ plugin tuples
+      ---
+      duration_ms: 0.239509
+      ...
+    # Subtest: should support presets w/ presets
+    ok 27 - should support presets w/ presets
+      ---
+      duration_ms: 0.361689
+      ...
+    # Subtest: reconfigure (to `object`)
+        # Subtest: should reconfigure plugins: nothing -> `object`, right wins
+        ok 1 - should reconfigure plugins: nothing -> `object`, right wins
+          ---
+          duration_ms: 0.162014
+          ...
+        # Subtest: should reconfigure plugins: `undefined` -> `object`, right wins
+        ok 2 - should reconfigure plugins: `undefined` -> `object`, right wins
+          ---
+          duration_ms: 0.147566
+          ...
+        # Subtest: should reconfigure plugins: `null` -> `object`, right wins
+        ok 3 - should reconfigure plugins: `null` -> `object`, right wins
+          ---
+          duration_ms: 0.155111
+          ...
+        # Subtest: should reconfigure plugins: `false` -> `object`, right wins
+        ok 4 - should reconfigure plugins: `false` -> `object`, right wins
+          ---
+          duration_ms: 0.164057
+          ...
+        # Subtest: should reconfigure plugins: `true` -> `object`, right wins
+        ok 5 - should reconfigure plugins: `true` -> `object`, right wins
+          ---
+          duration_ms: 0.183944
+          ...
+        # Subtest: should reconfigure plugins: `string` -> `object`, right wins
+        ok 6 - should reconfigure plugins: `string` -> `object`, right wins
+          ---
+          duration_ms: 0.152165
+          ...
+        # Subtest: should reconfigure plugins: `array` -> `object`, right wins
+        ok 7 - should reconfigure plugins: `array` -> `object`, right wins
+          ---
+          duration_ms: 0.179146
+          ...
+        # Subtest: should reconfigure plugins: `object` -> `object`, merge
+        ok 8 - should reconfigure plugins: `object` -> `object`, merge
+          ---
+          duration_ms: 0.22389
+          ...
+        1..8
+    ok 28 - reconfigure (to `object`)
+      ---
+      duration_ms: 2.20829
+      ...
+    # Subtest: reconfigure (to `array`)
+        # Subtest: should reconfigure plugins: nothing -> `array`, right wins
+        ok 1 - should reconfigure plugins: nothing -> `array`, right wins
+          ---
+          duration_ms: 0.196027
+          ...
+        # Subtest: should reconfigure plugins: `undefined` -> `array`, right wins
+        ok 2 - should reconfigure plugins: `undefined` -> `array`, right wins
+          ---
+          duration_ms: 0.150772
+          ...
+        # Subtest: should reconfigure plugins: `null` -> `array`, right wins
+        ok 3 - should reconfigure plugins: `null` -> `array`, right wins
+          ---
+          duration_ms: 0.197109
+          ...
+        # Subtest: should reconfigure plugins: `false` -> `array`, right wins
+        ok 4 - should reconfigure plugins: `false` -> `array`, right wins
+          ---
+          duration_ms: 0.15446
+          ...
+        # Subtest: should reconfigure plugins: `true` -> `array`, right wins
+        ok 5 - should reconfigure plugins: `true` -> `array`, right wins
+          ---
+          duration_ms: 0.130384
+          ...
+        # Subtest: should reconfigure plugins: `string` -> `array`, right wins
+        ok 6 - should reconfigure plugins: `string` -> `array`, right wins
+          ---
+          duration_ms: 0.145773
+          ...
+        # Subtest: should reconfigure plugins: `array` -> `array`, right wins
+        ok 7 - should reconfigure plugins: `array` -> `array`, right wins
+          ---
+          duration_ms: 0.163045
+          ...
+        # Subtest: should reconfigure plugins: `object` -> `array`, right wins
+        ok 8 - should reconfigure plugins: `object` -> `array`, right wins
+          ---
+          duration_ms: 0.159288
+          ...
+        1..8
+    ok 29 - reconfigure (to `array`)
+      ---
+      duration_ms: 2.074589
+      ...
+    # Subtest: reconfigure (to `string`)
+        # Subtest: should reconfigure plugins: nothing -> `string`, right wins
+        ok 1 - should reconfigure plugins: nothing -> `string`, right wins
+          ---
+          duration_ms: 0.179987
+          ...
+        # Subtest: should reconfigure plugins: `undefined` -> `string`, right wins
+        ok 2 - should reconfigure plugins: `undefined` -> `string`, right wins
+          ---
+          duration_ms: 0.190968
+          ...
+        # Subtest: should reconfigure plugins: `null` -> `string`, right wins
+        ok 3 - should reconfigure plugins: `null` -> `string`, right wins
+          ---
+          duration_ms: 0.177402
+          ...
+        # Subtest: should reconfigure plugins: `false` -> `string`, right wins
+        ok 4 - should reconfigure plugins: `false` -> `string`, right wins
+          ---
+          duration_ms: 0.156313
+          ...
+        # Subtest: should reconfigure plugins: `true` -> `string`, right wins
+        ok 5 - should reconfigure plugins: `true` -> `string`, right wins
+          ---
+          duration_ms: 0.164178
+          ...
+        # Subtest: should reconfigure plugins: `string` -> `string`, right wins
+        ok 6 - should reconfigure plugins: `string` -> `string`, right wins
+          ---
+          duration_ms: 0.191859
+          ...
+        # Subtest: should reconfigure plugins: `array` -> `string`, right wins
+        ok 7 - should reconfigure plugins: `array` -> `string`, right wins
+          ---
+          duration_ms: 0.217037
+          ...
+        # Subtest: should reconfigure plugins: `object` -> `string`, right wins
+        ok 8 - should reconfigure plugins: `object` -> `string`, right wins
+          ---
+          duration_ms: 0.20837
+          ...
+        1..8
+    ok 30 - reconfigure (to `string`)
+      ---
+      duration_ms: 2.212267
+      ...
+    # Subtest: reconfigure (to `undefined`)
+        # Subtest: should reconfigure plugins: nothing -> `undefined`, right wins
+        ok 1 - should reconfigure plugins: nothing -> `undefined`, right wins
+          ---
+          duration_ms: 0.235
+          ...
+        # Subtest: should reconfigure plugins: `undefined` -> `undefined`, right wins
+        ok 2 - should reconfigure plugins: `undefined` -> `undefined`, right wins
+          ---
+          duration_ms: 0.217607
+          ...
+        # Subtest: should reconfigure plugins: `null` -> `undefined`, right wins
+        ok 3 - should reconfigure plugins: `null` -> `undefined`, right wins
+          ---
+          duration_ms: 0.22428
+          ...
+        # Subtest: should reconfigure plugins: `false` -> `undefined`, right wins
+        ok 4 - should reconfigure plugins: `false` -> `undefined`, right wins
+          ---
+          duration_ms: 0.213931
+          ...
+        # Subtest: should reconfigure plugins: `true` -> `undefined`, right wins
+        ok 5 - should reconfigure plugins: `true` -> `undefined`, right wins
+          ---
+          duration_ms: 0.218059
+          ...
+        # Subtest: should reconfigure plugins: `string` -> `undefined`, right wins
+        ok 6 - should reconfigure plugins: `string` -> `undefined`, right wins
+          ---
+          duration_ms: 0.209313
+          ...
+        # Subtest: should reconfigure plugins: `array` -> `undefined`, right wins
+        ok 7 - should reconfigure plugins: `array` -> `undefined`, right wins
+          ---
+          duration_ms: 0.212318
+          ...
+        # Subtest: should reconfigure plugins: `object` -> `undefined`, right wins
+        ok 8 - should reconfigure plugins: `object` -> `undefined`, right wins
+          ---
+          duration_ms: 0.220413
+          ...
+        1..8
+    ok 31 - reconfigure (to `undefined`)
+      ---
+      duration_ms: 2.799318
+      ...
+    # Subtest: reconfigure (to `true`, to turn on)
+        # Subtest: should reconfigure plugins: nothing -> `true`, used
+        ok 1 - should reconfigure plugins: nothing -> `true`, used
+          ---
+          duration_ms: 0.305502
+          ...
+        # Subtest: should reconfigure plugins: `undefined` -> `true`, used
+        ok 2 - should reconfigure plugins: `undefined` -> `true`, used
+          ---
+          duration_ms: 0.219011
+          ...
+        # Subtest: should reconfigure plugins: `null` -> `true`, used
+        ok 3 - should reconfigure plugins: `null` -> `true`, used
+          ---
+          duration_ms: 0.225853
+          ...
+        # Subtest: should reconfigure plugins: `false` -> `true`, used
+        ok 4 - should reconfigure plugins: `false` -> `true`, used
+          ---
+          duration_ms: 0.218529
+          ...
+        # Subtest: should reconfigure plugins: `true` -> `true`, used
+        ok 5 - should reconfigure plugins: `true` -> `true`, used
+          ---
+          duration_ms: 0.214251
+          ...
+        # Subtest: should reconfigure plugins: `string` -> `true`, used
+        ok 6 - should reconfigure plugins: `string` -> `true`, used
+          ---
+          duration_ms: 0.211377
+          ...
+        # Subtest: should reconfigure plugins: `array` -> `true`, used
+        ok 7 - should reconfigure plugins: `array` -> `true`, used
+          ---
+          duration_ms: 0.247824
+          ...
+        # Subtest: should reconfigure plugins: `object` -> `true`, used
+        ok 8 - should reconfigure plugins: `object` -> `true`, used
+          ---
+          duration_ms: 1.185182
+          ...
+        1..8
+    ok 32 - reconfigure (to `true`, to turn on)
+      ---
+      duration_ms: 3.806978
+      ...
+    # Subtest: reconfigure (to `false`, to turn off)
+        # Subtest: should reconfigure plugins: nothing -> `false`, not used
+        ok 1 - should reconfigure plugins: nothing -> `false`, not used
+          ---
+          duration_ms: 0.189476
+          ...
+        # Subtest: should reconfigure plugins: `undefined` -> `false`, not used
+        ok 2 - should reconfigure plugins: `undefined` -> `false`, not used
+          ---
+          duration_ms: 0.148288
+          ...
+        # Subtest: should reconfigure plugins: `null` -> `false`, not used
+        ok 3 - should reconfigure plugins: `null` -> `false`, not used
+          ---
+          duration_ms: 0.142186
+          ...
+        # Subtest: should reconfigure plugins: `false` -> `false`, not used
+        ok 4 - should reconfigure plugins: `false` -> `false`, not used
+          ---
+          duration_ms: 0.137207
+          ...
+        # Subtest: should reconfigure plugins: `true` -> `false`, not used
+        ok 5 - should reconfigure plugins: `true` -> `false`, not used
+          ---
+          duration_ms: 0.131056
+          ...
+        # Subtest: should reconfigure plugins: `string` -> `false`, not used
+        ok 6 - should reconfigure plugins: `string` -> `false`, not used
+          ---
+          duration_ms: 0.179506
+          ...
+        # Subtest: should reconfigure plugins: `array` -> `false`, not used
+        ok 7 - should reconfigure plugins: `array` -> `false`, not used
+          ---
+          duration_ms: 0.148759
+          ...
+        # Subtest: should reconfigure plugins: `object` -> `false`, not used
+        ok 8 - should reconfigure plugins: `object` -> `false`, not used
+          ---
+          duration_ms: 0.133931
+          ...
+        1..8
+    ok 33 - reconfigure (to `false`, to turn off)
+      ---
+      duration_ms: 1.944215
+      ...
+    # Subtest: reconfigure (non-first parameters)
+        # Subtest: should reconfigure plugins (non-first parameters)
+        ok 1 - should reconfigure plugins (non-first parameters)
+          ---
+          duration_ms: 0.386716
+          ...
+        # Subtest: should keep parameter length (\#1)
+        ok 2 - should keep parameter length (\#1)
+          ---
+          duration_ms: 0.178946
+          ...
+        # Subtest: should keep parameter length (\#2)
+        ok 3 - should keep parameter length (\#2)
+          ---
+          duration_ms: 0.166783
+          ...
+        # Subtest: should keep parameter length (\#3)
+        ok 4 - should keep parameter length (\#3)
+          ---
+          duration_ms: 0.154279
+          ...
+        1..4
+    ok 34 - reconfigure (non-first parameters)
+      ---
+      duration_ms: 1.295328
+      ...
+    1..34
+ok 20 - `use`
+  ---
+  duration_ms: 23.905507
+  ...
+# Subtest: three independently targeted builds have current artifact and config hashes
+ok 21 - three independently targeted builds have current artifact and config hashes
+  ---
+  duration_ms: 3.908347
+  ...
+# Subtest: public comparison describes current versus original and distinguishes build stages
+ok 22 - public comparison describes current versus original and distinguishes build stages
+  ---
+  duration_ms: 0.57573
+  ...
+# Subtest: built Pages artifact contains the current data and measured downloads
+ok 23 - built Pages artifact contains the current data and measured downloads
+  ---
+  duration_ms: 0.569497
+  ...
+# Subtest: pure Lil VFile keeps constructor, value, and path behavior
+ok 24 - pure Lil VFile keeps constructor, value, and path behavior
+  ---
+  duration_ms: 2.433332
+  ...
+# Subtest: pure Lil VFile matches upstream construction and diagnostics
+ok 25 - pure Lil VFile matches upstream construction and diagnostics
+  ---
+  duration_ms: 1.182025
+  ...
+# Subtest: pure Lil VFile preserves path validation
+ok 26 - pure Lil VFile preserves path validation
+  ---
+  duration_ms: 0.603591
+  ...
+# Subtest: CommonJS exposes the pure Lil VFile subpath
+ok 27 - CommonJS exposes the pure Lil VFile subpath
+  ---
+  duration_ms: 2.042168
+  ...
+# Subtest: pure Lil constructors and prototypes match upstream
+ok 28 - pure Lil constructors and prototypes match upstream
+  ---
+  duration_ms: 0.435326
+  ...
+# Subtest: pure Lil VFile matches official ordered path options
+ok 29 - pure Lil VFile matches official ordered path options
+  ---
+  duration_ms: 0.624791
+  ...
+# Subtest: pure Lil VFile supports URLs, encodings, and custom fields
+ok 30 - pure Lil VFile supports URLs, encodings, and custom fields
+  ---
+  duration_ms: 0.898474
+  ...
+# Subtest: pure Lil VFile diagnostics match official messages
+ok 31 - pure Lil VFile diagnostics match official messages
+  ---
+  duration_ms: 0.807344
+  ...
+# Subtest: pure Lil VFile rejects invalid path parts at the same evaluation point
+ok 32 - pure Lil VFile rejects invalid path parts at the same evaluation point
+  ---
+  duration_ms: 0.926086
+  ...
+1..32
+# tests 229
+# suites 2
+# pass 229
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1828.344266
+
+> @itslil/unified@11.0.7 check:types
+> tsc --noEmit --strict --target ES2022 --module NodeNext --moduleResolution NodeNext test/types.test.ts
+

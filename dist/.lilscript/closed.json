@@ -1,0 +1,191 @@
+{
+  "version": 3,
+  "codec": "brotli",
+  "outputs": [
+    {
+      "mode": "single",
+      "format": "esm",
+      "entries": [
+        {
+          "name": "index",
+          "file": "unified.closed.js",
+          "dynamic": false,
+          "closure": [
+            "unified.closed.js"
+          ],
+          "row": 4041,
+          "raw_row": 12033
+        }
+      ],
+      "files": [
+        {
+          "file": "unified.closed.js",
+          "role": "entry",
+          "source_map_for": null,
+          "label": [
+            "index"
+          ],
+          "modules": [
+            "index.lil",
+            "entry.lil",
+            "host.lil",
+            "plain.lil",
+            "extend.lil",
+            "trough.lil",
+            "vfile.lil",
+            "vfile-imports.lil"
+          ],
+          "anchored": true,
+          "imports": [],
+          "dynamic_imports": [],
+          "bytes": 12033,
+          "codec_bytes": 4041,
+          "sha256": "447e5510e4c7ce9273974d8fe80363d6224672eb1fefc378c71f277d8df3f94e"
+        }
+      ],
+      "side_effects": [
+        "unified.closed.js"
+      ],
+      "codec_total": 4041,
+      "rows_total": 4041,
+      "setters": 0,
+      "output": "primary",
+      "codec": "brotli",
+      "codec_settings": {
+        "brotli": {
+          "quality": 11,
+          "window": 22,
+          "mode": "generic"
+        },
+        "gzip": {
+          "level": 9,
+          "window": 15
+        }
+      },
+      "policy_fingerprint": [
+        114,
+        1,
+        181,
+        126,
+        86,
+        155,
+        42,
+        239,
+        200,
+        173,
+        13,
+        235,
+        148,
+        240,
+        158,
+        196,
+        79,
+        14,
+        248,
+        176,
+        187,
+        64,
+        79,
+        118,
+        167,
+        98,
+        199,
+        12,
+        10,
+        111,
+        181,
+        82
+      ]
+    }
+  ],
+  "source_sha256": "b30648e39d176c76056912557f593e3b5746f6a73a8e4ff18bf7e755ad84e7eb",
+  "inputs": {
+    "root": 0,
+    "entries": [
+      {
+        "name": "index",
+        "module": 0
+      }
+    ],
+    "modules": [
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/unifiedlil/.tmp/conditions/browser/index.lil",
+        "bytes": 163,
+        "sha256": "04a636b7c62fda30c4a61ff9bedf1ff640583b332107843c0a79ec186aa4aab7",
+        "dependencies": [
+          1
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/unifiedlil/.tmp/conditions/browser/entry.lil",
+        "bytes": 12498,
+        "sha256": "baa802c68e7c54ef57c3023187f6a52ef16c186a234314010f4b18f71b263782",
+        "dependencies": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/unifiedlil/.tmp/conditions/browser/host.lil",
+        "bytes": 2379,
+        "sha256": "745c7baa0a9b13001eae15b75a8be9ea063a88a51945e56728522d44a331ee89",
+        "dependencies": [],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/unifiedlil/.tmp/conditions/browser/plain.lil",
+        "bytes": 1307,
+        "sha256": "8a52a7e342eebf815c188da089eba5acaad37b604d13111a471f7437ed1d4249",
+        "dependencies": [
+          2
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/unifiedlil/.tmp/conditions/browser/extend.lil",
+        "bytes": 1592,
+        "sha256": "4055d2d1d1a84eb61b897c2f6d706c2c17d283df4d520a0620d18b753f340b12",
+        "dependencies": [
+          2,
+          3
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/unifiedlil/.tmp/conditions/browser/trough.lil",
+        "bytes": 3312,
+        "sha256": "9759f1e87e4d67fcd65b85963c2cbb6b5b206ac0212d4045bfb2c04125067eff",
+        "dependencies": [
+          2
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/unifiedlil/.tmp/conditions/browser/vfile.lil",
+        "bytes": 12263,
+        "sha256": "b802ee848f32c20ffd2207d9e4b16b7aac257bd5445f0919dfc8b1b8c7b86e99",
+        "dependencies": [
+          7,
+          2
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/unifiedlil/.tmp/conditions/browser/vfile-imports.lil",
+        "bytes": 7943,
+        "sha256": "17515fa203f6b6981aa3d6d3024ee2204605ca241493f833f523e2e8ca260b50",
+        "dependencies": [
+          2
+        ],
+        "dynamic_dependencies": []
+      }
+    ],
+    "host_modules": [],
+    "host_reserved": []
+  }
+}

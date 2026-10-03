@@ -4,7 +4,7 @@
 
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import {unified} from '../../dist/unified.node.js'
+import {unified} from '../../dist/unified.esm.js'
 import {VFile} from '@itslil/unified/vfile'
 
 test('`stringify`', async function (t) {

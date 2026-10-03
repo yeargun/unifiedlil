@@ -1,0 +1,354 @@
+import { basename, cwd, dirname, extname, join, sep, urlToPath } from "./vfile-imports.lil";
+import {
+  Error,
+  JSON,
+  Object,
+  TextDecoder,
+  TypeError,
+  globalThis,
+  defineMembers,
+  finishClass,
+  isFn,
+  isUint8Array,
+  requireNew
+} from "./host.lil";
+
+// vfile@6 and vfile-message@4 over host objects. vfile imports #minpath, #minproc and #minurl per
+// export condition (node:path, node:process and node:url under `node`, shims elsewhere); so does this
+// file, from ./vfile-imports.lil, which the build binds per condition (src/browser/ holds the shims).
+
+extern class VFileView {
+  JsValue cwd;
+  JsValue data;
+  JsValue history;
+  JsValue messages;
+  JsValue value;
+  JsValue path;
+  JsValue basename;
+  JsValue dirname;
+  JsValue extname;
+  JsValue stem;
+}
+
+extern class VFileMessageView {
+  JsValue ancestors;
+  JsValue cause;
+  JsValue place;
+  JsValue position;
+  JsValue ruleId;
+  JsValue source;
+  JsValue start;
+  JsValue end;
+  JsValue line;
+  JsValue column;
+  JsValue message;
+  JsValue stack;
+  JsValue name;
+  JsValue file;
+  JsValue fatal;
+}
+
+extern class VFileUrlView {
+  JsValue href;
+  JsValue protocol;
+  JsValue auth;
+  JsValue hostname;
+  JsValue pathname;
+}
+
+JsValue order = JS.array("history", "path", "basename", "stem", "extname", "dirname");
+
+// ---------------------------------------------------------------- minpath, minproc, minurl: ./vfile-imports.lil
+
+// ---------------------------------------------------------------- minurl (browser)
+
+bool isUrl(JsValue value) {
+  VFileUrlView url = JS.assume(value);
+  return value.truthy() && JS.typeOf(value) == "object" && JS.in("href", value) && url.href.truthy() &&
+    JS.in("protocol", value) && url.protocol.truthy() && JS.isUndefined(url.auth);
+}
+
+// ---------------------------------------------------------------- vfile-message
+
+JsValue point(JsValue value) {
+  VFileMessageView p = JS.assume(value);
+  return JS.add(JS.add(index(JS.and(value, p.line)), ":"), index(JS.and(value, p.column)));
+}
+
+JsValue position(JsValue value) {
+  VFileMessageView p = JS.assume(value);
+  return JS.add(JS.add(point(JS.and(value, p.start)), "-"), point(JS.and(value, p.end)));
+}
+
+JsValue index(JsValue value) {
+  return if (value.truthy() && value is float) { value } else { 1.0 };
+}
+
+JsValue stringifyPosition(JsValue value) {
+  VFileMessageView p = JS.assume(value);
+  return if (!value.truthy() || JS.typeOf(value) != "object") {
+    ""
+  } else {
+    if (JS.in("position", value) || JS.in("type", value)) {
+      position(p.position)
+    } else {
+      if (JS.in("start", value) || JS.in("end", value)) {
+        position(value)
+      } else {
+        if (JS.in("line", value) || JS.in("column", value)) { point(value) } else { "" }
+      }
+    }
+  };
+}
+
+JsValue createMessage(JsValue proto, JsValue causeOrReason, JsValue optionsOrPlace, JsValue origin) {
+  if (optionsOrPlace is string) {
+    origin = optionsOrPlace;
+    optionsOrPlace = JS.undefined();
+  }
+  JsValue reason = "";
+  bool legacyCause = false;
+  VFileMessageView options = JS.assume(
+    if (!optionsOrPlace.truthy()) {
+      JS.object()
+    } else {
+      if (JS.in("line", optionsOrPlace) && JS.in("column", optionsOrPlace) || JS.in("start", optionsOrPlace) && JS.in("end", optionsOrPlace)) {
+        JS.object("place", optionsOrPlace)
+      } else {
+        if (JS.in("type", optionsOrPlace)) {
+          JS.object("ancestors", JS.array(optionsOrPlace), "place", JS.get(optionsOrPlace, "position"))
+        } else {
+          JS.invoke(Object, "assign", JS.object(), optionsOrPlace)
+        }
+      }
+    }
+  );
+  if (causeOrReason is string) {
+    reason = causeOrReason;
+  } else if (!options.cause.truthy() && causeOrReason.truthy()) {
+    legacyCause = true;
+    reason = JS.get(causeOrReason, "message");
+    options.cause = causeOrReason;
+  }
+  if (!options.ruleId.truthy() && !options.source.truthy() && origin is string) {
+    JsValue colon = JS.invoke(origin, "indexOf", ":");
+    if (JS.strictEqual(colon, -1.0)) {
+      options.ruleId = origin;
+    } else {
+      options.source = JS.invoke(origin, "slice", 0.0, colon);
+      options.ruleId = JS.invoke(origin, "slice", JS.add(colon, 1.0));
+    }
+  }
+  JsValue ancestors = options.ancestors;
+  if (!options.place.truthy() && ancestors.truthy()) {
+    JsValue parent = ancestors[ancestors.length - 1];
+    if (parent.truthy()) options.place = JS.get(parent, "position");
+  }
+  JsValue place = options.place;
+  JsValue start = if (place.truthy() && JS.in("start", place)) { JS.get(place, "start") } else { place };
+  VFileMessageView startFields = JS.assume(start);
+  JsValue cause = options.cause;
+  return JS.invoke(Object, "assign", JS.invoke(Object, "setPrototypeOf", JS.construct(Error), proto), JS.object(
+    "ancestors", JS.or(ancestors, JS.undefined()),
+    "cause", JS.or(cause, JS.undefined()),
+    "column", if (start.truthy()) { startFields.column } else { JS.undefined() },
+    "fatal", JS.undefined(),
+    "file", "",
+    "message", reason,
+    "line", if (start.truthy()) { startFields.line } else { JS.undefined() },
+    "name", JS.or(stringifyPosition(place), "1:1"),
+    "place", JS.or(place, JS.undefined()),
+    "reason", reason,
+    "ruleId", JS.or(options.ruleId, JS.undefined()),
+    "source", JS.or(options.source, JS.undefined()),
+    "stack", if (legacyCause && cause.truthy() && JS.get(cause, "stack") is string) { JS.get(cause, "stack") } else { "" },
+    "actual", JS.undefined(),
+    "expected", JS.undefined(),
+    "note", JS.undefined(),
+    "url", JS.undefined()
+  ));
+}
+
+export JsValue VFileMessage = JS.method3((JsValue self, JsValue reason, JsValue options, JsValue origin) => {
+  requireNew(self, "VFileMessage");
+  return createMessage(JS.get(VFileMessage, "prototype"), reason, options, origin);
+});
+finishClass(VFileMessage, "VFileMessage");
+JS.invoke(Object, "setPrototypeOf", VFileMessage, Error);
+JS.invoke(Object, "assign", JS.invoke(Object, "setPrototypeOf", JS.get(VFileMessage, "prototype"), JS.get(Error, "prototype")), JS.object(
+  "file", "",
+  "name", "",
+  "reason", "",
+  "message", "",
+  "stack", "",
+  "column", JS.undefined(),
+  "line", JS.undefined(),
+  "ancestors", JS.undefined(),
+  "cause", JS.undefined(),
+  "fatal", JS.undefined(),
+  "place", JS.undefined(),
+  "ruleId", JS.undefined(),
+  "source", JS.undefined()
+));
+
+export JsValue createVFileMessage(JsValue reason, JsValue options) {
+  return createMessage(JS.get(VFileMessage, "prototype"), reason, options, JS.undefined());
+}
+
+// ---------------------------------------------------------------- VFile
+
+
+void assertPart(JsValue part, string name) {
+  if (part.truthy() && JS.invoke(part, "includes", sep()).truthy()) {
+    throw JS.construct(Error, "`" + name + "` cannot be a path: did not expect `" + sep() + "`");
+  }
+}
+
+void assertNonEmpty(JsValue part, string name) {
+  if (!part.truthy()) {
+    throw JS.construct(Error, "`" + name + "` cannot be empty");
+  }
+}
+
+void assertPathSet(JsValue path, string name) {
+  if (!path.truthy()) {
+    throw JS.construct(Error, "Setting `" + name + "` requires `path` to be set too");
+  }
+}
+
+export JsValue VFile = JS.method1((JsValue self, JsValue value) => {
+  requireNew(self, "VFile");
+  JsValue options = if (!value.truthy()) {
+    JS.object()
+  } else {
+    if (isUrl(value)) {
+      JS.object("path", value)
+    } else {
+      if (value is string || isUint8Array(value)) { JS.object("value", value) } else { value }
+    }
+  };
+  JS.invoke(Object, "assign", self, JS.object(
+    "cwd", if (JS.in("cwd", options)) { "" } else { cwd() },
+    "data", JS.object(),
+    "history", JS.array(),
+    "messages", JS.array()
+  ));
+  for (float index = 0; index < order.length; index++) {
+    string field = JS.assume(order[index]);
+    if (JS.in(field, options)) {
+      JsValue given = JS.get(options, field);
+      if (!JS.isNullish(given)) JS.set(self, field, if (field == "history") { JS.invoke(given, "slice") } else { given });
+    }
+  }
+  for (string field in options) {
+    if (!JS.invoke(order, "includes", field).truthy()) JS.set(self, field, JS.get(options, field));
+  }
+  return JS.undefined();
+});
+finishClass(VFile, "VFile");
+
+JsValue vfileMembers = JS.object(
+  "basename", JS.object(
+    "get", JS.method0((JsValue self) => {
+      VFileView file = JS.assume(self);
+      return if (file.path is string) { basename(file.path, JS.undefined()) } else { JS.undefined() };
+    }),
+    "set", JS.method1((JsValue self, JsValue value) => {
+      VFileView file = JS.assume(self);
+      assertNonEmpty(value, "basename");
+      assertPart(value, "basename");
+      file.path = join(JS.or(file.dirname, ""), value);
+      return JS.undefined();
+    })
+  ),
+  "dirname", JS.object(
+    "get", JS.method0((JsValue self) => {
+      VFileView file = JS.assume(self);
+      return if (file.path is string) { dirname(file.path) } else { JS.undefined() };
+    }),
+    "set", JS.method1((JsValue self, JsValue value) => {
+      VFileView file = JS.assume(self);
+      assertPathSet(file.basename, "dirname");
+      file.path = join(JS.or(value, ""), file.basename);
+      return JS.undefined();
+    })
+  ),
+  "extname", JS.object(
+    "get", JS.method0((JsValue self) => {
+      VFileView file = JS.assume(self);
+      return if (file.path is string) { extname(file.path) } else { JS.undefined() };
+    }),
+    "set", JS.method1((JsValue self, JsValue value) => {
+      VFileView file = JS.assume(self);
+      assertPart(value, "extname");
+      assertPathSet(file.dirname, "extname");
+      if (value.truthy()) {
+        if (!JS.strictEqual(JS.invoke(value, "codePointAt", 0.0), 46.0)) {
+          throw JS.construct(Error, "`extname` must start with `.`");
+        }
+        if (JS.invoke(value, "includes", ".", 1.0).truthy()) {
+          throw JS.construct(Error, "`extname` cannot contain multiple dots");
+        }
+      }
+      file.path = join(file.dirname, JS.add(file.stem, JS.or(value, "")));
+      return JS.undefined();
+    })
+  ),
+  "path", JS.object(
+    "get", JS.method0((JsValue self) => {
+      VFileView file = JS.assume(self);
+      return file.history[file.history.length - 1];
+    }),
+    "set", JS.method1((JsValue self, JsValue path) => {
+      VFileView file = JS.assume(self);
+      if (isUrl(path)) path = urlToPath(path);
+      assertNonEmpty(path, "path");
+      if (!JS.strictEqual(file.path, path)) JS.invoke(file.history, "push", path);
+      return JS.undefined();
+    })
+  ),
+  "stem", JS.object(
+    "get", JS.method0((JsValue self) => {
+      VFileView file = JS.assume(self);
+      return if (file.path is string) { basename(file.path, file.extname) } else { JS.undefined() };
+    }),
+    "set", JS.method1((JsValue self, JsValue value) => {
+      VFileView file = JS.assume(self);
+      assertNonEmpty(value, "stem");
+      assertPart(value, "stem");
+      file.path = join(JS.or(file.dirname, ""), JS.add(value, JS.or(file.extname, "")));
+      return JS.undefined();
+    })
+  ),
+  "fail", JS.method3((JsValue self, JsValue reason, JsValue options, JsValue origin) => {
+    VFileMessageView message = JS.assume(JS.invoke(self, "message", reason, options, origin));
+    message.fatal = true;
+    throw message;
+    return message;
+  }),
+  "info", JS.method3((JsValue self, JsValue reason, JsValue options, JsValue origin) => {
+    VFileMessageView message = JS.assume(JS.invoke(self, "message", reason, options, origin));
+    message.fatal = JS.undefined();
+    return message;
+  }),
+  "message", JS.method3((JsValue self, JsValue reason, JsValue options, JsValue origin) => {
+    VFileView file = JS.assume(self);
+    VFileMessageView message = JS.assume(createMessage(JS.get(VFileMessage, "prototype"), reason, options, origin));
+    if (file.path.truthy()) {
+      message.name = JS.add(JS.add(file.path, ":"), message.name);
+      message.file = file.path;
+    }
+    message.fatal = false;
+    JS.invoke(file.messages, "push", message);
+    return message;
+  }),
+  "toString", JS.method1((JsValue self, JsValue encoding) => {
+    VFileView file = JS.assume(self);
+    return if (JS.isUndefined(file.value)) {
+      ""
+    } else {
+      if (file.value is string) { file.value } else { JS.invoke(JS.construct(TextDecoder, JS.or(encoding, JS.undefined())), "decode", file.value) }
+    };
+  })
+);
+defineMembers(vfileMembers, JS.get(VFile, "prototype"));

@@ -15,7 +15,7 @@ Two compiles ship from the same `.lil` source:
 | Lane | Config | Meaning |
 | --- | --- | --- |
 | **library** (npm) | `lilscript.toml` · `--target js-module` | reusable ESM. Export names and `extern class` keys stay. |
-| **closed** | `lilscript.closed.toml` · `--target js-module` | closed LilScript world. The compiler renames no properties yet, so `extern class` keys keep their names; the file differs from the library file only through its optimizer settings (candidate search `production`, no beam width). ESM export names stay so the lane is testable. |
+| **closed** | `lilscript.closed.toml` · `--target js-module` | closed LilScript world. Public and extern property names are preserved; eligible internal owned properties may be mangled. ESM export names stay so the lane is testable. |
 
 You publish the library lane. The closed artifact is `dist/unified.closed.js`.
 
@@ -30,25 +30,14 @@ shims. `test/environments.test.mjs` bundles upstream vfile and this package with
 each runtime's conditions and compares the working directory, every path getter
 and setter, file URLs and the errors they throw.
 
-The ESM files (`dist/unified.esm.js`, `dist/unified.node.js`,
-`dist/unified.closed.js`, `dist/vfile.esm.js`, `dist/vfile.node.js`) are exactly
-what the compiler wrote, plus a license banner and, in the Node files, the three
-Node imports; no minifier runs over them. The CommonJS files (`dist/unified.cjs`,
-`dist/vfile.cjs`, for `require` under `node`) and the UMD file
-(`dist/unified.umd.js`) are esbuild format conversions of the Node and default
-ESM (not minified) because the compiler has no CommonJS target yet; the site
-labels them as post-processed.
+The compiler writes the ESM, CommonJS and UMD files directly. Native Node imports are declared in the staged source graph; browser and worker entries use the portable shims. Format wrappers and module linking are part of compiler delivery, with no post-compilation JavaScript minifier.
 
 ESM, CommonJS, UMD, and closed artifacts directly contain the pure LilScript
 VFile runtime. VFile-compatible inputs retain their identity in every format.
 The same implementation is available as `@itslil/unified/vfile` in ESM and
 CommonJS.
 
-`npm run record:release` (with `LILSCRIPT_COMPILER`, `LILSCRIPT_CODEC` and
-`LILSCRIPT_REVISION` set) rebuilds three times, times the compiler invocations,
-measures every delivered file with the LilScript codec, and writes
-`site/results.json`, which the site renders. The official bars come from the
-paired source build recorded in `comparison/source-build/`.
+The current public comparison is generated from independently targeted raw, gzip and Brotli artifacts. See [COMPARISON.md](COMPARISON.md) and [package files and validation](site/package-build.json).
 
 `src/entry.lil` imports `src/vfile.lil` directly, so processor, trough, VFile,
 parser-facing values, and stringifier-facing values form one LilScript graph
@@ -62,3 +51,5 @@ The LilScript compiler lives next door at `../lilscript`.
 ## Comparison with the original
 
 See [COMPARISON.md](COMPARISON.md) for current size and build-time comparisons against minified upstream.
+
+[Download the checked repository package](https://yeargun.github.io/unifiedlil/downloads/package.tgz) · [Package files, hashes and validation](https://yeargun.github.io/unifiedlil/package-build.json). npm publication is independent.

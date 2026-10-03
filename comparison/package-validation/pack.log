@@ -1,0 +1,5 @@
+
+> @itslil/unified@11.0.7 check:pack
+> node scripts/check-pack.mjs
+
+npm pack: 24 files, 26386 bytes packed, 130568 bytes unpacked
