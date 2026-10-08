@@ -1,196 +1,191 @@
 {
-  "schemaVersion": 2,
-  "measuredAt": "2026-09-24T05:06:25Z",
+  "schemaVersion": 4,
   "name": "unifiedlil",
+  "package": "@itslil/unified",
+  "measuredAt": "2026-10-03T02:05:48.520868+03:00",
   "compiler": {
-    "commit": "aa2052f081ca8184666ca280ee9b91d476e46cfc",
-    "sha256": "13cb49a93fb3e376a5978484835322c84adea692b69ae4720775291377cf18f9"
+    "baseRevision": "f7d29bd9",
+    "binarySha256": "8ff44fabb92c949e68240ce6541038fd52e2f3c04d1a9ac470031e4238541c3a",
+    "hasLocalSourceChanges": true
   },
   "upstream": {
     "package": "unified",
     "version": "11.0.5",
-    "repository": "https://github.com/unifiedjs/unified.git",
-    "commit": "242105bd6e18c61ca10f37d99529b89f1be37518"
+    "external": [],
+    "sharedExports": [
+      "unified"
+    ],
+    "excludedExports": [],
+    "additionalExports": [],
+    "resolution": {
+      "platform": "neutral",
+      "conditions": [
+        "production"
+      ],
+      "mainFields": [
+        "module",
+        "main"
+      ],
+      "target": "es2020",
+      "defines": {
+        "process.env.NODE_ENV": "production"
+      }
+    }
   },
-  "scope": "unified@11.0.5 public ESM runtime graph against @itslil/unified's dist/unified.esm.js as shipped. Original ESM assembled from the pinned Git source build.",
-  "compatibility": "Runtime checks: 224/224 pass.",
-  "tests": {
-    "pass": 224,
-    "total": 224
-  },
-  "buildComplete": true,
+  "scope": "Portable main-entry ESM with matching shared named exports and external imports. The original uses production/default package conditions, keeping data-based entity decoding rather than relying on the DOM.",
   "machine": {
-    "provider": "Azure",
-    "instanceClass": "Standard_B8als_v2",
     "cpu": "AMD EPYC 7763 64-Core Processor",
     "logicalCpus": 8,
-    "memoryBytes": 16706420736,
-    "os": "Ubuntu 24.04.3 LTS",
-    "kernel": "7.0.0-1014-azure",
-    "node": "v24.11.1",
-    "rayonThreads": 8,
-    "loadAtStart": [
-      22.21533203125,
-      20.22265625,
-      13.92822265625
-    ],
-    "loadAtEnd": [
-      16.0048828125,
-      20.52783203125,
-      16.85595703125
-    ]
+    "memoryGiB": 15.6,
+    "os": "Linux-7.0.0-1014-azure-x86_64-with-glibc2.39",
+    "node": "v20.19.0"
   },
-  "build": {
-    "compilerSeconds": 2.759380340576172,
-    "compilerInvocations": 3,
-    "compilerScope": "Sum of the wall times of the compiler invocations in one package build (src/index.lil with lilscript.toml and lilscript.closed.toml, src/vfile.lil with lilscript.toml), median of three clean builds.",
-    "primaryCompilerSeconds": 0.8500988483428955,
-    "primaryCompilerRange": [
-      0.3702263832092285,
-      1.1881723403930664
-    ],
-    "primaryCompilerScope": "The src/index.lil lilscript.toml invocation that writes the published ESM, median of three clean builds.",
-    "packageSeconds": 6.770709283002361,
-    "originalSeconds": 95.13405420300114,
-    "originalEsmSeconds": 1.132797059,
-    "packageScope": "node scripts/build.mjs --compile",
-    "originalScope": "npm run build",
-    "protocol": {
-      "repetitions": 3,
-      "cleanOutputs": true,
-      "dependencyInstallationTimedSeparately": true,
-      "sourceArchives": "Pinned Git checkouts; original repository package build commands, followed by production ESM assembly.",
-      "workerUse": "Both implementations use the same machine and Node version. The machine is a burstable Azure VM that also runs unrelated jobs; timings are contextual wall times, with CPU time recorded separately."
+  "objectives": [
+    {
+      "objective": "raw",
+      "metric": "raw",
+      "lilscript": {
+        "artifact": "./comparison-artifacts/lilscript-raw.mjs",
+        "sizes": {
+          "raw": 11696,
+          "gzip9": 4622,
+          "brotli11": 4178
+        },
+        "sha256": "5f604f45812719edca887d2f2d1b0517e4789194683560183603609890c394b2",
+        "buildSeconds": 4.173396864000097,
+        "config": "./comparison-artifacts/lilscript-raw.toml",
+        "configSha256": "9757cbbd3817b15ecbf6c0d4009f9db586dddc826753bd3e30948e3a0056426b"
+      },
+      "original": {
+        "tool": "Terser",
+        "version": "5.51.2",
+        "artifact": "./comparison-artifacts/original-terser.mjs",
+        "sizes": {
+          "raw": 13394,
+          "gzip9": 4801,
+          "brotli11": 4348
+        },
+        "sha256": "5f1e9b00fcef09bbcdec585c03a98404fd7c7e2ed2a7775b3f741370efadf412",
+        "buildSeconds": 0.3837841960000005
+      },
+      "ratio": 0.8732268179781992
+    },
+    {
+      "objective": "gzip",
+      "metric": "gzip9",
+      "lilscript": {
+        "artifact": "./comparison-artifacts/lilscript-gzip.mjs",
+        "sizes": {
+          "raw": 12187,
+          "gzip9": 4490,
+          "brotli11": 4099
+        },
+        "sha256": "c2cd686ef41122d2dc9671fba660182d758f57faa8c91e6e2a93df234fe3f13b",
+        "buildSeconds": 3.3715597549999075,
+        "config": "./comparison-artifacts/lilscript-gzip.toml",
+        "configSha256": "d9826c63247abe81cd3a62718a23462e331f7222d2348f2b5d2031af843e59e3"
+      },
+      "original": {
+        "tool": "Terser",
+        "version": "5.51.2",
+        "artifact": "./comparison-artifacts/original-terser.mjs",
+        "sizes": {
+          "raw": 13394,
+          "gzip9": 4801,
+          "brotli11": 4348
+        },
+        "sha256": "5f1e9b00fcef09bbcdec585c03a98404fd7c7e2ed2a7775b3f741370efadf412",
+        "buildSeconds": 0.3837841960000005
+      },
+      "ratio": 0.9352218287856696
+    },
+    {
+      "objective": "brotli",
+      "metric": "brotli11",
+      "lilscript": {
+        "artifact": "./comparison-artifacts/lilscript-brotli.mjs",
+        "sizes": {
+          "raw": 12248,
+          "gzip9": 4503,
+          "brotli11": 4085
+        },
+        "sha256": "2b4297e06ece98ed41bdf538b4e839ffc0712d372bb877b9d3826d60262db539",
+        "buildSeconds": 6.878012219000084,
+        "config": "./comparison-artifacts/lilscript-brotli.toml",
+        "configSha256": "754f2542a25b0c319b94ececf3f6715927d75fec29ba7b8e83ce2e54d4b1f5fc"
+      },
+      "original": {
+        "tool": "Terser",
+        "version": "5.51.2",
+        "artifact": "./comparison-artifacts/original-terser.mjs",
+        "sizes": {
+          "raw": 13394,
+          "gzip9": 4801,
+          "brotli11": 4348
+        },
+        "sha256": "5f1e9b00fcef09bbcdec585c03a98404fd7c7e2ed2a7775b3f741370efadf412",
+        "buildSeconds": 0.3837841960000005
+      },
+      "ratio": 0.9395124195032198
     }
-  },
-  "esm": {
-    "original": {
-      "raw": 13378,
-      "gzip9": 4790,
-      "brotli11": 4339,
-      "sha256": "a1f96b9bec8a50d871af7be7ff5671c5e4b9e7a594777533907ba457d90a4e2e",
-      "file": "./esm-comparison/original.js",
-      "note": "Terser 5.51.2, 3 passes, mangle on"
+  ],
+  "minifiers": [
+    {
+      "tool": "Terser",
+      "version": "5.51.2",
+      "artifact": "./comparison-artifacts/original-terser.mjs",
+      "sizes": {
+        "raw": 13394,
+        "gzip9": 4801,
+        "brotli11": 4348
+      },
+      "sha256": "5f1e9b00fcef09bbcdec585c03a98404fd7c7e2ed2a7775b3f741370efadf412",
+      "buildSeconds": 0.3837841960000005
     },
-    "lilscript": {
-      "raw": 12250,
-      "gzip9": 4632,
-      "brotli11": 4206,
-      "sha256": "d472b3cb63b1eadf918dff953293b93ea4c36e81c52d12000b5ae3b1a3fee95b",
-      "file": "./esm-comparison/lilscript.js"
+    {
+      "tool": "esbuild",
+      "version": "0.28.1",
+      "artifact": "./comparison-artifacts/original-esbuild.mjs",
+      "sizes": {
+        "raw": 13796,
+        "gzip9": 5046,
+        "brotli11": 4617
+      },
+      "sha256": "2970578b5ddf4622b925b584891b8af49728bf191e0adb3a86f12a4a5d6ca550",
+      "buildSeconds": 0.06324301000000014
     },
-    "originalOxc": {
-      "raw": 13452,
-      "gzip9": 4843,
-      "brotli11": 4411,
-      "sha256": "907210b4ab180758c94f68a41fc1355809ed2aa39130d71fa88413500ccc51cc",
-      "note": "Vite 8 Oxc minify, mangle on"
-    },
-    "originalEsbuild": {
-      "raw": 13779,
-      "gzip9": 5034,
-      "brotli11": 4612,
-      "sha256": "e3db50a262303535d2c942be4cf590d29cc876941ce60d5ad0dde1c28018c653",
-      "note": "esbuild --minify"
+    {
+      "tool": "Oxc",
+      "version": "via Vite 8.2.1",
+      "artifact": "./comparison-artifacts/original-oxc.mjs",
+      "sizes": {
+        "raw": 13468,
+        "gzip9": 4851,
+        "brotli11": 4434
+      },
+      "sha256": "258d7d55d71f77a9e493865a8c9550ec9c83bb8af72028ff2b4a8c9ca6973aff",
+      "buildSeconds": 0.1830535030000001
     }
-  },
-  "sourceBuild": {
-    "original": {
-      "complete": true,
-      "medianSeconds": 95.13405420300114,
-      "minimumSeconds": 40.23610101699887,
-      "maximumSeconds": 116.31260622300033,
-      "samples": [
-        {
-          "command": [
-            "npm",
-            "run",
-            "build"
-          ],
-          "wallSeconds": 116.31260622300033,
-          "cpuSeconds": 61.161551,
-          "exitCode": 0,
-          "timedOut": false,
-          "log": "original-build-1.log",
-          "logSha256": "6dc5b9f527c63df8ab43b75fc6e11e5113d672de821abe3db75316d66113c741"
-        },
-        {
-          "command": [
-            "npm",
-            "run",
-            "build"
-          ],
-          "wallSeconds": 95.13405420300114,
-          "cpuSeconds": 63.425426,
-          "exitCode": 0,
-          "timedOut": false,
-          "log": "original-build-2.log",
-          "logSha256": "6dc5b9f527c63df8ab43b75fc6e11e5113d672de821abe3db75316d66113c741"
-        },
-        {
-          "command": [
-            "npm",
-            "run",
-            "build"
-          ],
-          "wallSeconds": 40.23610101699887,
-          "cpuSeconds": 52.28147699999996,
-          "exitCode": 0,
-          "timedOut": false,
-          "log": "original-build-3.log",
-          "logSha256": "6dc5b9f527c63df8ab43b75fc6e11e5113d672de821abe3db75316d66113c741"
-        }
-      ]
-    },
-    "lilscript": {
-      "complete": true,
-      "medianSeconds": 6.770709283002361,
-      "minimumSeconds": 2.130199465995247,
-      "maximumSeconds": 6.979831069998909,
-      "samples": [
-        {
-          "command": [
-            "bash",
-            "-c",
-            "node scripts/build.mjs --compile"
-          ],
-          "wallSeconds": 6.979831069998909,
-          "cpuSeconds": 2.5562659999999937,
-          "exitCode": 0,
-          "timedOut": false,
-          "log": "lilscript-build-1.log",
-          "logSha256": "aa5d2863da8842f4bc56f3abfb65575d1dd5c999989f5c68e366573433cf636b"
-        },
-        {
-          "command": [
-            "bash",
-            "-c",
-            "node scripts/build.mjs --compile"
-          ],
-          "wallSeconds": 6.770709283002361,
-          "cpuSeconds": 2.6719720000000073,
-          "exitCode": 0,
-          "timedOut": false,
-          "log": "lilscript-build-2.log",
-          "logSha256": "d3e2240b846ccc7ba373e5341358033472759ec878b66c400faf69690cbbb4ec"
-        },
-        {
-          "command": [
-            "bash",
-            "-c",
-            "node scripts/build.mjs --compile"
-          ],
-          "wallSeconds": 2.130199465995247,
-          "cpuSeconds": 2.0999960000000115,
-          "exitCode": 0,
-          "timedOut": false,
-          "log": "lilscript-build-3.log",
-          "logSha256": "a483b70ecc07f637e06cf8459ee70c03ea1f9e444816f703ab1aebfe865c4e51"
-        }
-      ]
-    },
-    "scopeNote": "Both timings cover each repository’s package build command; their output formats and build checks can differ.",
-    "cleanOutputs": true,
-    "installationExcluded": true
+  ],
+  "validation": {
+    "checks": 585,
+    "objectives": [
+      {
+        "objective": "raw",
+        "checks": 195,
+        "suite": "upstream-derived/API"
+      },
+      {
+        "objective": "gzip",
+        "checks": 195,
+        "suite": "upstream-derived/API"
+      },
+      {
+        "objective": "brotli",
+        "checks": 195,
+        "suite": "upstream-derived/API"
+      }
+    ],
+    "scope": "Main ESM entry; selected corpora and API checks, not all package formats or complete upstream equivalence."
   }
 }
